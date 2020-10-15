@@ -1,10 +1,13 @@
 import React from 'react';
 import './App.css';
+import Button from './components/Button';
 
 function App() {
   return (
-    <div className="App">
-      
+    <div>
+      <img src="images/logo.png" alt=''/>
+      <Button text='About'/>
+      <Button text='Explore'/>
     </div>
   );
 }
