@@ -1,6 +1,12 @@
+.container {
+    max-width: min(90vw, 700px);
+    padding-left: 10px;
+    padding-right: 10px;
+    border: 10px;
+}
+
 .container .text-container {
     text-align: center;
-    max-width: 700px;
 }
 
 .container .text-container strong {
@@ -9,13 +15,15 @@
 }
 
 .container .text-container p {
+    margin-top: min(1rem, 1vh);
+
     font-size: min(2rem, 3vw);
     color: var(--text-light-gray);
-    margin-top: min(1rem, 1vh);
 }
 
 .container .logo-container img {
     display: block;
+    
     width: min(90vw, 700px);
     margin-left: auto;
     margin-right: auto;
@@ -24,17 +32,21 @@
 
 .container .button-container {
     display: flex;
-    justify-content: center;
-
-        
-    
-    font-size: min(2rem, 3vw);
-    
-    
+    justify-content: center; 
 }
 
 .container .button-container Button {
+    height: min(6rem, 10vw);
+    width: min(300px, 45vw);
+    margin: min(1vw, 20px);
+    border: 0;
     
+    font-size: min(3rem, 5vw);
     color: var(--background-white);
     background-color: var(--bar-light-gray);
+    transition: background, color .1s;
+}
+
+.container .button-container Button:hover {
+    background-color: var(--confirmation-green);
 }
