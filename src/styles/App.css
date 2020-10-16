@@ -1,0 +1,9 @@
+.logo-container img {
+    width: 90vw;
+    padding-top: 5vh;
+    max-width: 700px;
+}
+
+.text-container {
+    text-align: center;
+}

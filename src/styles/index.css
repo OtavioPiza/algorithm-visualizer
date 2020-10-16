@@ -1,9 +1,30 @@
+:root {
+    --background-white: #F4F4F4;
+    --bar-light-gray: #3A3535; 
+    --bar-dark-gray: #322F2F;
+    --text-light-gray: #232020;
+    --text-dark-gray: #0F0D0D;
+    --icon-orange: #FF7315;
+}
+
 body {
-  background-color: #F4F4F4;
+  background-color: var(--background-white);
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+html, body {
+  align-items: center;
+  justify-content: center;
+}
+
+body, input, button, textarea {
+  font: 500 1.6rem Roboto;
 }
