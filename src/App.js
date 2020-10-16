@@ -14,6 +14,7 @@ function App() {
       </div>
       <div class='button-container'>
         <Button text='About'/>
+        <br></br>
         <Button text='Explore'/>
       </div>
     </div>
