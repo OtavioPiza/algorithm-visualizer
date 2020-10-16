@@ -1,13 +1,17 @@
 import React from 'react';
-import './App.css';
 import Button from './components/Button';
 
 function App() {
   return (
     <div>
-      <img src="images/logo.png" alt=''/>
-      <Button text='About'/>
-      <Button text='Explore'/>
+      <link rel="stylesheet" href="styles/index.css"/>
+      <div class='logo'>
+        <img src='./images/logo.png'/>
+      </div>
+      <div class='text'>
+        <Button text='About'/>
+        <Button text='Explore'/>
+      </div>
     </div>
   );
 }
