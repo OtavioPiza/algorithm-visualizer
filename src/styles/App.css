@@ -1,3 +1,7 @@
+.logo-container {
+    align-items: center;
+}
+
 .logo-container img {
     width: 90vw;
     padding-top: 5vh;
@@ -6,4 +10,15 @@
 
 .text-container {
     text-align: center;
+    max-width: 700px;
+}
+
+.text-container strong {
+    font-size: 8rem;
+    color: var(--text-dark-gray);
+}
+
+.text-container p {
+    font-size: 2rem;
+    color: var(--text-light-gray);
 }

@@ -6,10 +6,10 @@ function App() {
   return (
     <div>
       <div class='logo-container'>
-        <img src='./images/logo.png'/>
+        <img src='./images/logo.png' alt='Algorithm Visualizer Logo'/>
       </div>
       <div class='text-container'>
-        <h1>Algorithm Visualizer</h1>
+        <strong>Algorithm Visualizer</strong>
         <p>An intuitive way to visualize how algorithms work</p>
         <Button text='About'/>
         <Button text='Explore'/>
