@@ -1,10 +1,10 @@
 import React from 'react';
+import './styles/index.css';
 import Button from './components/Button';
 
 function App() {
   return (
     <div>
-      <link rel="stylesheet" href="styles/index.css"/>
       <div class='logo'>
         <img src='./images/logo.png'/>
       </div>
