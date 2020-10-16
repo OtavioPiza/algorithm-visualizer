@@ -1,8 +1,13 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
 import './styles/App.css';
 import Button from './components/Button';
 
 function App() {
+  const handleAbout = () => {
+    console.log('Hello');
+  }
+
   return (
     <div class='container'>
       <div class='logo-container'>
@@ -13,7 +18,7 @@ function App() {
         <p>An intuitive way to visualize how algorithms work</p>
       </div>
       <div class='button-container'>
-        <Button text='About'/>
+        <Button text='About' eventHandler={handleAbout}/>
         <br></br>
         <Button text='Explore'/>
       </div>

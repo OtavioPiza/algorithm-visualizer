@@ -4,9 +4,7 @@
     min-height: 100vh;
     padding-left: max(5vw, 1rem);
     padding-right: max(5vw, 1rem);
-    border: min(3px, 100vh - 1000px);
-    border-top: 0;
-    border-bottom: 0;
+    border: 0;
     border-style: solid;
     border-color: var(--icon-orange)
 }
