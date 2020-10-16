@@ -6,11 +6,15 @@
     --text-light-gray: #232020;
     --text-dark-gray: #0F0D0D;
     --icon-orange: #FF7315;
-    --confirmation-green: #15E01A;
+    --confirmation-green: #1BC700;
 }
 
 body {
-  background-color: var(--background-gray);
+  background-image: url('images/background.png');
+  background-repeat: repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: 100%;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
