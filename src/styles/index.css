@@ -1,5 +1,6 @@
 :root {
     --background-white: #F4F4F4;
+    --background-gray: #DADADA;
     --bar-light-gray: #3A3535; 
     --bar-dark-gray: #322F2F;
     --text-light-gray: #232020;
@@ -16,11 +17,6 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-html, body {
   align-items: center;
   justify-content: center;
 }
