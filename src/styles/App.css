@@ -44,23 +44,19 @@
     width: min(300px, 45vw);
     margin: min(1vw, 20px);
     border: 0;
-    background: url('images/background.png') center;
+    background: url('images/gray-button3x1.png') center;
+    background-size: 100% 100%;
+    background-color: transparent;
+    background-repeat: no-repeat;
     
     font-size: min(3rem, 5vw);
     color: var(--background-white);
-    background-color: var(--bar-light-gray);
     transition: .5s;
-}
-
-.container .button-container img {
-    position: center;
 }
 
 .container .button-container #thisisfine:hover {
     cursor: pointer;
     color: var(--text-light-gray);
-    content: '>>';
     background: url('images/thisisfine.jpg') center;
-    background-repeat: no-repeat;
     background-size: 100% 100%;
 }
