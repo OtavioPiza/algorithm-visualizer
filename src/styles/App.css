@@ -51,9 +51,16 @@
     
     font-size: min(3rem, 5vw);
     color: var(--background-white);
-    transition: .5s;
+    transition: 100ms;
 }
 
+.container .button-container Button:hover {
+    cursor: pointer;
+    background: url('images/orange-button-pressed3x1.png') center;
+    background-size: 100% 100%;
+}
+
+/* To be removed after implementation */
 .container .button-container #thisisfine:hover {
     cursor: pointer;
     color: var(--text-light-gray);
