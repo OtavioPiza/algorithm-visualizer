@@ -40,17 +40,25 @@
 }
 
 .container .button-container Button {
-    height: min(6rem, 10vw);
+    height: min(100px, 15vw);
     width: min(300px, 45vw);
     margin: min(1vw, 20px);
     border: 0;
+    background: url('images/background.png') center;
     
     font-size: min(3rem, 5vw);
     color: var(--background-white);
     background-color: var(--bar-light-gray);
-    transition: .1s;
+    transition: ease-in-out .1s;
+}
+
+.container .button-container img {
+    position: center;
 }
 
 .container .button-container Button:hover {
-    background-color: var(--icon-orange);
+    /* background-color: var(--icon-orange); */
+    background: url('images/pepe.jpg') center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
 }

@@ -14,7 +14,7 @@ function App() {
         <p>An intuitive way to visualize how algorithms work</p>
       </div>
       <div class='button-container'>
-        <Button text='About' src='.styles/background.png'/>
+        <Button text='About'/>
         <br></br>
         <Button text='Explore'/>
       </div>
