@@ -2,7 +2,9 @@ import React from 'react'
 
 const Button = ({ eventHandler, text, id }) => (
     <button onClick={eventHandler} id={id}>
-        {text}
+        <p>
+            {text}
+        </p>
     </button>
 )
 export default Button

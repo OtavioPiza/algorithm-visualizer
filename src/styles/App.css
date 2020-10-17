@@ -49,12 +49,20 @@
     font-size: min(3rem, 5vw);
     color: var(--background-white);
     transition: 100ms;
+    position: relative;
+    display: flex;
+    align-content: center;
+    justify-content: center;
 }
 
 .container .button-container Button:hover {
     cursor: pointer;
     background: url('images/orange-button-pressed-3x1.png') center;
     background-size: 100% 100%;
+}
+
+.container .button-container p:hover {
+    top: 0px;
 }
 
 /* To be removed after implementation */
