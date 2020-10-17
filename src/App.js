@@ -5,18 +5,17 @@ import Button from './components/Button';
 function App() {
 
   return (
-    <div class='container'>
-      <div class='logo-container'>
+    <div className='container'>
+      <div className='logo-container'>
         <img src='./images/logo.png' alt='Algorithm Visualizer Logo'/>
       </div>
-      <div class='text-container'>
+      <div className='text-container'>
         <strong>Algorithm Visualizer</strong>
         <p>An intuitive way to visualize how algorithms work</p>
       </div>
-      <div class='button-container'>
+      <div className='button-container'>
         <Button text='About'/>
-        <br></br>
-        <Button text='Explore'/>
+        <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
       </div>
     </div>
   );

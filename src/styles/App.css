@@ -56,9 +56,9 @@
     position: center;
 }
 
-.container .button-container Button:hover {
+.container .button-container #thisisfine:hover {
     cursor: pointer;
-    color: black;
+    color: var(--text-light-gray);
     content: '>>';
     background: url('images/thisisfine.jpg') center;
     background-repeat: no-repeat;
