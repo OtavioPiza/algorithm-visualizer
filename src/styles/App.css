@@ -50,7 +50,6 @@
     font-size: min(3rem, 5vw);
     color: var(--background-white);
     transition: 150ms;
-    position: relative;
 }
 
 .container .button-container Button:hover {
@@ -59,14 +58,16 @@
     background-size: 100% 100%;
 }
 
-.container .button-container Button span:after {
-    top: -5px;
+.container .button-container Button:hover span {
+    position: relative;
+    bottom: 5px;
+    left: 5px;
 }
 
 /* To be removed after implementation */
 .container .button-container #thisisfine:hover {
     cursor: not-allowed;
-    color: var(--text-light-gray);
+    color: rgba(255, 255, 255, 0);
     background: url('images/thisisfine.jpg') center;
     background-size: 100% 100%;
 }
