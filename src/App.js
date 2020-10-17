@@ -3,9 +3,6 @@ import './styles/App.css';
 import Button from './components/Button';
 
 function App() {
-  const handleAbout = () => {
-    console.log('Hello');
-  }
 
   return (
     <div class='container'>
@@ -17,7 +14,7 @@ function App() {
         <p>An intuitive way to visualize how algorithms work</p>
       </div>
       <div class='button-container'>
-        <Button text='About' eventHandler={handleAbout}/>
+        <Button text='About' src='./styles/background.png'/>
         <br></br>
         <Button text='Explore'/>
       </div>
