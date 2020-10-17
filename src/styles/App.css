@@ -4,9 +4,6 @@
     min-height: 100vh;
     padding-left: max(5vw, 1rem);
     padding-right: max(5vw, 1rem);
-    border: 0;
-    border-style: solid;
-    border-color: var(--icon-orange)
 }
 
 .container .text-container {
@@ -56,7 +53,7 @@
 
 .container .button-container Button:hover {
     cursor: pointer;
-    background: url('images/orange-button-pressed3x1.png') center;
+    background: url('images/orange-button-pressed-3x1.png') center;
     background-size: 100% 100%;
 }
 
