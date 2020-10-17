@@ -41,18 +41,16 @@
     width: min(300px, 45vw);
     margin: min(1vw, 20px);
     border: 0;
+
     background: url('images/gray-button3x1.png') center;
     background-size: 100% 100%;
     background-color: transparent;
     background-repeat: no-repeat;
-    
+
     font-size: min(3rem, 5vw);
     color: var(--background-white);
-    transition: 100ms;
+    transition: 150ms;
     position: relative;
-    display: flex;
-    align-content: center;
-    justify-content: center;
 }
 
 .container .button-container Button:hover {
@@ -61,13 +59,13 @@
     background-size: 100% 100%;
 }
 
-.container .button-container p:hover {
-    top: 0px;
+.container .button-container Button span:after {
+    top: -5px;
 }
 
 /* To be removed after implementation */
 .container .button-container #thisisfine:hover {
-    cursor: pointer;
+    cursor: not-allowed;
     color: var(--text-light-gray);
     background: url('images/thisisfine.jpg') center;
     background-size: 100% 100%;
