@@ -49,7 +49,7 @@
     font-size: min(3rem, 5vw);
     color: var(--background-white);
     background-color: var(--bar-light-gray);
-    transition: ease-in-out .1s;
+    transition: .5s;
 }
 
 .container .button-container img {
@@ -57,8 +57,10 @@
 }
 
 .container .button-container Button:hover {
-    /* background-color: var(--icon-orange); */
-    background: url('images/pepe.jpg') center;
+    cursor: pointer;
+    color: black;
+    content: '>>';
+    background: url('images/thisisfine.jpg') center;
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
