@@ -52,7 +52,5 @@
 }
 
 .container .button-container Button:hover {
-    /* background-color: var(--confirmation-green); */
     background-color: var(--icon-orange);
-    font-weight: 700;
 }
