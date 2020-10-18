@@ -1,8 +1,9 @@
 import React from 'react'
-import '../styles/BottomBar.js'
+import '../styles/BottomBar.css'
 
 const BottomBar = () => (
-    <div>
-
-    </div>
+    <footer>
+    </footer>
 )
+
+export default BottomBar

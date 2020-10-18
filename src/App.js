@@ -1,6 +1,7 @@
 import React from 'react';
 import './styles/App.css';
 import Button from './components/Button';
+import BottomBar from './components/BottomBar';
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <strong>Algorithm Visualizer</strong>
         <p>An intuitive way to visualize how algorithms work</p>
       </div>
+      <BottomBar></BottomBar>
       <div className='button-container'>
         <Button text='About'/>
         <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>

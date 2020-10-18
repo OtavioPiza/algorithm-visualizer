@@ -31,6 +31,11 @@
     padding-top: 5vh;
 }
 
+.container BottomBar {
+    width: 100%;
+    height: 5vh;
+}
+
 .container .button-container {
     display: flex;
     justify-content: center; 
