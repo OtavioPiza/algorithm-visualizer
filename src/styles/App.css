@@ -40,28 +40,6 @@
     height: min(100px, 15vw);
     width: min(300px, 45vw);
     margin: min(1vw, 20px);
-    border: 0;
-
-    background: url('images/gray-button3x1.png') center;
-    background-size: 100% 100%;
-    background-color: transparent;
-    background-repeat: no-repeat;
-
-    font-size: min(3rem, 5vw);
-    color: var(--background-white);
-    transition: 150ms;
-}
-
-.container .button-container Button:hover {
-    cursor: pointer;
-    background: url('images/orange-button-pressed-3x1.png') center;
-    background-size: 100% 100%;
-}
-
-.container .button-container Button:hover span {
-    position: relative;
-    bottom: 5px;
-    left: 5px;
 }
 
 /* To be removed after implementation */
