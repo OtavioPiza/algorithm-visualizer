@@ -2,13 +2,14 @@ import React from 'react';
 import './styles/App.css';
 import Button from './components/Button';
 import BottomBar from './components/BottomBar';
+import logo from './styles/images/logo.png'
 
 function App() {
 
   return (
     <div className='container'>
       <div className='logo-container'>
-        <img src='./images/logo.png' alt='Algorithm Visualizer Logo'/>
+        <img src={logo} alt='Algorithm Visualizer Logo'/>
       </div>
       <div className='text-container'>
         <strong>Algorithm Visualizer</strong>
