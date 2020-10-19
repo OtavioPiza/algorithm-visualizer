@@ -14,7 +14,7 @@ function App() {
         <strong>Algorithm Visualizer</strong>
         <p>An intuitive way to visualize how algorithms work</p>
       </div>
-      <BottomBar className='test'></BottomBar>
+      <BottomBar></BottomBar>
       <div className='button-container'>
         <Button text='About'/>
         <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
