@@ -3,11 +3,11 @@
     padding: 0;
     border: 0;
 
-    background-image: url('./images/button-gray-3x1.svg');
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    background-image: url('./images/bar-gray.svg');
 }
 .Bar:hover {
-    background-image: url('./images/button-pressed-orange-3x1.svg');
+    background-image: url('./images/bar-selected-blue.svg');
 }
