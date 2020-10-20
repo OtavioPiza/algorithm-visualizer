@@ -1,4 +1,4 @@
-Button {
+.Button {
     border: 0;
 
     background: url('images/button-gray-3x1.svg') center;
@@ -11,14 +11,14 @@ Button {
     transition: 150ms;
 }
 
-Button:hover {
+.Button:hover {
     cursor: pointer;
     background: url('images/button-pressed-orange-3x1.svg') center;
     background-size: 100% 100%;
 }
 
-Button:hover span {
+.Button:hover span {
     position: relative;
-    bottom: 5px;
-    left: 5px;
+    bottom: 5%;
+    left: 2.5%;
 }
