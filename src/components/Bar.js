@@ -9,7 +9,8 @@ const Bar = ({ className, size }) => {
     }
     
     return (
-        <button className={ className === undefined ? 'Bar' : className } id={ size } style={style}>
+        <button className={ className === undefined ? 'Bar' : className } id={ size } style={style}
+        onClick={() => console.log('he')}>
         </button>
     )
 }
