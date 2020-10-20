@@ -1,0 +1,9 @@
+.Bar button {
+    border: 0;
+
+    background-image: url('./images/button-gray-3x1.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100% 100%;
+    background-color: red;
+}
