@@ -31,9 +31,12 @@
     padding-top: 5vh;
 }
 
-.container BottomBar {
-    width: 100%;
-    height: 5vh;
+.container footer {
+    width: 75%;
+    height: 10px;
+    background-size: 100% 100%;
+    padding-top: min(10vh, 3px);
+    padding-bottom: min(10vh, 3px);
 }
 
 .container .button-container {
@@ -41,7 +44,7 @@
     justify-content: center; 
 }
 
-.container .button-container Button {
+.container .button-container .Button {
     height: min(100px, 15vw);
     width: min(300px, 45vw);
     margin: min(1vw, 20px);
