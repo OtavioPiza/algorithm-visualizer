@@ -59,8 +59,17 @@ function App() {
           return bar;
       }
     }))
-
     setBarsSelected([])
+  }
+
+  let isSorted = true
+  for (let i = 1; i < bars.length && isSorted; i++) {
+    if (bars[i].size < bars[i - 1].size) {
+      isSorted = false;
+    }
+  }
+  if (isSorted) {
+    console.log('NICE');
   }
 
   return (
@@ -68,7 +77,7 @@ function App() {
       <div className='logo-container'>
         {bars.map((bar, index) => (
           <Bar key={ index } id={ index } size={ bar.size } selected={ bar.selected }
-          eventHandler={selectBar}/>
+          eventHandler={selectBar} sorted={isSorted}/>
         ))}
       </div>
       <BottomBar/>

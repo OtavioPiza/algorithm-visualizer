@@ -1,10 +1,11 @@
 import React from 'react'
 import '../styles/Bar.css'
 import selectedBar from '../styles/images/bar-selected-blue.svg'
+import sortedBar from '../styles/images/bar-sorted-green.svg'
 
-const Bar = ({ className, id, size, selected, eventHandler }) => {
+const Bar = ({ className, id, size, selected, sorted, eventHandler }) => {
    
-    const background = selected ? `url(${selectedBar})` : ``
+    const background = sorted ? `url(${sortedBar})` : selected ? `url(${selectedBar})` : ``
     const style = {
         width: "80px",
         height: size + "px",
