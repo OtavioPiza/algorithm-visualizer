@@ -6,6 +6,14 @@
     padding-right: max(5vw, 1rem);
 }
 
+.container .logo-container {
+    padding: 2vh 0;
+
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+}
+
 .container .text-container {
     text-align: center;
 }
@@ -55,5 +63,12 @@
     cursor: not-allowed;
     color: rgba(255, 255, 255, 0);
     background: url('images/thisisfine.jpg') center;
+    background-size: 100% 100%;
+}
+
+.container .button-container #thisisfine:active {
+    cursor: not-allowed;
+    color: rgba(255, 255, 255, 0);
+    background: url('images/3.PNG') center;
     background-size: 100% 100%;
 }

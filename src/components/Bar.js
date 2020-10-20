@@ -4,7 +4,7 @@ import '../styles/Bar.css'
 const Bar = ({ className, size }) => {
     
     const style = {
-        width: size + "px",
+        width: "80px",
         height: size + "px",
     }
     
