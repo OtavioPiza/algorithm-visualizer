@@ -9,11 +9,11 @@ function App() {
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Bar size={ 90 }></Bar>
-        <Bar size={ 70 }></Bar>
-        <Bar size={ 80 }></Bar>
-        <Bar size={ 100 }></Bar>
-        <Bar size={ 20 }></Bar>
+        <Bar size={ 900 }></Bar>
+        <Bar size={ 700 }></Bar>
+        <Bar size={ 800 }></Bar>
+        <Bar size={ 1000 }></Bar>
+        <Bar size={ 200 }></Bar>
       </div>
       <BottomBar/>
       <div className='text-container'>

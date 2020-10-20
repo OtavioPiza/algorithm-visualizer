@@ -13,12 +13,13 @@
 
 .Button:hover {
     cursor: pointer;
-    background: url('images/button-pressed-orange-3x1.svg') center;
+    background: url('images/button-pressed-orange-3x1.svg') top;
     background-size: 100% 100%;
 }
 
 .Button:hover span {
     position: relative;
+    
     bottom: 5%;
     left: 2.5%;
 }
