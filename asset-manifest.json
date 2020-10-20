@@ -1,27 +1,28 @@
 {
   "files": {
     "main.css": "/algorithm-visualizer/static/css/main.20be3bb6.chunk.css",
-    "main.js": "/algorithm-visualizer/static/js/main.2dd92145.chunk.js",
-    "main.js.map": "/algorithm-visualizer/static/js/main.2dd92145.chunk.js.map",
+    "main.js": "/algorithm-visualizer/static/js/main.8e64676c.chunk.js",
+    "main.js.map": "/algorithm-visualizer/static/js/main.8e64676c.chunk.js.map",
     "runtime-main.js": "/algorithm-visualizer/static/js/runtime-main.a104d120.js",
     "runtime-main.js.map": "/algorithm-visualizer/static/js/runtime-main.a104d120.js.map",
-    "static/js/2.45b03a30.chunk.js": "/algorithm-visualizer/static/js/2.45b03a30.chunk.js",
-    "static/js/2.45b03a30.chunk.js.map": "/algorithm-visualizer/static/js/2.45b03a30.chunk.js.map",
+    "static/js/2.028f55a7.chunk.js": "/algorithm-visualizer/static/js/2.028f55a7.chunk.js",
+    "static/js/2.028f55a7.chunk.js.map": "/algorithm-visualizer/static/js/2.028f55a7.chunk.js.map",
     "index.html": "/algorithm-visualizer/index.html",
-    "precache-manifest.cf8b3d1c86592deaa1c91a1a919d1610.js": "/algorithm-visualizer/precache-manifest.cf8b3d1c86592deaa1c91a1a919d1610.js",
+    "precache-manifest.33e865731f6dde0dd7e7808d79de1f6e.js": "/algorithm-visualizer/precache-manifest.33e865731f6dde0dd7e7808d79de1f6e.js",
     "service-worker.js": "/algorithm-visualizer/service-worker.js",
     "static/css/main.20be3bb6.chunk.css.map": "/algorithm-visualizer/static/css/main.20be3bb6.chunk.css.map",
-    "static/js/2.45b03a30.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.45b03a30.chunk.js.LICENSE.txt",
+    "static/js/2.028f55a7.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.028f55a7.chunk.js.LICENSE.txt",
     "static/media/App.css": "/algorithm-visualizer/static/media/thisisfine.f508f9cf.jpg",
     "static/media/main.css": "/algorithm-visualizer/static/media/background.3a380e8a.png",
     "static/media/Bar.css": "/algorithm-visualizer/static/media/bar-selected-blue.cdab2145.svg",
+    "static/media/bar-sorted-green.svg": "/algorithm-visualizer/static/media/bar-sorted-green.330c4a88.svg",
     "static/media/BottomBar.css": "/algorithm-visualizer/static/media/bottom-bar.a8185305.svg",
     "static/media/Button.css": "/algorithm-visualizer/static/media/button-pressed-orange-3x1.4dd99745.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a104d120.js",
-    "static/js/2.45b03a30.chunk.js",
+    "static/js/2.028f55a7.chunk.js",
     "static/css/main.20be3bb6.chunk.css",
-    "static/js/main.2dd92145.chunk.js"
+    "static/js/main.8e64676c.chunk.js"
   ]
 }
