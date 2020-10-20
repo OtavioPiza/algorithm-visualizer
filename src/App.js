@@ -4,16 +4,37 @@ import Button from './components/Button';
 import BottomBar from './components/BottomBar';
 import Bar from './components/Bar';
 
+const bars = [
+  {
+    size: 450,
+    selected: false
+  },
+  {
+    size: 350,
+    selected: false
+  },
+  {
+    size: 200,
+    selected: false
+  },
+  {
+    size: 280,
+    selected: false
+  },
+  {
+    size: 170,
+    selected: false
+  },
+]
+
 function App() {
 
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Bar size={ 900 }></Bar>
-        <Bar size={ 700 }></Bar>
-        <Bar size={ 800 }></Bar>
-        <Bar size={ 1000 }></Bar>
-        <Bar size={ 200 }></Bar>
+        {bars.map((bar, index) => (
+          <Bar key={ index } id={ index } size={ bar.size } selected={ bar.selected }/>
+        ))}
       </div>
       <BottomBar/>
       <div className='text-container'>
