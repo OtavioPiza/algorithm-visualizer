@@ -7,7 +7,7 @@ import thisisfine from './styles/images/thisisfine.jpg'; // Dekete
 
 const testlist = [
   {
-    size: 450,
+    size: 390,
     selected: false
   },
   {
@@ -24,6 +24,10 @@ const testlist = [
   },
   {
     size: 170,
+    selected: false
+  },
+  {
+    size: 410,
     selected: false
   },
 ]
