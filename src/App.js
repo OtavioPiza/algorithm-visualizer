@@ -110,6 +110,7 @@ function App() {
         <Button text='About'/>
         <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
       </div>
+      <BottomBar/>
     </div>
   );
 }
