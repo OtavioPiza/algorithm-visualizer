@@ -3,6 +3,7 @@ import './styles/App.css';
 import Button from './components/Button';
 import BottomBar from './components/BottomBar';
 import Bar from './components/Bar';
+import thisisfine from './styles/images/thisisfine.jpg'; // Dekete
 
 const testlist = [
   {
@@ -68,16 +69,31 @@ function App() {
       isSorted = false;
     }
   }
-  if (isSorted) {
-    console.log('NICE');
+
+  // Delete
+  let isUnsorted = true
+  for (let i = 1; i < bars.length && isUnsorted; i++) {
+    if (bars[i].size > bars[i - 1].size) {
+      isUnsorted = false;
+    }
   }
+  console.log(isUnsorted);
+
+  const backgroundImage = `url(${thisisfine})`
+  const panicStyle = isUnsorted ? {
+    backgroundImage: backgroundImage,
+    backgroundSize: "100% 100%"    
+  } : {}
+
+  // Delete
+
 
   return (
-    <div className='container'>
+    <div className='container' style={panicStyle}>
       <div className='logo-container'>
         {bars.map((bar, index) => (
           <Bar key={ index } id={ index } size={ bar.size } selected={ bar.selected }
-          eventHandler={selectBar} sorted={isSorted}/>
+          eventHandler={selectBar} sorted={isSorted} unsorted={isUnsorted}/>
         ))}
       </div>
       <BottomBar/>
