@@ -1,5 +1,5 @@
 <svg width="2005" height="30" viewBox="0 0 2005 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0)">
+<g clip-path="url(#clip0)" preserveAspectRatio="none">
 <rect x="5" y="25" width="25" height="2000" transform="rotate(-90 5 25)" fill="#0F0D0D"/>
 <rect y="30" width="25" height="2000" transform="rotate(-90 0 30)" fill="#232020"/>
 <path d="M2000.5 25.5V29L2004 25.5H2000.5Z" fill="#0F0D0D" stroke="#0F0D0D"/>

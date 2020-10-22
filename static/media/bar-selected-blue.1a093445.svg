@@ -10,10 +10,11 @@
    width="100"
    height="200"
    viewBox="0 0 26.458333 52.916668"
+   preserveAspectRatio="none"
    version="1.1"
    id="svg8"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
-   sodipodi:docname="bar-gray.svg">
+   sodipodi:docname="bar-gray - Copy.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -23,13 +24,13 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="3.959798"
-     inkscape:cx="-35.87062"
-     inkscape:cy="89.756753"
+     inkscape:zoom="45.254834"
+     inkscape:cx="72.652218"
+     inkscape:cy="92.2778"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      inkscape:document-rotation="0"
-     showgrid="false"
+     showgrid="true"
      units="px"
      inkscape:window-width="2560"
      inkscape:window-height="1417"
@@ -53,20 +54,27 @@
     </rdf:RDF>
   </metadata>
   <g
+     inkscape:groupmode="layer"
+     id="layer2"
+     inkscape:label="Layer 2" />
+  <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1">
     <path
-       style="mix-blend-mode:screen;fill:#322f2f;fill-opacity:1;stroke:#322f2f;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
-       d="M 0,0 H 26.458333 V 52.916666 H 0 Z"
-       id="path885" />
+       style="fill:#0063a2;fill-opacity:1;stroke:#0063a2;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 1.3229167,1.3229167 H 25.135417 l 0,50.2708333 H 1.3229167 Z"
+       id="path897"
+       sodipodi:nodetypes="ccccc" />
     <path
-       style="fill:#3a3535;stroke:#3a3535;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
-       d="M 0,2.6458333 H 26.458333 V 52.916666 H 0 Z"
-       id="path897" />
+       style="fill:#004775;fill-opacity:1;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 1.3229167,1.3229167 2.6458333,0 H 26.458333 v 50.270833 l -1.322916,1.322917 0,-50.2708333 z"
+       id="path838"
+       sodipodi:nodetypes="ccccccc" />
     <path
-       style="fill:#f4f4f4;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;fill-opacity:1"
-       d="M 0,0 H 26.458333 V 52.916666 H 0 V 0 -1.3229166 H -1.3229166 V 54.239583 H 27.78125 V -1.3229166 H 0 Z"
-       id="path899" />
+       style="fill:#f4f4f4;fill-opacity:0.996078;stroke:none;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 0,2.6458333 2.6458333,0 H 26.458333 V 50.270833 L 25.135417,51.59375 H 1.3229167 V 1.3229167 L -0.26458333,2.6458333 V 53.181249 H 24.077083 26.722916 V -0.26458333 H -0.26458333 V 2.6458333 Z"
+       id="path840"
+       sodipodi:nodetypes="ccccccccccccccc" />
   </g>
 </svg>
