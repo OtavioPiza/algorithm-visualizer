@@ -1,18 +1,22 @@
 :root {
     --background-white: #F4F4F4;
     --background-gray: #DADADA;
+    --bar-light-blue:#0063A2; 
+    --bar-dark-blue: #004775; 
     --bar-light-gray: #3A3535; 
     --bar-dark-gray: #322F2F;
+    --bar-light-green: #009205;
+    --bar-dark-green: #007910;
+    --bar-light-orange: #FF7315;
+    --bar-dark-orange: #B75818;
     --text-light-gray: #232020;
     --text-dark-gray: #0F0D0D;
-    --icon-orange: #FF7315;
-    --confirmation-green: #1BC700;
     --comparation-blue: #1905B3;
 }
 
 body {
   font-family: 'Roboto';
-  background-image: url('images/background.svg');
+  background-image: url('images/background.png');
   background-repeat: repeat;
   background-attachment: fixed;
   background-position: center;
