@@ -1,7 +1,7 @@
 .Button {
     border: 0;
 
-    background: url('images/button-gray-3x1.svg') center;
+    background: url('icons/button-gray-3x1.svg') center;
     background-size: 100% 100%;
     background-color: transparent;
     background-repeat: no-repeat;
@@ -13,7 +13,7 @@
 
 .Button:hover {
     cursor: pointer;
-    background: url('images/button-pressed-orange-3x1.svg') top;
+    background: url('icons/button-pressed-orange-3x1.svg') top;
     background-size: 100% 100%;
 }
 

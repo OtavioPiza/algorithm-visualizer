@@ -1,5 +1,5 @@
 import React from 'react'
-import '../styles/Button.css'
+import '../styles/components/Button.css'
 
 const Button = ({ eventHandler, text, id, className }) => (
     <button id={id} className={ className === undefined ? 'Button' : className} 

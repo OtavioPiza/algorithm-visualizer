@@ -6,9 +6,9 @@
     background-repeat: no-repeat;
     background-position: relative;
     background-size: 100% 100%;
-    background-image: url('./images/bar-gray.svg');
+    background-image: url('./icons/bar-gray.svg');
 }
 
 .Bar:hover {
-    background-image: url('./images/bar-selected-blue.svg') !important;
+    background-image: url('./icons/bar-selected-blue.svg') !important;
 }

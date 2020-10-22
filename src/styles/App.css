@@ -62,7 +62,7 @@
 .container .button-container #thisisfine:hover {
     cursor: not-allowed;
     color: rgba(255, 255, 255, 0);
-    background: url('images/thisisfine.jpg') center;
+    background: url('../styles/images/thisisfine.jpg') center;
     background-size: 100% 100%;
 }
 
