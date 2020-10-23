@@ -6,6 +6,7 @@ import sortedBar from '../styles/components/icons/bar-sorted-green.svg'
 import unsortedBar from '../styles/components/icons/bar-unsorted-red.svg'
 
 /**
+ * React component
  * 
  * @param { 
  *  className: overwrites the default className
@@ -16,9 +17,7 @@ import unsortedBar from '../styles/components/icons/bar-unsorted-red.svg'
  *  unsorted: informs wheter the bar is on a reversed array
  *  eventHandler: provides a handler for an onClick event
  * } param0 
- * 
  * @returns a button that represents a bar in an array
- * 
  */
 const Bar = ({ className, id, size, selected, sorted, unsorted, eventHandler }) => {
    
@@ -42,4 +41,5 @@ const Bar = ({ className, id, size, selected, sorted, unsorted, eventHandler }) 
         </button>
     )
 }
+
 export default Bar;
