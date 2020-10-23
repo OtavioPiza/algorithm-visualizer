@@ -22,9 +22,9 @@ const Bar = ({ className, id, size, selected, sorted, eventHandler }) => {
    
     // Selects a background for the bar depending on its state
     const background = 
+        selected ? `url(${selectedBar})` : 
         sorted === 1 ? `url(${sortedBar})` :
         sorted === -1 ? `url(${unsortedBar})` :
-        selected ? `url(${selectedBar})` : 
         `url(${bar})`
     
     // Sets the on-screen bar size based on its properties
