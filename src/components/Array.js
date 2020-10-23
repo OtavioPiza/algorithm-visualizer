@@ -7,18 +7,17 @@ import Bar from './Bar'
  * @param {
  *  bars: array of bars objects
  *  eventHandler: hadler for the onClick event
- *  isSorted: identifies if the list sorted
- *  isUnsorted: identifies if the list reversed
+ *  sorted: identifies if the list sorted (1) unsorted (0) or reversed (-1)
  * } param0
  * @returns an array containing a Bar component for each bar on the provided list
  */
-const Array = ({ bars, eventHandler, isSorted, isUnsorted }) => {
+const Array = ({ bars, eventHandler, sorted }) => {
 
     return (
        <div>
             {bars.map((bar, index) => (
                 <Bar key={ index } id={ index } size={ bar.size } selected={ bar.selected }
-                eventHandler={ eventHandler } sorted={ isSorted } unsorted={ isUnsorted }/>
+                eventHandler={ eventHandler } sorted={ sorted }/>
             ))}
        </div>
     )

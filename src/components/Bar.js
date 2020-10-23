@@ -13,18 +13,17 @@ import unsortedBar from '../styles/components/icons/bar-unsorted-red.svg'
  *  id: provides the id of the bar (use position in array)
  *  size: sets the size of the bar
  *  selected: informs wheter the bar is selected by the unsorted
- *  sorted: informs wheter the bar is on a sorted array
- *  unsorted: informs wheter the bar is on a reversed array
+ *  sorted: informs wheter the bar is on a sorted (1) unsorted (0) or reversed (-1) array
  *  eventHandler: provides a handler for an onClick event
  * } param0 
  * @returns a button that represents a bar in an array
  */
-const Bar = ({ className, id, size, selected, sorted, unsorted, eventHandler }) => {
+const Bar = ({ className, id, size, selected, sorted, eventHandler }) => {
    
     // Selects a background for the bar depending on its state
     const background = 
-        sorted ? `url(${sortedBar})` :
-        unsorted ? `url(${unsortedBar})` :
+        sorted === 1 ? `url(${sortedBar})` :
+        sorted === -1 ? `url(${unsortedBar})` :
         selected ? `url(${selectedBar})` : 
         `url(${bar})`
     

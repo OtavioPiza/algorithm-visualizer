@@ -69,25 +69,26 @@ function App() {
     setBarsSelected([])
   }
 
-  let isSorted = true
-  for (let i = 1; i < bars.length && isSorted; i++) {
+  let sorted = 1;
+  for (let i = 1; i < bars.length && sorted === 1; i++) {
     if (bars[i].size < bars[i - 1].size) {
-      isSorted = false;
+      sorted = 0;
     }
   }
 
-  let isUnsorted = true
-  for (let i = 1; i < bars.length && isUnsorted; i++) {
-    if (bars[i].size > bars[i - 1].size) {
-      isUnsorted = false;
+  if (sorted !== 1) {
+    sorted = -1
+    for (let i = 1; i < bars.length && sorted === -1; i++) {
+      if (bars[i].size > bars[i - 1].size) {
+        sorted = 0;
+      }
     }
   }
 
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Array bars={ bars } eventHandler={ selectBar } isSorted={ isSorted } 
-        unsorted={ isUnsorted }/>
+        <Array bars={ bars } eventHandler={ selectBar } sorted={ sorted }/>
       </div>
       <BottomBar/>
       <div className='text-container'>
