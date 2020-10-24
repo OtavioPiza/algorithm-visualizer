@@ -6,14 +6,6 @@
     padding-right: max(5vw, 1rem);
 }
 
-.container .logo-container {
-    padding: 2vh 0;
-
-    display: flex;
-    align-items: flex-end;
-    justify-content: center;
-}
-
 .container .text-container {
     text-align: center;
 }
@@ -30,15 +22,7 @@
     color: var(--text-light-gray);
 }
 
-.container .logo-container img {
-    display: block;
-    
-    width: min(90vw, 700px);
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 5vh;
-}
-
+/* TODO implement in bottom bar component */
 .container footer {
     width: 75%;
     height: 10px;
@@ -56,19 +40,4 @@
     height: min(100px, 15vw);
     width: min(300px, 45vw);
     margin: min(1vw, 20px);
-}
-
-/* To be removed after implementation */
-.container .button-container #thisisfine:hover {
-    cursor: not-allowed;
-    color: rgba(255, 255, 255, 0);
-    background: url('../styles/images/thisisfine.jpg') center;
-    background-size: 100% 100%;
-}
-
-.container .button-container #thisisfine:active {
-    cursor: not-allowed;
-    color: rgba(255, 255, 255, 0);
-    background: url('images/3.jpg') center;
-    background-size: 100% 100%;
 }

@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import isSorted from '../services/isSorted'
 import Bar from './Bar'
+import '../styles/components/Array.css'
 
 /**
  * React component representing an array of Bar components
@@ -54,7 +55,7 @@ const Array = ({ barList }) => {
     }
 
     return (
-       <div>
+       <div className='Array'>
             {bars.map((bar, index) => (
                 <Bar key={ index } id={ index } size={ bar.size } selected={ bar.selected }
                 eventHandler={ selectBar } sorted={ sorted }/>
