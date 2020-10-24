@@ -31,64 +31,12 @@ const testlist = [
   },
 ]
 
-function App() {
-  const [bars, setBars] = useState(testlist)
-  const [barsSelected, setBarsSelected] = useState([])
-
-  const selectBar = (id) => {
-    const bar = bars[id]
-    const changedBar = {...bar, selected: !bar.selected}
-    setBars(bars.map((bar, index) => index === id ? changedBar : bar))
-    if ( !bar.selected ) {
-      setBarsSelected(barsSelected.concat(id))
-    
-    } else {
-      setBarsSelected(barsSelected.filter(selected => selected !== id))
-    }
-  }
-  
-  if (barsSelected.length === 2) {
-    const firstBar = bars[barsSelected[0]]
-    const secondBar = bars[barsSelected[1]]
-
-    const newFirtBar = {...firstBar, size: secondBar.size, selected: false}
-    const newSecondBar = {...secondBar, size: firstBar.size, selected: false}
-
-    setBars(bars.map((bar, index) => {
-      switch (index) {
-        case barsSelected[0]:
-          return newFirtBar;
-      
-        case barsSelected[1]:
-          return newSecondBar;
-
-        default:
-          return bar;
-      }
-    }))
-    setBarsSelected([])
-  }
-
-  let sorted = 1;
-  for (let i = 1; i < bars.length && sorted === 1; i++) {
-    if (bars[i].size < bars[i - 1].size) {
-      sorted = 0;
-    }
-  }
-
-  if (sorted !== 1) {
-    sorted = -1
-    for (let i = 1; i < bars.length && sorted === -1; i++) {
-      if (bars[i].size > bars[i - 1].size) {
-        sorted = 0;
-      }
-    }
-  }
+function App() {  
 
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Array bars={ bars } eventHandler={ selectBar } sorted={ sorted }/>
+        <Array bars={ testlist }/>
       </div>
       <BottomBar/>
       <div className='text-container'>
