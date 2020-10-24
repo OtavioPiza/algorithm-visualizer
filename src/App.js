@@ -31,12 +31,12 @@ const testlist = [
   },
 ]
 
-function App() {  
+function App() {
 
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Array bars={ testlist }/>
+        <Array barList={ testlist }/>
       </div>
       <BottomBar/>
       <div className='text-container'>

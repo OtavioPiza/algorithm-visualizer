@@ -11,15 +11,15 @@ import Bar from './Bar'
  * } param0
  * @returns an array containing a Bar component for each bar on the provided list
  */
-const Array = ({ bars }) => {
-    const [barsList, setBars] = useState(bars)
+const Array = ({ barList }) => {
+    const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
 
     const selectBar = (id) => {
         const bar = bars[id]
         const changedBar = {...bar, selected: !bar.selected}
 
-        setBars(barsList.map((bar, index) => index === id ? changedBar : bar))
+        setBars(bars.map((bar, index) => index === id ? changedBar : bar))
 
         if (!bar.selected) {
             setBarsSelected(barsSelected.concat(id))
@@ -30,7 +30,7 @@ const Array = ({ bars }) => {
     }
 
     let sorted = 1;
-
+    
     for (let i = 1; i < bars.length; i++) {
 
         if (bars[i].size < bars[i - 1].size) {
@@ -45,8 +45,31 @@ const Array = ({ bars }) => {
 
             if (bars[i].size > bars[i - 1].size) {
                 sorted = 0
+                break
             }
         }
+    }
+
+    if (barsSelected.length === 2) {
+        const firstBar = bars[barsSelected[0]]
+        const secondBar = bars[barsSelected[1]]
+
+        const newFirstBar = {...firstBar, size: secondBar.size, selected: false}
+        const newSecondBar = {...secondBar, size: firstBar.size, selected: false}
+
+        setBars(bars.map((bar, index) => {
+            switch (index) {
+                case barsSelected[0]:
+                    return newFirstBar
+
+                case barsSelected[1]:
+                    return newSecondBar
+
+                default:
+                    return bar
+            }
+        }))
+        setBarsSelected([])
     }
 
 
