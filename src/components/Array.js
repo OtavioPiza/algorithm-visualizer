@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import isSorted from '../services/isSorted'
 import Bar from './Bar'
 
 /**
@@ -14,6 +15,7 @@ import Bar from './Bar'
 const Array = ({ barList }) => {
     const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
+    const sorted = isSorted(bars)
 
     const selectBar = (id) => {
         const bar = bars[id]
@@ -28,28 +30,7 @@ const Array = ({ barList }) => {
             setBarsSelected(barsSelected.filter(selected => selected !== id))
         }
     }
-
-    let sorted = 1;
     
-    for (let i = 1; i < bars.length; i++) {
-
-        if (bars[i].size < bars[i - 1].size) {
-            sorted = 0
-            break
-        }
-    }
-    if (sorted !== 1) {
-        sorted = -1
-
-        for (let i = 1; i < bars.length; i++) {
-
-            if (bars[i].size > bars[i - 1].size) {
-                sorted = 0
-                break
-            }
-        }
-    }
-
     if (barsSelected.length === 2) {
         const firstBar = bars[barsSelected[0]]
         const secondBar = bars[barsSelected[1]]
@@ -71,7 +52,6 @@ const Array = ({ barList }) => {
         }))
         setBarsSelected([])
     }
-
 
     return (
        <div>
