@@ -8,12 +8,10 @@ import '../styles/components/Array.css'
  * 
  * @param {
  *  bars: array of bars objects
- *  eventHandler: hadler for the onClick event
- *  sorted: identifies if the list sorted (1) unsorted (0) or reversed (-1)
  * } param0
  * @returns an array containing a Bar component for each bar on the provided list
  */
-const Array = ({ barList }) => {
+const Array = ({ barList, simplified }) => {
     const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
     const sorted = isSorted(bars)
@@ -58,7 +56,7 @@ const Array = ({ barList }) => {
        <div className='Array'>
             {bars.map((bar, index) => (
                 <Bar key={ index } id={ index } size={ bar.size } selected={ bar.selected }
-                eventHandler={ selectBar } sorted={ sorted }/>
+                eventHandler={ selectBar } sorted={ sorted } simplified={ simplified }/>
             ))}
        </div>
     )

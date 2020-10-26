@@ -18,7 +18,7 @@ import unsortedBar from '../styles/components/icons/bar-unsorted-red.svg'
  * } param0 
  * @returns a button that represents a bar in an array
  */
-const Bar = ({ className, id, size, selected, sorted, eventHandler }) => {
+const Bar = ({ className, id, size, selected, sorted, simplified, eventHandler }) => {
    
     // Selects a background for the bar depending on its state
     const background = 
@@ -29,9 +29,15 @@ const Bar = ({ className, id, size, selected, sorted, eventHandler }) => {
     
     // Sets the on-screen bar size based on its properties
     const style = {
+        margin: `${simplified ? "0" : "10px"}`,
+        border: "0",
         width: "80px",
         height: size + "px",
+
         backgroundImage: background,
+        backgroundRepeat: "no-repeat",
+        backgroundSize: `${simplified ? "500% 500%" : "100% 100%"}`,
+        backgroundPosition: "center",
     }
 
     return (
