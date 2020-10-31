@@ -3,31 +3,38 @@ import './styles/App.css';
 import Button from './components/Button';
 import BottomBar from './components/BottomBar';
 import Array from './components/Array'
+import ArraySorter from './components/ArraySorter'
 
 const testlist = [
   {
     size: 390,
-    selected: false
+    selected: false,
+    analyzed: false
   },
   {
     size: 350,
-    selected: false
+    selected: false,
+    analyzed: false
   },
   {
     size: 200,
-    selected: false
+    selected: false,
+    analyzed: false
   },
   {
     size: 280,
-    selected: false
+    selected: false,
+    analyzed: false
   },
   {
     size: 170,
-    selected: false
+    selected: false,
+    analyzed: false
   },
   {
     size: 410,
-    selected: false
+    selected: false,
+    analyzed: false
   },
 ]
 
@@ -49,6 +56,7 @@ function App() {
         <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
       </div>
       <BottomBar/>
+      <ArraySorter barList={testlist}/>
     </div>
   );
 }
