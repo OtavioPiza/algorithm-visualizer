@@ -11,7 +11,7 @@ import '../styles/components/Array.css'
  * } param0
  * @returns an array containing a Bar component for each bar on the provided list
  */
-const Array = ({ barList, simplified }) => {
+const Array = ({ barList, simplified, analyzed }) => {
     const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
     const sorted = isSorted(bars)
@@ -29,7 +29,10 @@ const Array = ({ barList, simplified }) => {
             setBarsSelected(barsSelected.filter(selected => selected !== id))
         }
     }
-    
+
+    console.log(bars);
+    console.log(barList);
+
     if (barsSelected.length === 2) {
         const firstBar = bars[barsSelected[0]]
         const secondBar = bars[barsSelected[1]]
@@ -55,8 +58,9 @@ const Array = ({ barList, simplified }) => {
     return (
        <div className='Array'>
             {bars.map((bar, index) => (
-                <Bar key={ index } id={ index } size={ bar.size } selected={ bar.selected }
-                eventHandler={ selectBar } sorted={ sorted } simplified={ simplified }/>
+                <Bar key={ index } id={ index } size={ bar.size } analyzed={ bar.analyzed }
+                selected={ bar.selected } eventHandler={ selectBar } sorted={ sorted } 
+                simplified={ simplified }/>
             ))}
        </div>
     )
