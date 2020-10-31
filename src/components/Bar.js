@@ -18,11 +18,11 @@ import unsortedBar from '../styles/components/icons/bar-unsorted-red.svg'
  * } param0 
  * @returns a button that represents a bar in an array
  */
-const Bar = ({ className, id, size, selected, sorted, simplified, eventHandler }) => {
-   
+const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler }) => {
+
     // Selects a background for the bar depending on its state
     const background = 
-        selected ? `url(${selectedBar})` : 
+        selected || analyzed ? `url(${selectedBar})` : 
         sorted === 1 ? `url(${sortedBar})` :
         sorted === -1 ? `url(${unsortedBar})` :
         `url(${bar})`
