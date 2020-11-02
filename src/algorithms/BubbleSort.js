@@ -31,6 +31,7 @@ const BubbleSort = ({ analyzedBarsIndex, greater, step, switched }, bars) => {
         ]
     }
     const switchBars = () => {
+        
     }
     return step === 0 ? compareBars() : switchBars()
 }

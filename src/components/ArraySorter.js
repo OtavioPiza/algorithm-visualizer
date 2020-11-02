@@ -23,6 +23,8 @@ const ArraySorter = ({ barList }) => {
         }
     }
 
+    console.log(bars);
+
     if (barsSelected.length === 2) {
         const firstBar = bars[barsSelected[0]]
         const secondBar = bars[barsSelected[1]]
@@ -59,7 +61,7 @@ const ArraySorter = ({ barList }) => {
                 greater: false,
                 step: 0,
                 switched: false,
-            }, barList)[1])}/>
+            }, bars)[1])}/>
         </div>
     )
 }
