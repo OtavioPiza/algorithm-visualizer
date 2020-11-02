@@ -5,6 +5,7 @@ import '../styles/components/Array.css'
 
 /**
  * React component representing an array of Bar components
+ * - responsible for the interaction between the user and the bars
  * 
  * @param {
  *  bars: array of bars objects
@@ -32,6 +33,7 @@ const Array = ({ barList, simplified, analyzed }) => {
 
     console.log(bars);
     console.log(barList);
+    console.log('Both bars are the same:', bars === barList);
 
     if (barsSelected.length === 2) {
         const firstBar = bars[barsSelected[0]]
