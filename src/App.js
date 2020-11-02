@@ -5,6 +5,7 @@ import BottomBar from './components/BottomBar';
 import Array from './components/Array'
 import ArraySorter from './components/ArraySorter'
 import ArrayManager from './services/ArrayManager'
+import BubbleSort from './algorithms/BubbleSort'
 
 function App() {
 
@@ -24,7 +25,7 @@ function App() {
         <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
       </div>
       <BottomBar/>
-      <ArraySorter barList={ ArrayManager.getBarList() }/>
+      <ArraySorter barList={ ArrayManager.getBarList() } sortingAlgorithm={ BubbleSort }/>
     </div>
   );
 }
