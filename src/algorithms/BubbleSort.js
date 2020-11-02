@@ -24,7 +24,7 @@ const BubbleSort = ({ analyzedBarsIndex, greater, step, switched }, bars) => {
             {
                 analyzedBarsIndex: analyzedBarsIndex,
                 greater: newGreater,
-                step: 1,
+                step: step + 1,
                 switched: false
             },
             newBars

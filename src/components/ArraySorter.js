@@ -28,6 +28,12 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         }
     }
 
+    const handleStep = () => {
+        const result = sortingAlgorithm(status, bars)
+        setStatus(result[0])
+        setBars(result[1])
+    }
+
     if (barsSelected.length === 2) {
         const firstBar = bars[barsSelected[0]]
         const secondBar = bars[barsSelected[1]]
@@ -59,7 +65,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
                 simplified={ true }/>
             ))}
             </div>
-            <Button text='click' eventHandler={() => setBars(sortingAlgorithm(status, bars)[1])}/>
+            <Button text='click' eventHandler={() => handleStep()}/>
         </div>
     )
 }
