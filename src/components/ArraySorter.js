@@ -53,7 +53,7 @@ const ArraySorter = ({ barList }) => {
             {bars.map((bar, index) => (
                 <Bar key={ index } id={ index } size={ bar.size } analyzed={ bar.analyzed }
                 selected={ bar.selected } eventHandler={ selectBar } sorted={ sorted } 
-                simplified={ true }/>
+                simplified={ false }/>
             ))}
             </div>
             <Button text='click' eventHandler={() => setBars(BubbleSort({
