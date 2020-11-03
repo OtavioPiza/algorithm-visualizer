@@ -4,7 +4,7 @@ import Button from './components/Button';
 import BottomBar from './components/BottomBar';
 import Array from './components/Array'
 import ArraySorter from './components/ArraySorter'
-import ArrayManager from './services/ArrayManager'
+import ArrayManager from './services/arrayManager'
 import BubbleSort from './algorithms/BubbleSort'
 
 function App() {

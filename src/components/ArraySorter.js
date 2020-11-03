@@ -2,15 +2,15 @@ import React, { useState } from 'react'
 import Bar from './Bar'
 import Button from './Button'
 import isSorted from '../services/isSorted'
+import BottomBar from './BottomBar'
 
 const ArraySorter = ({ barList, sortingAlgorithm }) => {
     const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
     const [status, setStatus] = useState({
+        algorithmStatus: "",
         analyzedBarsIndex: [0, 1],
-        greater: false,
         step: 0,
-        switched: false
     })
     const sorted = isSorted(bars)
 
@@ -65,7 +65,8 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
                 simplified={ true }/>
             ))}
             </div>
-            <Button text='click' eventHandler={() => handleStep()}/>
+            <BottomBar/>
+            <Button text='Step' eventHandler={() => handleStep()}/>
         </div>
     )
 }
