@@ -11,7 +11,7 @@ const BubbleSort = (status, bars) => {
 
         // == Properties from function ========================================================== //
         // If the end of the array was reached
-        const eoa = analyzedBarsIndex[1] === bars.length - 1   
+        const eoa = analyzedBarsIndex[1] === range[1] - 1
         // If the first bar is greater than the second
         const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size   
         // New array of bars containig the newly analyzed bars
@@ -22,13 +22,15 @@ const BubbleSort = (status, bars) => {
         ))
 
         return [{
-            algorithmStatus:    greater ? "Greater" : "Not greater",
+            ...status,
+            algorithmStatus: greater ? "Greater" : "Not greater",
             analyzedBarsIndex: 
                 greater ? analyzedBarsIndex :
                 eoa ? [0, 1] : 
                 analyzedBarsIndex.map(index => index + 1),
             range: eoa ? [0, range[1] - 1] : range,
             step: greater ? 1 : 0,
+            sorted: eoa && !status.switched,
             switched: false
             },
             newBars

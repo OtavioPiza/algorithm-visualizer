@@ -10,6 +10,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         algorithmStatus: "",
         analyzedBarsIndex: [0, 1],
         range: [0, barList.length],
+        sorted: false,
         step: 0,
     })
     const sorted = false
@@ -63,7 +64,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
             <div className='Array'>
             {bars.map((bar, index) => (
                 <Bar key={ index } id={ index } size={ bar.size } analyzed={ bar.analyzed }
-                selected={ bar.selected } eventHandler={ selectBar } sorted={ sorted } 
+                selected={ bar.selected } eventHandler={ selectBar } sorted={ status.sorted ? 1 : 0} 
                 simplified={ false }/>
             ))}
             </div>
