@@ -13,7 +13,6 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         sorted: false,
         step: 0,
     })
-    const sorted = false
 
     const selectBar = (id) => {
         const bar = bars[id]
@@ -56,7 +55,6 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         }))
         setBarsSelected([])
     }
-
     console.log(status);
 
     return(

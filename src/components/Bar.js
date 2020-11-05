@@ -10,12 +10,12 @@ import unsortedBar from '../styles/components/icons/bar-unsorted-red.svg'
  * React component
  * 
  * @param { 
- *  className: overwrites the default className
- *  id: provides the id of the bar (use position in array)
- *  size: sets the size of the bar
- *  selected: informs wheter the bar is selected by the unsorted
- *  sorted: informs wheter the bar is on a sorted (1) unsorted (0) or reversed (-1) array
- *  eventHandler: provides a handler for an onClick event
+ *  className:      overwrites the default className
+ *  id:             provides the id of the bar (use position in array)
+ *  size:           sets the size of the bar
+ *  selected:       informs wheter the bar is selected by the unsorted
+ *  sorted:         informs wheter the bar is on a sorted (1) unsorted (0) or reversed (-1) array
+ *  eventHandler:   provides a handler for an onClick event
  * } param0 
  * @returns a button that represents a bar in an array
  */
