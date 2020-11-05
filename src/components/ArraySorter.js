@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import Bar from './Bar'
 import Button from './Button'
-import isSorted from '../services/isSorted'
 import BottomBar from './BottomBar'
 
 const ArraySorter = ({ barList, sortingAlgorithm }) => {
@@ -10,9 +9,10 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
     const [status, setStatus] = useState({
         algorithmStatus: "",
         analyzedBarsIndex: [0, 1],
+        range: [0, barList.length],
         step: 0,
     })
-    const sorted = isSorted(bars)
+    const sorted = false
 
     const selectBar = (id) => {
         const bar = bars[id]
@@ -56,13 +56,15 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         setBarsSelected([])
     }
 
+    console.log(status);
+
     return(
         <div className='ArraySorter'>
             <div className='Array'>
             {bars.map((bar, index) => (
                 <Bar key={ index } id={ index } size={ bar.size } analyzed={ bar.analyzed }
                 selected={ bar.selected } eventHandler={ selectBar } sorted={ sorted } 
-                simplified={ true }/>
+                simplified={ false }/>
             ))}
             </div>
             <BottomBar/>
