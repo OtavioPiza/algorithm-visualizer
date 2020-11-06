@@ -63,6 +63,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
             </div>
             <BottomBar/>
             <Button text='Step' eventHandler={() => handleStep()}/>
+            <h1>{status.algorithmStatus}</h1>
         </div>
     )
 }

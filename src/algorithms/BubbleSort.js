@@ -57,7 +57,7 @@ const sort = (status, bars) => {
         return [
         {
             ...status,
-            algorithmStatus: '',
+            algorithmStatus: 'Switch',
             analyzedBarsIndex: status.analyzedBarsIndex.map(index => index + 1),
             step: 0,
             switched: true
