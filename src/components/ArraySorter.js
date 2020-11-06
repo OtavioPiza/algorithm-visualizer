@@ -6,18 +6,13 @@ import BottomBar from './BottomBar'
 const ArraySorter = ({ barList, sortingAlgorithm }) => {
     const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
-    const [status, setStatus] = useState({
-        algorithmStatus: "",
-        analyzedBarsIndex: [0, 1],
-        range: [0, barList.length],
-        sorted: false,
-        step: 0,
-    })
+    const [status, setStatus] = useState(sortingAlgorithm.defaultState(barList))
 
     const selectBar = (id) => {
         const bar = bars[id]
         const changedBar = {...bar, selected: !bar.selected}
 
+        setStatus(sortingAlgorithm.defaultState(barList))
         setBars(bars.map((bar, index) => index === id ? changedBar : bar))
 
         if (!bar.selected) {
@@ -29,7 +24,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
     }
 
     const handleStep = () => {
-        const result = sortingAlgorithm(status, bars)
+        const result = sortingAlgorithm.sort(status, bars)
         setStatus(result[0])
         setBars(result[1])
     }

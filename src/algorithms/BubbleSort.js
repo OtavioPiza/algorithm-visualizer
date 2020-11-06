@@ -1,6 +1,14 @@
 import switchBars from '../services/switchBars'
 
-const BubbleSort = (status, bars) => {
+const defaultState = (bars) => ({
+    algorithmStatus: "",
+    analyzedBarsIndex: [0, 1],
+    range: [0, bars.length],
+    sorted: false,
+    step: 0,
+})
+
+const sort = (status, bars) => {
 
     const compareBars = () => {
 
@@ -61,5 +69,5 @@ const BubbleSort = (status, bars) => {
     return status.step === 0 ? compareBars() : changeBars()
 }
 
-export default BubbleSort
+export default {sort, defaultState}
 
