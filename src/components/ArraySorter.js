@@ -13,7 +13,8 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         const changedBar = {...bar, selected: !bar.selected}
 
         setStatus(sortingAlgorithm.defaultState(barList))
-        setBars(bars.map((bar, index) => index === id ? changedBar : bar))
+        setBars(bars.map((bar, index) => index === id ? {...changedBar, analyzed: false} : 
+            {...bar, analyzed: false}))
 
         if (!bar.selected) {
             setBarsSelected(barsSelected.concat(id))
@@ -22,6 +23,8 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
             setBarsSelected(barsSelected.filter(selected => selected !== id))
         }
     }
+
+    console.log(status);
 
     const handleStep = () => {
         const result = sortingAlgorithm.sort(status, bars)
