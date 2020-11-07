@@ -12,7 +12,7 @@ function App() {
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Array barList={ ArrayManager.getBarList() }/>
+        <Array/>
       </div>
       <BottomBar/>
       <div className='text-container'>
