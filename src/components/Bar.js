@@ -7,7 +7,7 @@ import sortedBar from '../styles/components/icons/bar-sorted-green.svg'
 import unsortedBar from '../styles/components/icons/bar-unsorted-red.svg'
 
 /**
- * React component
+ * React component representing a bar from an arrays
  * 
  * @param { 
  *  className:      overwrites the default className
