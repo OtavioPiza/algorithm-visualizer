@@ -30,6 +30,7 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
         `url(${bar})`
     
     // Sets the on-screen bar size based on its properties
+    // @TODO
     const style = {
         margin: `${simplified ? "0" : "10px"}`,
         border: "0",

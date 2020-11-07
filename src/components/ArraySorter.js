@@ -12,9 +12,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         const bar = bars[id]
         const changedBar = {...bar, selected: !bar.selected}
 
-        setStatus(sortingAlgorithm.defaultState(barList))
-        setBars(bars.map((bar, index) => index === id ? {...changedBar, analyzed: false} : 
-            {...bar, analyzed: false}))
+        setBars(bars.map((bar, index) => index === id ? changedBar : bar))
 
         if (!bar.selected) {
             setBarsSelected(barsSelected.concat(id))
@@ -24,21 +22,24 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         }
     }
 
-    console.log(status);
-
     const handleStep = () => {
         const result = sortingAlgorithm.sort(status, bars)
         setStatus(result[0])
         setBars(result[1])
     }
 
+    /**
+     * Enables one to interact with the array by switching the position of two bars, and ensures,
+     * by returing the sorting algorithm to its default state, its functionality
+     */
     if (barsSelected.length === 2) {
         const firstBar = bars[barsSelected[0]]
         const secondBar = bars[barsSelected[1]]
 
-        const newFirstBar = {...firstBar, size: secondBar.size, selected: false}
-        const newSecondBar = {...secondBar, size: firstBar.size, selected: false}
+        const newFirstBar = {...firstBar, size: secondBar.size, selected: false, analyzed: false}
+        const newSecondBar = {...secondBar, size: firstBar.size, selected: false, analyzed: false}
 
+        setStatus(sortingAlgorithm.defaultState(barList))
         setBars(bars.map((bar, index) => {
             switch (index) {
                 case barsSelected[0]:
@@ -48,12 +49,11 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
                     return newSecondBar
 
                 default:
-                    return bar
+                    return {...bar, analyzed: false}
             }
         }))
         setBarsSelected([])
     }
-    console.log(status);
 
     return(
         <div className='ArraySorter'>

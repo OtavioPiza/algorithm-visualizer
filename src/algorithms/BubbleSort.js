@@ -1,15 +1,32 @@
 import switchBars from '../services/switchBars'
 
+/**
+ * Provides a default state for the BubbleSort algorithm
+ * 
+ * @param {Array of Bars} bars
+ */
 const defaultState = (bars) => ({
     algorithmStatus: "",
     analyzedBarsIndex: [0, 1],
     range: [0, bars.length],
     sorted: false,
+    switched: false,
     step: 0,
 })
 
+/**
+ * Responsible for the sorting process which is split between two functions:
+ *  >> compareBars
+ *  >> switchBars
+ * 
+ * @param {Status of the algorithm} status 
+ * @param {Array of Bars} bars 
+ */
 const sort = (status, bars) => {
 
+    /**
+     * Compares two bars
+     */
     const compareBars = () => {
 
         // == Properties from status ============================================================ //
@@ -21,6 +38,8 @@ const sort = (status, bars) => {
         
         // If the end of the array was reached
         const eoa = analyzedBarsIndex[1] === range[1] - 1
+        console.log('eoa', eoa);
+        console.log('switched', switched);
 
         // If the first bar is greater than the second
         const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size  
