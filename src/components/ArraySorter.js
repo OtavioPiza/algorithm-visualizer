@@ -22,11 +22,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         }
     }
 
-    const handleStep = () => {
-        const result = sortingAlgorithm.sort(status, bars)
-        setStatus(result[0])
-        setBars(result[1])
-    }
+    // == User Interactivity ==================================================================== //
 
     /**
      * Enables one to interact with the array by switching the position of two bars, and ensures,
@@ -55,6 +51,30 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         setBarsSelected([])
     }
 
+    
+    // == Sorting algorithm control panel ======================================================= //
+    // to be transformed into its own component in a later version
+
+    /**
+     * Handles one step of the sorting algorithm
+     * - sets bars to those returned by the sortingAlgorithm
+     * - sets the status to that returned by the sortingAlgorithm
+     */
+    const handleStep = () => {
+        const result = sortingAlgorithm.sort(status, bars)
+        setStatus(result[0])
+        setBars(result[1])
+    }
+
+    /**
+     * Resets the array to its initial state
+     */
+    const handleReset = () => {
+        setStatus(sortingAlgorithm.defaultState)
+        setBars(barList)
+        setBarsSelected([])
+    }
+
     return(
         <div className='ArraySorter'>
             <div className='Array'>
@@ -66,6 +86,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
             </div>
             <BottomBar/>
             <Button text='Step' eventHandler={() => handleStep()}/>
+            <Button text='Reset' eventHandler={() => handleReset()}/>
             <h1>{status.algorithmStatus}</h1>
         </div>
     )
