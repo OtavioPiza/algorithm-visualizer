@@ -24,7 +24,9 @@ const defaultState = (bars) => ({
  */
 const sort = (status, bars) => {
 
-
+    /**
+     * Returns the next two bars that will be analyzed by te algorithm
+     */
     const getNextBars = () => 
         status.analyzedBarsIndex[1] < status.range[1] ? status.analyzedBarsIndex.map(
             index => index + 1) :
@@ -39,7 +41,7 @@ const sort = (status, bars) => {
         // == Properties from status ============================================================ //
         const analyzedBarsIndex = getNextBars()             // Array with the analyzed bars
         const switched = status.switched                    // If any two bars were switched
-        const range = status.range
+        const range = status.range                          // Range of the bars
 
         // == Properties from function ========================================================== //
         
