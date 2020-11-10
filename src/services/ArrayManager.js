@@ -56,7 +56,18 @@ let barList = [
     },
 ]
 
-const getBarList = () => barList
+const getBarList = (size) => {
+    let barList = []
+    
+    for (let i = 0; i < size; i++) {
+        barList.push({
+            size: Math.ceil(Math.random() * 100),
+            selected: false,
+            analyzed: false,
+        })
+    }
+    return(barList)
+}
 
 const setBarList = (newList) => {
     barList = newList
