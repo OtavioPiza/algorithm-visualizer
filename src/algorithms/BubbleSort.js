@@ -32,7 +32,6 @@ const sort = (status, bars) => {
             index => index + 1) :
         [0, 1]
 
-
     /**
      * Compares two bars
      */
