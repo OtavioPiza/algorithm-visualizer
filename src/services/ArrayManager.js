@@ -64,6 +64,13 @@ const getRandomList = (size) => {
     return (barList)
 }
 
+/**
+ * Returns a list with almost sorted list
+ * 
+ * @param {
+ * size of the list of bars
+ * } size 
+ */
 const getAlmostSortedList = (size) => {
     let barList = []
 
@@ -83,7 +90,6 @@ const getAlmostSortedList = (size) => {
         barList[bar1] = barList[bar2]
         barList[bar2] = barList[temp]
     }
-
     return (barList)
 }
 
