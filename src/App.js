@@ -9,7 +9,7 @@ import BubbleSort from './algorithms/bubbleSort'
 
 function App() {
 
-  console.log(ArrayManager.getBarList(10));
+  console.log(ArrayManager.getDefaultList() );
 
   return (
     <div className='container'>
@@ -27,7 +27,7 @@ function App() {
         <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
       </div>
       <BottomBar/>
-      <ArraySorter barList={ ArrayManager.getBarList(10) } sortingAlgorithm={ BubbleSort }/>
+      <ArraySorter barList={ ArrayManager.getRandomList(10) } sortingAlgorithm={ BubbleSort }/>
     </div>
   );
 }
