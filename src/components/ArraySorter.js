@@ -12,23 +12,10 @@ import arrayManager from '../services/arrayManager'
  * } param0 
  */
 const ArraySorter = ({ barList, sortingAlgorithm }) => {
-    const [bars, setBars] = useState(barList)
+    const [defaultBars, setDefaultBars] = useState(barList)
+    const [bars, setBars] = useState(defaultBars)
     const [barsSelected, setBarsSelected] = useState([])
-    const [status, setStatus] = useState(sortingAlgorithm.defaultState(barList))
-
-    const selectBar = (id) => {
-        const bar = bars[id]
-        const changedBar = { ...bar, selected: !bar.selected }
-
-        setBars(bars.map((bar, index) => index === id ? changedBar : bar))
-
-        if (!bar.selected) {
-            setBarsSelected(barsSelected.concat(id))
-
-        } else {
-            setBarsSelected(barsSelected.filter(selected => selected !== id))
-        }
-    }
+    const [status, setStatus] = useState(sortingAlgorithm.defaultState(defaultBars))
 
     // == User Interactivity ==================================================================== //
 
@@ -43,7 +30,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         const newFirstBar = { ...firstBar, size: secondBar.size, selected: false, analyzed: false }
         const newSecondBar = { ...secondBar, size: firstBar.size, selected: false, analyzed: false }
 
-        setStatus(sortingAlgorithm.defaultState(barList))
+        setStatus(sortingAlgorithm.defaultState(bars))
         setBars(bars.map((bar, index) => {
             switch (index) {
                 case barsSelected[0]:
@@ -59,9 +46,47 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         setBarsSelected([])
     }
 
+    /**
+     * Selects a bar from the array
+     * 
+     * @param {
+     * id : id of the bar to be selected
+     * } id 
+     */
+    const selectBar = (id) => {
+        const bar = bars[id]
+        const changedBar = { ...bar, selected: !bar.selected }
+
+        setBars(bars.map((bar, index) => index === id ? changedBar : bar))
+
+        if (!bar.selected) {
+            setBarsSelected(barsSelected.concat(id))
+
+        } else {
+            setBarsSelected(barsSelected.filter(selected => selected !== id))
+        }
+    }
 
     // == Sorting algorithm control panel ======================================================= //
-    // to be transformed into its own component in a later version
+
+    /**
+     * 
+     */
+    const handleNewBar = (newBarArray) => {
+        setDefaultBars(newBarArray)
+        setStatus(sortingAlgorithm.defaultState(newBarArray))
+        setBars(newBarArray)
+        setBarsSelected([])
+    }
+
+    /**
+     * Resets the array to its initial state
+     */
+    const handleReset = () => {
+        setStatus(sortingAlgorithm.defaultState(defaultBars))
+        setBars(defaultBars)
+        setBarsSelected([])
+    }
 
     /**
      * Handles one step of the sorting algorithm
@@ -74,28 +99,22 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         setBars(result[1])
     }
 
-    /**
-     * Resets the array to its initial state
-     */
-    const handleReset = () => {
-        setStatus(sortingAlgorithm.defaultState(barList))
-        setBars(barList)
-        setBarsSelected([])
-    }
-
     return (
         <div className='ArraySorter'>
             <div className='Array'>
                 {bars.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
                         selected={bar.selected} eventHandler={selectBar} sorted={status.sorted ? 1 : 0}
-                        simplified={false} />
+                        simplified={true} />
                 ))}
             </div>
             <BottomBar />
             <Button text='Step' eventHandler={() => handleStep()} />
             <Button text='Reset' eventHandler={() => handleReset()} />
-            <Button text="Get Random List" eventHandler={() => {setBars(arrayManager.getRandomList(10))}}/>
+            <BottomBar />
+            <Button text="Get Random List" eventHandler={() =>
+                handleNewBar(arrayManager.getRandomList(10))
+            } />
             <h1>{status.algorithmStatus}</h1>
         </div>
     )
