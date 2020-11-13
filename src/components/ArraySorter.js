@@ -14,6 +14,7 @@ import arrayManager from '../services/arrayManager'
 const ArraySorter = (props) => {
     const [defaultBarList, setDefaultBarList] = useState(props.barList)
     const [barList, setBarList] = useState(defaultBarList)
+    const [barListSize, setBarListSize] = useState(10)
     const [selectedBarList, setSelectedBarList] = useState([])
     const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultBarList))
 
@@ -53,7 +54,7 @@ const ArraySorter = (props) => {
      * id : id of the bar to be selected
      * } id 
      */
-    const selectBar = (id) => {
+    const handleSelectBar = (id) => {
         const bar = barList[id]
         const changedBar = { ...bar, selected: !bar.selected }
 
@@ -104,8 +105,8 @@ const ArraySorter = (props) => {
             <div className='Array'>
                 {barList.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
-                        selected={bar.selected} eventHandler={selectBar} sorted={status.sorted ? 1 : 0}
-                        simplified={true} />
+                        selected={bar.selected} eventHandler={handleSelectBar} sorted={status.sorted ? 1 : 0}
+                        simplified={false} />
                 ))}
             </div>
             <BottomBar />
@@ -113,10 +114,22 @@ const ArraySorter = (props) => {
             <Button text='Reset' eventHandler={() => handleReset()} />
             <BottomBar />
             <Button text="Get Random List" eventHandler={() =>
-                handleNewBarArray(arrayManager.getRandomList(10))
+                handleNewBarArray(arrayManager.getRandomList(barListSize))
             } />
             <Button text="Get Almost Sorted List" eventHandler={() =>
-                handleNewBarArray(arrayManager.getAlmostSortedList(10))
+                handleNewBarArray(arrayManager.getAlmostSortedList(barListSize))
+            } />
+            <Button text="Add bar" eventHandler={() => {
+                handleNewBarArray(defaultBarList.concat(arrayManager.getRandomList(1)))
+                setBarListSize(barListSize + 1)
+            }
+            } />
+            <Button text="Remove bar" eventHandler={() => {
+                if (barListSize > 2) {
+                    handleNewBarArray(defaultBarList.slice(0, barListSize - 1))
+                    setBarListSize(barListSize - 1)
+                }
+            }
             } />
             <h1>{status.algorithmStatus}</h1>
         </div>
