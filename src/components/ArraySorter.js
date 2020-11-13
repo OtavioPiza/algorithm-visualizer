@@ -3,6 +3,13 @@ import Bar from './Bar'
 import Button from './Button'
 import BottomBar from './BottomBar'
 
+/**
+ * 
+ * @param {
+ * barList: list of bar objects
+ * sortingAlgorithm: sortingAlgorithm
+ * } param0 
+ */
 const ArraySorter = ({ barList, sortingAlgorithm }) => {
     const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
@@ -70,7 +77,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
      * Resets the array to its initial state
      */
     const handleReset = () => {
-        setStatus(sortingAlgorithm.defaultState)
+        setStatus(sortingAlgorithm.defaultState(barList))
         setBars(barList)
         setBarsSelected([])
     }

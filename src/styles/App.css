@@ -17,20 +17,8 @@
 
 .container .text-container p {
     margin-top: min(1rem, 1vh);
-
     font-size: min(2rem, 4vw);
     color: var(--text-light-gray);
-}
-
-/* TODO implement in bottom bar component */
-.container footer {
-    width: 100%;
-    height: 10px;
-    background-size: 100% 100%;
-    padding-top: min(10vh, 3px);
-    padding-bottom: min(10vh, 3px);
-    justify-self: center;
-    margin: auto
 }
 
 .container .button-container {
