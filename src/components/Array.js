@@ -6,32 +6,32 @@ import '../styles/components/Array.css'
 // A default list that is automatically used if one is not provided
 let defaultList = [
     {
-        size: 390,
+        size: 70,
         selected: false,
         analyzed: false
     },
     {
-        size: 350,
+        size: 90,
         selected: false,
         analyzed: false
     },
     {
-        size: 200,
+        size: 30,
         selected: false,
         analyzed: false
     },
     {
-        size: 280,
+        size: 50,
         selected: false,
         analyzed: false
     },
     {
-        size: 170,
+        size: 80,
         selected: false,
         analyzed: false
     },
     {
-        size: 410,
+        size: 40,
         selected: false,
         analyzed: false
     }
@@ -48,7 +48,7 @@ let defaultList = [
  * } param0
  * @returns an array containing a Bar component for each bar on the provided list
  */
-const Array = ({ barList, simplified, analyzed }) => {
+const Array = ({ barList, simplified }) => {
     const [bars, setBars] = useState(barList === undefined ? defaultList : barList)
     const [barsSelected, setBarsSelected] = useState([])
     const sorted = isSorted(bars)
