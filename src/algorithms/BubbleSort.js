@@ -70,7 +70,7 @@ const sort = (status, bars) => {
                     { ...bar, analyzed: false }
         ))
 
-        const sorted = eoa && range[1] === 1
+        const sorted = (eoa && range[1] === 1) || range[1] === 1
 
 
         console.log(eoa);
@@ -82,7 +82,7 @@ const sort = (status, bars) => {
                 ...status,
                 algorithmStatus:
                     greater ? "Because the first bar is greater than the second they are switched" :
-                        "Because the first bar is not greater than the second the first bar is left unchanged",
+                        "Because the first bar is not greater than the second they are left unchanged",
                 analyzedBarsIndex: analyzedBarsIndex,
                 range: eoa ? [0, range[1] - 1] : range,
                 step: greater ? 1 : 0,
