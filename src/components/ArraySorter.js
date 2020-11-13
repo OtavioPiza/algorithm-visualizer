@@ -72,7 +72,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
     /**
      * 
      */
-    const handleNewBar = (newBarArray) => {
+    const handleNewBarArray = (newBarArray) => {
         setDefaultBars(newBarArray)
         setStatus(sortingAlgorithm.defaultState(newBarArray))
         setBars(newBarArray)
@@ -113,7 +113,10 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
             <Button text='Reset' eventHandler={() => handleReset()} />
             <BottomBar />
             <Button text="Get Random List" eventHandler={() =>
-                handleNewBar(arrayManager.getRandomList(10))
+                handleNewBarArray(arrayManager.getRandomList(10))
+            } />
+            <Button text="Get Almost Sorted List" eventHandler={() =>
+                handleNewBarArray(arrayManager.getAlmostSortedList(10))
             } />
             <h1>{status.algorithmStatus}</h1>
         </div>

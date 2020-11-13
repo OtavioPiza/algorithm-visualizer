@@ -83,14 +83,14 @@ const getAlmostSortedList = (size) => {
     }
 
     for (let i = Math.ceil(size / 10); i < size; i++) {
-        const bar1 = Math.floor(Math.random() * size)
-        const bar2 = Math.floor(Math.random() * size)
-        const temp = barList[bar1]
-
-        barList[bar1] = barList[bar2]
-        barList[bar2] = barList[temp]
+        const bar1 = barList[Math.floor(Math.random() * size)]
+        const bar2 = barList[Math.floor(Math.random() * size)]
+        return barList.map(bar => 
+            bar === bar1 ? bar2 :
+            bar === bar2 ? bar1 :
+            bar
+        )
     }
-    return (barList)
 }
 
 export default { getAlmostSortedList, getDefaultList, getRandomList }
