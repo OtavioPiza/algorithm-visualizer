@@ -49,8 +49,14 @@ const getRandomList = (size) => {
     let barList = []
 
     for (let i = 0; i < size; i++) {
+        let size = Math.ceil(Math.random() * 100)
+        
+        if (size < 10) {
+            size += 10
+        }
+
         barList.push({
-            size: Math.ceil(Math.random() * 100),
+            size: size,
             selected: false,
             analyzed: false,
         })
@@ -58,4 +64,27 @@ const getRandomList = (size) => {
     return (barList)
 }
 
-export default { getDefaultList, getRandomList }
+const getAlmostSortedList = (size) => {
+    let barList = []
+
+    for (let i =  0; i < size; i++) {
+        barList.push({
+            size: 100 * (i + 1) / (size + 1),
+            selected: false,
+            analyzed: false,
+        })
+    }
+
+    for (let i = Math.ceil(size / 10); i < size; i++) {
+        const bar1 = Math.floor(Math.random() * size)
+        const bar2 = Math.floor(Math.random() * size)
+        const temp = barList[bar1]
+
+        barList[bar1] = barList[bar2]
+        barList[bar2] = barList[temp]
+    }
+
+    return (barList)
+}
+
+export default { getAlmostSortedList, getDefaultList, getRandomList }

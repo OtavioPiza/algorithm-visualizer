@@ -10,7 +10,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
 
     const selectBar = (id) => {
         const bar = bars[id]
-        const changedBar = {...bar, selected: !bar.selected}
+        const changedBar = { ...bar, selected: !bar.selected }
 
         setBars(bars.map((bar, index) => index === id ? changedBar : bar))
 
@@ -32,8 +32,8 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         const firstBar = bars[barsSelected[0]]
         const secondBar = bars[barsSelected[1]]
 
-        const newFirstBar = {...firstBar, size: secondBar.size, selected: false, analyzed: false}
-        const newSecondBar = {...secondBar, size: firstBar.size, selected: false, analyzed: false}
+        const newFirstBar = { ...firstBar, size: secondBar.size, selected: false, analyzed: false }
+        const newSecondBar = { ...secondBar, size: firstBar.size, selected: false, analyzed: false }
 
         setStatus(sortingAlgorithm.defaultState(barList))
         setBars(bars.map((bar, index) => {
@@ -45,13 +45,13 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
                     return newSecondBar
 
                 default:
-                    return {...bar, analyzed: false}
+                    return { ...bar, analyzed: false }
             }
         }))
         setBarsSelected([])
     }
 
-    
+
     // == Sorting algorithm control panel ======================================================= //
     // to be transformed into its own component in a later version
 
@@ -75,18 +75,18 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
         setBarsSelected([])
     }
 
-    return(
+    return (
         <div className='ArraySorter'>
             <div className='Array'>
-            {bars.map((bar, index) => (
-                <Bar key={ index } id={ index } size={ bar.size } analyzed={ bar.analyzed }
-                selected={ bar.selected } eventHandler={ selectBar } sorted={ status.sorted ? 1 : 0} 
-                simplified={ false }/>
-            ))}
+                {bars.map((bar, index) => (
+                    <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
+                        selected={bar.selected} eventHandler={selectBar} sorted={status.sorted ? 1 : 0}
+                        simplified={false} />
+                ))}
             </div>
-            <BottomBar/>
-            <Button text='Step' eventHandler={() => handleStep()}/>
-            <Button text='Reset' eventHandler={() => handleReset()}/>
+            <BottomBar />
+            <Button text='Step' eventHandler={() => handleStep()} />
+            <Button text='Reset' eventHandler={() => handleReset()} />
             <h1>{status.algorithmStatus}</h1>
         </div>
     )
