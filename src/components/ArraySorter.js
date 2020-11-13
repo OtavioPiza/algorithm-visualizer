@@ -11,39 +11,39 @@ import arrayManager from '../services/arrayManager'
  * sortingAlgorithm: sortingAlgorithm
  * } param0 
  */
-const ArraySorter = ({ barList, sortingAlgorithm }) => {
-    const [defaultBars, setDefaultBars] = useState(barList)
-    const [bars, setBars] = useState(defaultBars)
-    const [barsSelected, setBarsSelected] = useState([])
-    const [status, setStatus] = useState(sortingAlgorithm.defaultState(defaultBars))
+const ArraySorter = (props) => {
+    const [defaultBarList, setDefaultBarList] = useState(props.barList)
+    const [barList, setBarList] = useState(defaultBarList)
+    const [selectedBarList, setSelectedBarList] = useState([])
+    const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultBarList))
 
     // == User Interactivity ==================================================================== //
 
     /**
-     * Enables one to interact with the array by switching the position of two bars, and ensures,
+     * Enables one to interact with the array by switching the position of two barList, and ensures,
      * by returing the sorting algorithm to its default state, its functionality
      */
-    if (barsSelected.length === 2) {
-        const firstBar = bars[barsSelected[0]]
-        const secondBar = bars[barsSelected[1]]
+    if (selectedBarList.length === 2) {
+        const firstBar = barList[selectedBarList[0]]
+        const secondBar = barList[selectedBarList[1]]
 
         const newFirstBar = { ...firstBar, size: secondBar.size, selected: false, analyzed: false }
         const newSecondBar = { ...secondBar, size: firstBar.size, selected: false, analyzed: false }
 
-        setStatus(sortingAlgorithm.defaultState(bars))
-        setBars(bars.map((bar, index) => {
+        setStatus(props.sortingAlgorithm.defaultState(barList))
+        setBarList(barList.map((bar, index) => {
             switch (index) {
-                case barsSelected[0]:
+                case selectedBarList[0]:
                     return newFirstBar
 
-                case barsSelected[1]:
+                case selectedBarList[1]:
                     return newSecondBar
 
                 default:
                     return { ...bar, analyzed: false }
             }
         }))
-        setBarsSelected([])
+        setSelectedBarList([])
     }
 
     /**
@@ -54,16 +54,16 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
      * } id 
      */
     const selectBar = (id) => {
-        const bar = bars[id]
+        const bar = barList[id]
         const changedBar = { ...bar, selected: !bar.selected }
 
-        setBars(bars.map((bar, index) => index === id ? changedBar : bar))
+        setBarList(barList.map((bar, index) => index === id ? changedBar : bar))
 
         if (!bar.selected) {
-            setBarsSelected(barsSelected.concat(id))
+            setSelectedBarList(selectedBarList.concat(id))
 
         } else {
-            setBarsSelected(barsSelected.filter(selected => selected !== id))
+            setSelectedBarList(selectedBarList.filter(selected => selected !== id))
         }
     }
 
@@ -73,36 +73,36 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
      * 
      */
     const handleNewBarArray = (newBarArray) => {
-        setDefaultBars(newBarArray)
-        setStatus(sortingAlgorithm.defaultState(newBarArray))
-        setBars(newBarArray)
-        setBarsSelected([])
+        setDefaultBarList(newBarArray)
+        setStatus(props.sortingAlgorithm.defaultState(newBarArray))
+        setBarList(newBarArray)
+        setSelectedBarList([])
     }
 
     /**
      * Resets the array to its initial state
      */
     const handleReset = () => {
-        setStatus(sortingAlgorithm.defaultState(defaultBars))
-        setBars(defaultBars)
-        setBarsSelected([])
+        setStatus(props.sortingAlgorithm.defaultState(defaultBarList))
+        setBarList(defaultBarList)
+        setSelectedBarList([])
     }
 
     /**
      * Handles one step of the sorting algorithm
-     * - sets bars to those returned by the sortingAlgorithm
+     * - sets barList to those returned by the sortingAlgorithm
      * - sets the status to that returned by the sortingAlgorithm
      */
     const handleStep = () => {
-        const result = sortingAlgorithm.sort(status, bars)
+        const result = props.sortingAlgorithm.sort(status, barList)
         setStatus(result[0])
-        setBars(result[1])
+        setBarList(result[1])
     }
 
     return (
         <div className='ArraySorter'>
             <div className='Array'>
-                {bars.map((bar, index) => (
+                {barList.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
                         selected={bar.selected} eventHandler={selectBar} sorted={status.sorted ? 1 : 0}
                         simplified={true} />
