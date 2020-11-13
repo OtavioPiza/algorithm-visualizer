@@ -4,17 +4,15 @@ import Button from './components/Button';
 import BottomBar from './components/BottomBar';
 import Array from './components/Array'
 import ArraySorter from './components/ArraySorter'
-import ArrayManager from './services/arrayManager'
 import BubbleSort from './algorithms/bubbleSort'
+import arrayManager from './services/arrayManager';
 
 function App() {
-
-  console.log(ArrayManager.getDefaultList() );
 
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Array barList={ ArrayManager.getDefaultList() }/>
+        <Array barList={ arrayManager.getDefaultList() }/>
       </div>
       <BottomBar/>
       <div className='text-container'>
@@ -27,7 +25,9 @@ function App() {
         <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
       </div>
       <BottomBar/>
-      <ArraySorter barList={ ArrayManager.getRandomList(10) } sortingAlgorithm={ BubbleSort }/>
+      <ArraySorter barList={ arrayManager.getRandomList(10) } sortingAlgorithm={ BubbleSort }/>
+      
+
     </div>
   );
 }

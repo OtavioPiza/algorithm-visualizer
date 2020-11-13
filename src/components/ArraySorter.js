@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import Bar from './Bar'
 import Button from './Button'
 import BottomBar from './BottomBar'
+import arrayManager from '../services/arrayManager'
 
 /**
  * 
@@ -94,6 +95,7 @@ const ArraySorter = ({ barList, sortingAlgorithm }) => {
             <BottomBar />
             <Button text='Step' eventHandler={() => handleStep()} />
             <Button text='Reset' eventHandler={() => handleReset()} />
+            <Button text="Get Random List" eventHandler={() => {setBars(arrayManager.getRandomList(10))}}/>
             <h1>{status.algorithmStatus}</h1>
         </div>
     )
