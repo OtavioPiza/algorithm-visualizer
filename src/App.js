@@ -14,7 +14,7 @@ function App() {
   return (
     <div className='container'>
       <div className='logo-container'>
-        <Array/>
+        <Array barList={ ArrayManager.getDefaultList() }/>
       </div>
       <BottomBar/>
       <div className='text-container'>

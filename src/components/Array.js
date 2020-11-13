@@ -3,41 +3,6 @@ import isSorted from '../services/isSorted'
 import Bar from './Bar'
 import '../styles/components/Array.css'
 
-// A default list that is automatically used if one is not provided
-let defaultList = [
-    {
-        size: 70,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 90,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 30,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 50,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 80,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 40,
-        selected: false,
-        analyzed: false
-    }
-]
-
-
 /**
  * React component representing an array of Bar components
  * - responsible for the interaction between the user and the bars
@@ -49,7 +14,7 @@ let defaultList = [
  * @returns an array containing a Bar component for each bar on the provided list
  */
 const Array = ({ barList, simplified }) => {
-    const [bars, setBars] = useState(barList === undefined ? defaultList : barList)
+    const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
     const sorted = isSorted(bars)
 

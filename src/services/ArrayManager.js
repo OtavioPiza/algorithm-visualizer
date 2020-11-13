@@ -1,59 +1,34 @@
-let barList = [
+const defaultList = [
     {
-        size: 390,
+        size: 70,
         selected: false,
         analyzed: false
     },
     {
-        size: 350,
+        size: 90,
         selected: false,
         analyzed: false
     },
     {
-        size: 200,
+        size: 30,
         selected: false,
         analyzed: false
     },
     {
-        size: 280,
+        size: 50,
         selected: false,
         analyzed: false
     },
     {
-        size: 170,
+        size: 80,
         selected: false,
         analyzed: false
     },
     {
-        size: 410,
+        size: 40,
         selected: false,
         analyzed: false
-    },
-    {
-        size: 350,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 200,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 280,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 130,
-        selected: false,
-        analyzed: false
-    },
-    {
-        size: 410,
-        selected: false,
-        analyzed: false
-    },
+    }
 ]
 
 const getBarList = (size) => {
@@ -69,8 +44,10 @@ const getBarList = (size) => {
     return(barList)
 }
 
+const getDefaultList = () => defaultList
+
 const setBarList = (newList) => {
     barList = newList
 }
 
-export default {getBarList, setBarList}
+export default {getBarList, getDefaultList, setBarList}
