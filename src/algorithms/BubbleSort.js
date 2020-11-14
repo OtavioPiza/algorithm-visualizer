@@ -12,20 +12,27 @@ const defaultState = (barList) => ({
     sorted: false,
     switched: false,
     step: 0,
-})
+    }
+)
 
 /**
  * Provides a sorted state for the BubbleSort algorithm
  * 
  * @param {List of Bars} bars
  */
-const sortedState = (barList) => ({
-    algorithmStatus: "Finished",
+const sortedState = (barList) => [{
+    algorithmStatus: "Finished sorting!",
+    analyzedBarsIndex: [-1, 0],
     upperbound: barList.length - 1,
     sorted: true,
     switched: false,
     step: 0,
-})
+    },
+    barList.map(bar => ({
+        ...bar,
+        sorted: true,
+        analyzed: false,
+    }))]
 
 /**
  * Responsible for the sorting process which is split between two functions:
@@ -40,12 +47,10 @@ const sort = (status, bars) => {
     /**
      * Returns the next two bars that will be analyzed by te algorithm
      */
-    const getNextBars = () => {
-        console.log(status.analyzedBarsIndex);
-        return(
-        status.analyzedBarsIndex[0] === status.upperbound? [0, 1] :
+    const getNextBars = () => (
+        status.analyzedBarsIndex[0] >= status.upperbound? [0, 1] :
             status.analyzedBarsIndex.map(bar => bar + 1)
-    )}
+    )
 
 
     /**
@@ -56,7 +61,9 @@ const sort = (status, bars) => {
         // == Properties from status ============================================================ //
         const analyzedBarsIndex = getNextBars()             // Array with the analyzed bars
         const switched = status.switched                    // If any two bars were switched
-        const upperbound = status.upperbound                          // Range of the bars
+        const upperbound = status.upperbound                // Range of the bars
+
+        console.log(upperbound);
 
         // == Properties from function ========================================================== //
 
@@ -65,12 +72,12 @@ const sort = (status, bars) => {
 
         // New array of bars that makes the newly analyzed bars orange and the rest gray
         const newBars = bars.map((bar, index) => (
-            index === analyzedBarsIndex[0] ? { ...bar, analyzed: true } :
-                index === analyzedBarsIndex[1] ? { ...bar, analyzed: true } :
-                    { ...bar, analyzed: false }
+            index === analyzedBarsIndex[0] ? { ...bar, sorted: false, analyzed: true } :
+                index === analyzedBarsIndex[1] ? { ...bar, sorted: false, analyzed: true } :
+                    { ...bar, sorted: false, analyzed: false }
         ))
 
-        return [
+        return upperbound === 0 ? sortedState(newBars) : [
             {
                 ...status,
                 algorithmStatus:
@@ -102,5 +109,5 @@ const sort = (status, bars) => {
     return status.step === 0 ? compareBars() : changeBars()
 }
 
-export default { sort, defaultState, sortedState }
+export default { sort, defaultState }
 

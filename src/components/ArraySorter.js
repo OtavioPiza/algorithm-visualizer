@@ -105,7 +105,7 @@ const ArraySorter = (props) => {
             <div className='Array'>
                 {barList.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
-                        selected={bar.selected} eventHandler={handleSelectBar} sorted={status.sorted ? 1 : 0}
+                        selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted ? 1 : 0}
                         simplified={false} />
                 ))}
             </div>
