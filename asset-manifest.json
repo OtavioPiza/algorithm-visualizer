@@ -1,30 +1,29 @@
 {
   "files": {
     "main.css": "/algorithm-visualizer/static/css/main.120e6f68.chunk.css",
-    "main.js": "/algorithm-visualizer/static/js/main.df9fbf3b.chunk.js",
-    "main.js.map": "/algorithm-visualizer/static/js/main.df9fbf3b.chunk.js.map",
+    "main.js": "/algorithm-visualizer/static/js/main.3f87a717.chunk.js",
+    "main.js.map": "/algorithm-visualizer/static/js/main.3f87a717.chunk.js.map",
     "runtime-main.js": "/algorithm-visualizer/static/js/runtime-main.a104d120.js",
     "runtime-main.js.map": "/algorithm-visualizer/static/js/runtime-main.a104d120.js.map",
-    "static/js/2.215726b6.chunk.js": "/algorithm-visualizer/static/js/2.215726b6.chunk.js",
-    "static/js/2.215726b6.chunk.js.map": "/algorithm-visualizer/static/js/2.215726b6.chunk.js.map",
+    "static/js/2.e10938eb.chunk.js": "/algorithm-visualizer/static/js/2.e10938eb.chunk.js",
+    "static/js/2.e10938eb.chunk.js.map": "/algorithm-visualizer/static/js/2.e10938eb.chunk.js.map",
     "index.html": "/algorithm-visualizer/index.html",
-    "precache-manifest.976b9a4f2470ce4a782b2ec85cc29b01.js": "/algorithm-visualizer/precache-manifest.976b9a4f2470ce4a782b2ec85cc29b01.js",
+    "precache-manifest.33cbeca81328eeaa0c31e107904b9c4d.js": "/algorithm-visualizer/precache-manifest.33cbeca81328eeaa0c31e107904b9c4d.js",
     "service-worker.js": "/algorithm-visualizer/service-worker.js",
     "static/css/main.120e6f68.chunk.css.map": "/algorithm-visualizer/static/css/main.120e6f68.chunk.css.map",
-    "static/js/2.215726b6.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.215726b6.chunk.js.LICENSE.txt",
+    "static/js/2.e10938eb.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.e10938eb.chunk.js.LICENSE.txt",
     "static/media/main.css": "/algorithm-visualizer/static/media/background.3a380e8a.png",
     "static/media/bar-analyzed-orange.svg": "/algorithm-visualizer/static/media/bar-analyzed-orange.f382d282.svg",
     "static/media/bar-gray.svg": "/algorithm-visualizer/static/media/bar-gray.ec07d47c.svg",
     "static/media/Bar.css": "/algorithm-visualizer/static/media/bar-selected-blue.1a093445.svg",
     "static/media/bar-sorted-green.svg": "/algorithm-visualizer/static/media/bar-sorted-green.9596daf5.svg",
-    "static/media/bar-unsorted-red.svg": "/algorithm-visualizer/static/media/bar-unsorted-red.d26307f8.svg",
     "static/media/BottomBar.css": "/algorithm-visualizer/static/media/bottom-bar.33429e13.svg",
     "static/media/Button.css": "/algorithm-visualizer/static/media/button-pressed-orange-3x1.7daaec5b.svg"
   },
   "entrypoints": [
     "static/js/runtime-main.a104d120.js",
-    "static/js/2.215726b6.chunk.js",
+    "static/js/2.e10938eb.chunk.js",
     "static/css/main.120e6f68.chunk.css",
-    "static/js/main.df9fbf3b.chunk.js"
+    "static/js/main.3f87a717.chunk.js"
   ]
 }
