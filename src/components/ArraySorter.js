@@ -32,6 +32,10 @@ const ArraySorter = (props) => {
     const [simplified, setSimplified] = useState(false)
 
     /**
+     * User interactivity
+     */
+
+    /**
      * Enables one to interact with the array by switching the position of two currentArray, 
      * and ensures, by returing the sorting algorithm to its default state, its functionality
      */
@@ -87,15 +91,19 @@ const ArraySorter = (props) => {
             setSelectedBarList(selectedBarList.filter(selected => selected !== id))
         }
     }
-
-    // == Sorting algorithm control panel ======================================================= //
+    
+    /**
+     * Control Panel
+     */
 
     /**
+     * Sets a new default bar
      * 
+     * @param {size: {}, analyzed: {}, sorted: {}} newBarArray 
      */
     const handleNewBarArray = (newBarArray) => {
         setDefaultArray(newBarArray)
-        setStatus(props.sortingAlgorithm.defaultState(newBarArray))
+        setStatus(props.sortingAlgorithm.defaultState(newBarArray)[0])
         setCurrentArray(newBarArray)
         setSelectedBarList([])
     }
