@@ -1,24 +1,24 @@
 import switchBars from '../services/switchBars'
 
 /**
- * Provides a default status for 
+ * Default status for the array
  * 
  * @param {size: {}, analyzed: {}, sorted: {}} barArray
- * @param {boolean} isSorted 
+ * @param {boolean} isSorted true if the list is sorted
+ * 
+ * @returns {status }
  */
-const defaultState = (barArray, isSorted) => [{
-    algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
-    analyzedBarsIndex: [-1, 0],
-    upperbound: barArray.length - 1,
-    sorted: isSorted === true,
-    switched: false,
-    step: 0,
-},
-barArray.map(bar => ({
-    ...bar,
-    analyzed: false,
-    sorted: isSorted,
-}))]
+const defaultState = (barArray, isSorted = false) => [
+    {
+        algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
+        analyzedBarsIndex: [-1, 0],
+        upperbound: barArray.length - 1,
+        sorted: isSorted,
+        switched: false,
+        step: 0,
+    },
+    barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted }))
+]
 
 
 /**
@@ -39,6 +39,15 @@ const sort = (status, bars) => {
             status.analyzedBarsIndex.map(bar => bar + 1)
     )
 
+    const getIsSorted = () => {
+        console.log(status.analyzedBarsIndex[1], status.upperbound, !status.switched);
+
+        return (
+            (status.upperbound === 0) ||
+            (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched)
+        )
+    }
+
     /**
      * Compares two bars
      */
@@ -56,8 +65,7 @@ const sort = (status, bars) => {
                     { ...bar, sorted: false, analyzed: false }
         ))
 
-        return status.upperbound === 0 ? defaultState(newBars, true) : 
-        [
+        return getIsSorted() ? defaultState(newBars, true) : [
             {
                 ...status,
                 algorithmStatus:
