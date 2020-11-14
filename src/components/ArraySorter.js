@@ -169,23 +169,28 @@ const ArraySorter = (props) => {
                         selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
                         simplified={simplified} />
                 ))}
-            </div>
-            <div>
                 <BottomBar />
+            </div>
+
+            <div>
                 <Button text='Step' eventHandler={() => handleStep()} />
                 <Button text='Run' eventHandler={() => console.log("This feature was not yet implemented")} />
                 <Button text='Reset' eventHandler={() => handleReset()} />
                 <Button text={simplified ? "Normal" : "Simplified"} eventHandler={() => handleSimplified()} />
                 <BottomBar />
-                <Button text="Get Random List" eventHandler={() =>
-                    handleNewBarArray(arrayManager.getRandomList(arraySize))
-                } />
-                <Button text="Get Almost Sorted List" eventHandler={() =>
-                    handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))
-                } />
+            </div>
+
+            <div>
+                <Button text="Get Random List"
+                    eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
+                <Button text="Get Almost Sorted List"
+                    eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
                 <Button text="Add bar" eventHandler={() => handleAdd(true)} />
                 <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
                 <BottomBar />
+            </div>
+
+            <div>
                 <h1>{status.algorithmStatus}</h1>
             </div>
         </div>
