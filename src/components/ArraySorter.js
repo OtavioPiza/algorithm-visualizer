@@ -16,7 +16,7 @@ const ArraySorter = (props) => {
     const [barList, setBarList] = useState(defaultBarList)
     const [barListSize, setBarListSize] = useState(10)
     const [selectedBarList, setSelectedBarList] = useState([])
-    const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultBarList))
+    const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultBarList)[0])
     const [simplified, setSimplified] = useState(false)
 
     // == User Interactivity ==================================================================== //
@@ -134,7 +134,7 @@ const ArraySorter = (props) => {
             <div className='Array'>
                 {barList.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
-                        selected={bar.selected} eventHandler={handleSelectBar} sorted={status.sorted}
+                        selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
                         simplified={simplified} />
                 ))}
             </div>

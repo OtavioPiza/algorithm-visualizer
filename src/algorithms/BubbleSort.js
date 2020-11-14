@@ -1,37 +1,25 @@
 import switchBars from '../services/switchBars'
 
 /**
- * Provides a default state for the BubbleSort algorithm
+ * Provides a default status for 
  * 
- * @param {List of Bars} barList
+ * @param {size: {}, analyzed: {}, sorted: {}} barArray
+ * @param {boolean} isSorted 
  */
-const defaultState = (barList) => ({
-    algorithmStatus: "",
+const defaultState = (barArray, isSorted) => [{
+    algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
     analyzedBarsIndex: [-1, 0],
-    upperbound: barList.length - 1,
-    sorted: false,
+    upperbound: barArray.length - 1,
+    sorted: isSorted === true,
     switched: false,
     step: 0,
-    }
-)
+},
+barArray.map(bar => ({
+    ...bar,
+    analyzed: false,
+    sorted: isSorted,
+}))]
 
-/**
- * Provides a sorted state for the BubbleSort algorithm
- * 
- * @param {List of Bars} bars
- */
-const sortedState = (barList) => [{
-    algorithmStatus: "Finished sorting!",
-    analyzedBarsIndex: [-1, 0],
-    upperbound: barList.length - 1,
-    sorted: true,
-    switched: false,
-    step: 0,
-    },
-    barList.map(bar => ({
-        ...bar,
-        analyzed: false,
-    }))]
 
 /**
  * Responsible for the sorting process which is split between two functions:
@@ -47,36 +35,29 @@ const sort = (status, bars) => {
      * Returns the next two bars that will be analyzed by te algorithm
      */
     const getNextBars = () => (
-        status.analyzedBarsIndex[0] >= status.upperbound? [0, 1] :
+        status.analyzedBarsIndex[0] >= status.upperbound ? [0, 1] :
             status.analyzedBarsIndex.map(bar => bar + 1)
     )
-
 
     /**
      * Compares two bars
      */
     const compareBars = () => {
+        // Holds the indexes of the bars being currently analyzed
+        const analyzedBarsIndex = getNextBars()
 
-        // == Properties from status ============================================================ //
-        const analyzedBarsIndex = getNextBars()             // Array with the analyzed bars
-        const switched = status.switched                    // If any two bars were switched
-        const upperbound = status.upperbound                // Range of the bars
-
-        console.log(upperbound);
-
-        // == Properties from function ========================================================== //
-
-        // If the first bar is greater than the second
+        // Holds wheater the first bar is greater than the second
         const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size
 
-        // New array of bars that makes the newly analyzed bars orange and the rest gray
+        // Holds a new list of bars where only the analzed bars are orange
         const newBars = bars.map((bar, index) => (
             index === analyzedBarsIndex[0] ? { ...bar, sorted: false, analyzed: true } :
                 index === analyzedBarsIndex[1] ? { ...bar, sorted: false, analyzed: true } :
                     { ...bar, sorted: false, analyzed: false }
         ))
 
-        return upperbound === 0 ? sortedState(newBars) : [
+        return status.upperbound === 0 ? defaultState(newBars, true) : 
+        [
             {
                 ...status,
                 algorithmStatus:
@@ -84,8 +65,8 @@ const sort = (status, bars) => {
                         "Because the first bar is not greater than the second they are left unchanged",
                 analyzedBarsIndex: analyzedBarsIndex,
                 step: greater ? 1 : 0,
-                switched: analyzedBarsIndex[0] === 0 ? false : switched,
-                upperbound: analyzedBarsIndex[1] === upperbound ? status.upperbound - 1 : status.upperbound
+                switched: analyzedBarsIndex[0] === 0 ? false : status.switched,
+                upperbound: analyzedBarsIndex[1] === status.upperbound ? status.upperbound - 1 : status.upperbound
             },
             newBars
         ]
