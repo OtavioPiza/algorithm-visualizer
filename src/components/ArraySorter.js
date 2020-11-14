@@ -91,7 +91,7 @@ const ArraySorter = (props) => {
             setSelectedBarList(selectedBarList.filter(selected => selected !== id))
         }
     }
-    
+
     /**
      * Control Panel
      */
@@ -112,13 +112,26 @@ const ArraySorter = (props) => {
      * Resets the array to its initial state
      */
     const handleReset = () => {
-        setStatus(props.sortingAlgorithm.defaultState(defaultArray)[1])
-        setCurrentArray(defaultArray.map(bar => ({
-            ...bar,
-            sorted: false,
-        })))
+        setStatus(props.sortingAlgorithm.defaultState(defaultArray)[0])
+        setCurrentArray(defaultArray/*.map(bar => ({...bar, sorted: false}))*/)
         setSelectedBarList([])
-        console.log();
+    }
+
+    /**
+     * Adds or removes a bar from the array
+     * 
+     * @param {boolean} add indicated wheter a bar is to be added or removed
+     */
+    const handleAdd = (add = true) => {
+        if (!add && arraySize <= 2) return
+        setArraySize(add ? arraySize + 1 : arraySize - 1)
+        handleNewBarArray((add ? currentArray.concat(arrayManager.getRandomList(1)) :
+            currentArray.slice(0, arraySize - 1)).map(bar => ({
+                ...bar,
+                analyzed: false,
+                sorted: false,
+            })))
+
     }
 
     /**
@@ -132,6 +145,9 @@ const ArraySorter = (props) => {
         setCurrentArray(result[1])
     }
 
+    /**
+     * WIP
+     */
     const handleRun = () => {
         do {
             setTimeout(handleStep(), 10000)
@@ -157,7 +173,7 @@ const ArraySorter = (props) => {
             <div>
                 <BottomBar />
                 <Button text='Step' eventHandler={() => handleStep()} />
-                <Button text='Run' eventHandler={() => handleRun()} />
+                <Button text='Run' eventHandler={() => console.log("This feature was not yet implemented")} />
                 <Button text='Reset' eventHandler={() => handleReset()} />
                 <Button text={simplified ? "Normal" : "Simplified"} eventHandler={() => handleSimplified()} />
                 <BottomBar />
@@ -167,18 +183,8 @@ const ArraySorter = (props) => {
                 <Button text="Get Almost Sorted List" eventHandler={() =>
                     handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))
                 } />
-                <Button text="Add bar" eventHandler={() => {
-                    handleNewBarArray(currentArray.concat(arrayManager.getRandomList(1)))
-                    setArraySize(arraySize + 1)
-                }
-                } />
-                <Button text="Remove bar" eventHandler={() => {
-                    if (arraySize > 2) {
-                        handleNewBarArray(currentArray.slice(0, arraySize - 1))
-                        setArraySize(arraySize - 1)
-                    }
-                }
-                } />
+                <Button text="Add bar" eventHandler={() => handleAdd(true)} />
+                <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
                 <BottomBar />
                 <h1>{status.algorithmStatus}</h1>
             </div>
