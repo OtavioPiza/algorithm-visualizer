@@ -30,7 +30,6 @@ const sortedState = (barList) => [{
     },
     barList.map(bar => ({
         ...bar,
-        sorted: true,
         analyzed: false,
     }))]
 

@@ -17,6 +17,7 @@ const ArraySorter = (props) => {
     const [barListSize, setBarListSize] = useState(10)
     const [selectedBarList, setSelectedBarList] = useState([])
     const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultBarList))
+    const [simplified, setSimplified] = useState(false)
 
     // == User Interactivity ==================================================================== //
 
@@ -97,7 +98,10 @@ const ArraySorter = (props) => {
      */
     const handleReset = () => {
         setStatus(props.sortingAlgorithm.defaultState(defaultBarList))
-        setBarList(defaultBarList)
+        setBarList(defaultBarList.map(bar => ({
+            ...bar,
+            sorted: false,
+        })))
         setSelectedBarList([])
     }
 
@@ -112,12 +116,17 @@ const ArraySorter = (props) => {
         setBarList(result[1])
     }
 
-    console.log(status)
-
     const handleRun = () => {
         do {
             setTimeout(handleStep(), 10000)
         } while (!status.sorted)
+    }
+
+    /**
+     * 
+     */
+    const handleSimplified = () => {
+        setSimplified(!simplified)
     }
 
     return (
@@ -125,8 +134,8 @@ const ArraySorter = (props) => {
             <div className='Array'>
                 {barList.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
-                        selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted ? 1 : 0}
-                        simplified={true} />
+                        selected={bar.selected} eventHandler={handleSelectBar} sorted={status.sorted}
+                        simplified={simplified} />
                 ))}
             </div>
             <div>
@@ -134,6 +143,7 @@ const ArraySorter = (props) => {
                 <Button text='Step' eventHandler={() => handleStep()} />
                 <Button text='Run' eventHandler={() => handleRun()} />
                 <Button text='Reset' eventHandler={() => handleReset()} />
+                <Button text={simplified ? "Normal" : "Simplified"} eventHandler={() => handleSimplified()} />
                 <BottomBar />
                 <Button text="Get Random List" eventHandler={() =>
                     handleNewBarArray(arrayManager.getRandomList(barListSize))
