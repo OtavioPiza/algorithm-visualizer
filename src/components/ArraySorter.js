@@ -44,7 +44,7 @@ const ArraySorter = (props) => {
             sorted: false,
         }
 
-        setStatus(props.sortingAlgorithm.defaultState(barList))
+        setStatus(props.sortingAlgorithm.defaultState(barList)[0])
         setBarList(barList.map((bar, index) => {
             switch (index) {
                 case selectedBarList[0]:
@@ -97,7 +97,7 @@ const ArraySorter = (props) => {
      * Resets the array to its initial state
      */
     const handleReset = () => {
-        setStatus(props.sortingAlgorithm.defaultState(defaultBarList))
+        setStatus(props.sortingAlgorithm.defaultState(defaultBarList)[1])
         setBarList(defaultBarList.map(bar => ({
             ...bar,
             sorted: false,
