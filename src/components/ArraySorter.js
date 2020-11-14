@@ -169,10 +169,10 @@ const ArraySorter = (props) => {
                         selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
                         simplified={simplified} />
                 ))}
-                <BottomBar />
             </div>
 
             <div>
+                <BottomBar />
                 <Button text='Step' eventHandler={() => handleStep()} />
                 <Button text='Run' eventHandler={() => console.log("This feature was not yet implemented")} />
                 <Button text='Reset' eventHandler={() => handleReset()} />
