@@ -28,8 +28,20 @@ const ArraySorter = (props) => {
         const firstBar = barList[selectedBarList[0]]
         const secondBar = barList[selectedBarList[1]]
 
-        const newFirstBar = { ...firstBar, size: secondBar.size, selected: false, analyzed: false }
-        const newSecondBar = { ...secondBar, size: firstBar.size, selected: false, analyzed: false }
+        const newFirstBar = {
+            ...firstBar,
+            size: secondBar.size,
+            selected: false,
+            analyzed: false,
+            sorted: false,
+        }
+        const newSecondBar = { 
+            ...secondBar, 
+            size: firstBar.size, 
+            selected: false, 
+            analyzed: false, 
+            sorted: false,
+        }
 
         setStatus(props.sortingAlgorithm.defaultState(barList))
         setBarList(barList.map((bar, index) => {
@@ -41,7 +53,7 @@ const ArraySorter = (props) => {
                     return newSecondBar
 
                 default:
-                    return { ...bar, analyzed: false }
+                    return { ...bar, analyzed: false, sorted: false }
             }
         }))
         setSelectedBarList([])
@@ -100,6 +112,14 @@ const ArraySorter = (props) => {
         setBarList(result[1])
     }
 
+    console.log(status)
+
+    const handleRun = () => {
+        do {
+            setTimeout(handleStep(), 10000)
+        } while (!status.sorted)
+    }
+
     return (
         <div className='ArraySorter'>
             <div className='Array'>
@@ -111,6 +131,7 @@ const ArraySorter = (props) => {
             </div>
             <BottomBar />
             <Button text='Step' eventHandler={() => handleStep()} />
+            <Button text='Run' eventHandler={() => handleRun()} />
             <Button text='Reset' eventHandler={() => handleReset()} />
             <BottomBar />
             <Button text="Get Random List" eventHandler={() =>
