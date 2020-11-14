@@ -120,13 +120,13 @@ const ArraySorter = (props) => {
                 handleNewBarArray(arrayManager.getAlmostSortedList(barListSize))
             } />
             <Button text="Add bar" eventHandler={() => {
-                handleNewBarArray(defaultBarList.concat(arrayManager.getRandomList(1)))
+                handleNewBarArray(barList.concat(arrayManager.getRandomList(1)))
                 setBarListSize(barListSize + 1)
             }
             } />
             <Button text="Remove bar" eventHandler={() => {
                 if (barListSize > 2) {
-                    handleNewBarArray(defaultBarList.slice(0, barListSize - 1))
+                    handleNewBarArray(barList.slice(0, barListSize - 1))
                     setBarListSize(barListSize - 1)
                 }
             }

@@ -8,7 +8,7 @@ import switchBars from '../services/switchBars'
 const defaultState = (barList) => ({
     algorithmStatus: "",
     analyzedBarsIndex: [-1, 0],
-    range: [0, barList.length],
+    upperbound: barList.length - 1,
     sorted: false,
     switched: false,
     step: 0,
@@ -20,8 +20,8 @@ const defaultState = (barList) => ({
  * @param {List of Bars} bars
  */
 const sortedState = (barList) => ({
-    algorithmStatus: [-1, 0],
-    range: [0, barList.length],
+    algorithmStatus: "Finished",
+    upperbound: barList.length - 1,
     sorted: true,
     switched: false,
     step: 0,
@@ -40,10 +40,13 @@ const sort = (status, bars) => {
     /**
      * Returns the next two bars that will be analyzed by te algorithm
      */
-    const getNextBars = () => (
-        status.analyzedBarsIndex[1] === status.range[1] ? [0, 1] :
+    const getNextBars = () => {
+        console.log(status.analyzedBarsIndex);
+        return(
+        status.analyzedBarsIndex[0] === status.upperbound? [0, 1] :
             status.analyzedBarsIndex.map(bar => bar + 1)
-    )
+    )}
+
 
     /**
      * Compares two bars
@@ -53,12 +56,9 @@ const sort = (status, bars) => {
         // == Properties from status ============================================================ //
         const analyzedBarsIndex = getNextBars()             // Array with the analyzed bars
         const switched = status.switched                    // If any two bars were switched
-        const range = status.range                          // Range of the bars
+        const upperbound = status.upperbound                          // Range of the bars
 
         // == Properties from function ========================================================== //
-
-        // If the end of the array was reached
-        const eoa = analyzedBarsIndex[1] === range[1] - 1
 
         // If the first bar is greater than the second
         const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size
@@ -70,24 +70,16 @@ const sort = (status, bars) => {
                     { ...bar, analyzed: false }
         ))
 
-        const sorted = (eoa && range[1] === 1) || range[1] === 1
-
-
-        console.log(eoa);
-        console.log(switched);
-
-        return [sorted ? sortedState :
-
+        return [
             {
                 ...status,
                 algorithmStatus:
                     greater ? "Because the first bar is greater than the second they are switched" :
                         "Because the first bar is not greater than the second they are left unchanged",
                 analyzedBarsIndex: analyzedBarsIndex,
-                range: eoa ? [0, range[1] - 1] : range,
                 step: greater ? 1 : 0,
-                sorted: sorted,
-                switched: analyzedBarsIndex[0] === 0 ? false : switched
+                switched: analyzedBarsIndex[0] === 0 ? false : switched,
+                upperbound: analyzedBarsIndex[1] === upperbound ? status.upperbound - 1 : status.upperbound
             },
             newBars
         ]
