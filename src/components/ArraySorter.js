@@ -7,45 +7,52 @@ import arrayManager from '../services/arrayManager'
 /**
  * 
  * @param {
- * barList: list of bar objects
+ * currentArray: list of bar objects
  * sortingAlgorithm: sortingAlgorithm
  * } param0 
  */
 const ArraySorter = (props) => {
-    const [defaultBarList, setDefaultBarList] = useState(props.barList)
-    const [barList, setBarList] = useState(defaultBarList)
-    const [barListSize, setBarListSize] = useState(10)
+
+    /* Holds a default array in case the user wants to reset the algorithm */
+    const [defaultArray, setDefaultArray] = useState(props.barList)
+
+    /* Holds the array that is being manipulated by the sorting algorithm */
+    const [currentArray, setCurrentArray] = useState(defaultArray)
+
+    /* Holds the size of the array */
+    const [arraySize, setArraySize] = useState(10)
+
+    /* Holds which bars the user has selecte */
     const [selectedBarList, setSelectedBarList] = useState([])
-    const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultBarList)[0])
+
+    /* Holds the status of the algorithm */
+    const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultArray)[0])
+
+    /* Holds wheter the user wants the simplified version of the array */
     const [simplified, setSimplified] = useState(false)
 
-    // == User Interactivity ==================================================================== //
-
     /**
-     * Enables one to interact with the array by switching the position of two barList, and ensures,
-     * by returing the sorting algorithm to its default state, its functionality
+     * Enables one to interact with the array by switching the position of two currentArray, 
+     * and ensures, by returing the sorting algorithm to its default state, its functionality
      */
     if (selectedBarList.length === 2) {
-        const firstBar = barList[selectedBarList[0]]
-        const secondBar = barList[selectedBarList[1]]
-
         const newFirstBar = {
-            ...firstBar,
-            size: secondBar.size,
+            ...currentArray[selectedBarList[0]],
+            size: currentArray[selectedBarList[1]].size,
             selected: false,
             analyzed: false,
             sorted: false,
         }
         const newSecondBar = {
-            ...secondBar,
-            size: firstBar.size,
+            ...currentArray[selectedBarList[1]],
+            size: currentArray[selectedBarList[0]].size,
             selected: false,
             analyzed: false,
             sorted: false,
         }
 
-        setStatus(props.sortingAlgorithm.defaultState(barList))
-        setBarList(barList.map((bar, index) => {
+        setStatus(props.sortingAlgorithm.defaultState(currentArray)[0])
+        setCurrentArray(currentArray.map((bar, index) => {
             switch (index) {
                 case selectedBarList[0]:
                     return newFirstBar
@@ -68,10 +75,10 @@ const ArraySorter = (props) => {
      * } id 
      */
     const handleSelectBar = (id) => {
-        const bar = barList[id]
+        const bar = currentArray[id]
         const changedBar = { ...bar, selected: !bar.selected }
 
-        setBarList(barList.map((bar, index) => index === id ? changedBar : bar))
+        setCurrentArray(currentArray.map((bar, index) => index === id ? changedBar : bar))
 
         if (!bar.selected) {
             setSelectedBarList(selectedBarList.concat(id))
@@ -87,9 +94,9 @@ const ArraySorter = (props) => {
      * 
      */
     const handleNewBarArray = (newBarArray) => {
-        setDefaultBarList(newBarArray)
+        setDefaultArray(newBarArray)
         setStatus(props.sortingAlgorithm.defaultState(newBarArray))
-        setBarList(newBarArray)
+        setCurrentArray(newBarArray)
         setSelectedBarList([])
     }
 
@@ -97,8 +104,8 @@ const ArraySorter = (props) => {
      * Resets the array to its initial state
      */
     const handleReset = () => {
-        setStatus(props.sortingAlgorithm.defaultState(defaultBarList)[1])
-        setBarList(defaultBarList.map(bar => ({
+        setStatus(props.sortingAlgorithm.defaultState(defaultArray)[1])
+        setCurrentArray(defaultArray.map(bar => ({
             ...bar,
             sorted: false,
         })))
@@ -108,13 +115,13 @@ const ArraySorter = (props) => {
 
     /**
      * Handles one step of the sorting algorithm
-     * - sets barList to those returned by the sortingAlgorithm
+     * - sets currentArray to those returned by the sortingAlgorithm
      * - sets the status to that returned by the sortingAlgorithm
      */
     const handleStep = () => {
-        const result = props.sortingAlgorithm.sort(status, barList)
+        const result = props.sortingAlgorithm.sort(status, currentArray)
         setStatus(result[0])
-        setBarList(result[1])
+        setCurrentArray(result[1])
     }
 
     const handleRun = () => {
@@ -133,7 +140,7 @@ const ArraySorter = (props) => {
     return (
         <div className='ArraySorter'>
             <div className='Array'>
-                {barList.map((bar, index) => (
+                {currentArray.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
                         selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
                         simplified={simplified} />
@@ -147,20 +154,20 @@ const ArraySorter = (props) => {
                 <Button text={simplified ? "Normal" : "Simplified"} eventHandler={() => handleSimplified()} />
                 <BottomBar />
                 <Button text="Get Random List" eventHandler={() =>
-                    handleNewBarArray(arrayManager.getRandomList(barListSize))
+                    handleNewBarArray(arrayManager.getRandomList(arraySize))
                 } />
                 <Button text="Get Almost Sorted List" eventHandler={() =>
-                    handleNewBarArray(arrayManager.getAlmostSortedList(barListSize))
+                    handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))
                 } />
                 <Button text="Add bar" eventHandler={() => {
-                    handleNewBarArray(barList.concat(arrayManager.getRandomList(1)))
-                    setBarListSize(barListSize + 1)
+                    handleNewBarArray(currentArray.concat(arrayManager.getRandomList(1)))
+                    setArraySize(arraySize + 1)
                 }
                 } />
                 <Button text="Remove bar" eventHandler={() => {
-                    if (barListSize > 2) {
-                        handleNewBarArray(barList.slice(0, barListSize - 1))
-                        setBarListSize(barListSize - 1)
+                    if (arraySize > 2) {
+                        handleNewBarArray(currentArray.slice(0, arraySize - 1))
+                        setArraySize(arraySize - 1)
                     }
                 }
                 } />
