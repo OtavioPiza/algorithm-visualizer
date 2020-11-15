@@ -31,6 +31,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
      * } id 
      */
     const handleSelectBar = (firstBarIndex) => {
+        setRunning(false)
         setCurrentState(sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])))
     }
 
@@ -80,14 +81,20 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
     // == Auto-run feature ========================================================================================== //
 
-    if (running && !currentState[0].sorted) {
-        // try to combine both the status and curent bars states
-        setTimeout(
-            () => {
-                setCurrentState(sortingAlgorithm.sort(currentState))
-            },
-            250
-        )
+
+    if (running) {
+
+        if (!currentState[0].sorted) {
+            // try to combine both the status and curent bars states
+            setTimeout(
+                () => {
+                    setCurrentState(sortingAlgorithm.sort(currentState))
+                },
+                50
+            )
+        } else {
+            setRunning(false)
+        }
     }
 
 
@@ -106,7 +113,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
             <div>
 
                 <Button text='Step' eventHandler={() => handleStep()} />
-                <Button text='Run' eventHandler={() => setRunning(!running)} />
+                <Button text={running ? 'Stop' : 'Run'} eventHandler={() => setRunning(!running)} />
                 <Button text='Reset' eventHandler={() => handleReset()} />
                 <Button text="Add bar" eventHandler={() => handleAdd(true)} />
                 <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
