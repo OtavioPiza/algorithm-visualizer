@@ -43,8 +43,8 @@ const ArraySorter = (props) => {
      * @param {size: {}, analyzed: {}, sorted: {}} newBarArray 
      */
     const handleNewBarArray = (newBarArray) => {
+        setCurrentState(props.sortingAlgorithm.defaultState(newBarArray))
         setDefaultState(props.sortingAlgorithm.defaultState(newBarArray))
-        setCurrentState(defaultState)
     }
 
     /**
