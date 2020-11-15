@@ -3,6 +3,7 @@ import Bar from './Bar'
 import Button from './Button'
 import BottomBar from './BottomBar'
 import arrayManager from '../services/arrayManager'
+import selectBar from '../services/selectBar'
 
 /**
  * 
@@ -31,39 +32,7 @@ const ArraySorter = (props) => {
      * } id 
      */
     const handleSelectBar = (firstBarIndex) => {
-        let newBars
-
-        if (currentState[1][firstBarIndex].selected) {
-            newBars = currentState[1].map(bar => ({...bar, selected: false}))
-
-        } else {
-            let secondBarIndex = -1
-
-            for (let i = 0; i < currentState[1].length - 1; i++) {
-                if (currentState[1][i].selected) {
-                    secondBarIndex = i
-                    break
-                }
-            }
-
-            if (secondBarIndex !== -1) {
-                newBars = currentState[1].map((bar, i) => {
-                    switch (i) {
-                        case firstBarIndex:
-                            return {...currentState[1][secondBarIndex], selected: false}
-                        
-                        case secondBarIndex:
-                            return {...currentState[1][firstBarIndex], selected: false}
-
-                        default:
-                            return bar
-                    }
-                })
-            } else {
-                newBars = currentState[1].map((bar, i) => i === firstBarIndex ? {...bar, selected: true} : bar)
-            }
-        }
-        setCurrentState(props.sortingAlgorithm.defaultState(newBars))
+        setCurrentState(props.sortingAlgorithm.defaultState(selectBar(firstBarIndex, currentState[1])))
     }
 
     // == Control Panel ============================================================================================= //
