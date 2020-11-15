@@ -1,4 +1,4 @@
-import switchBars from '../services/switchBars'
+import arrayManager from '../services/arrayManager'
 
 /**
  * Default status for the array
@@ -91,7 +91,7 @@ const sort = (state) => {
             step: 0,
             switched: true,
         },
-        switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
+        arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
     ]
 
 

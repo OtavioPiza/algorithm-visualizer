@@ -93,4 +93,53 @@ const getRandomList = (size) => {
     return (barList)
 }
 
-export default { getAlmostSortedList, getDefaultList, getRandomList }
+const selectBar = (firstBarIndex, bars) => {
+
+    if (bars[firstBarIndex].selected) {
+        return  bars.map(bar => ({...bar, selected: false}))
+
+    } else {
+        let secondBarIndex = -1
+
+        for (let i = 0; i < bars.length - 1; i++) {
+            if (bars[i].selected) {
+                secondBarIndex = i
+                break
+            }
+        }
+
+        if (secondBarIndex !== -1) {
+            return bars.map((bar, i) => {
+                switch (i) {
+                    case firstBarIndex:
+                        return {...bars[secondBarIndex], selected: false}
+                    
+                    case secondBarIndex:
+                        return {...bars[firstBarIndex], selected: false}
+
+                    default:
+                        return bar
+                }
+            })
+        } else {
+            return bars.map((bar, i) => i === firstBarIndex ? {...bar, selected: true} : bar)
+        }
+    }
+}
+
+/**
+ * Switches two bars reseting their selected and analyzed properties to false
+ * 
+ * @param {Arrays of bars} bars 
+ * @param {Index of the first bar} firstBar 
+ * @param {Index of the second bar} secondBar 
+ */
+const switchBars = (bars, firstBar, secondBar) => (
+    bars.map((bar, index) => (
+        index === firstBar ? { ...bar, size: bars[secondBar].size, selected: false} :
+        index === secondBar ? { ...bar, size: bars[firstBar].size, selected: false} :
+        bar
+    ))
+)
+
+export default { getAlmostSortedList, getDefaultList, getRandomList, selectBar, switchBars }

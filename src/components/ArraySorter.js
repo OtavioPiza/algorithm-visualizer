@@ -3,7 +3,6 @@ import Bar from './Bar'
 import Button from './Button'
 import BottomBar from './BottomBar'
 import arrayManager from '../services/arrayManager'
-import selectBar from '../services/selectBar'
 
 /**
  * 
@@ -32,7 +31,7 @@ const ArraySorter = (props) => {
      * } id 
      */
     const handleSelectBar = (firstBarIndex) => {
-        setCurrentState(props.sortingAlgorithm.defaultState(selectBar(firstBarIndex, currentState[1])))
+        setCurrentState(props.sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])))
     }
 
     // == Control Panel ============================================================================================= //
