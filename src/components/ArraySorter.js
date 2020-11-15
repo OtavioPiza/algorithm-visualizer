@@ -11,14 +11,14 @@ import arrayManager from '../services/arrayManager'
  * sortingAlgorithm: sortingAlgorithm
  * } param0 
  */
-const ArraySorter = (props) => {
+const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
     /* Holds the size of the array */
     const [arraySize, setArraySize] = useState(10)
 
     /* Holds wheter the algorithm should be running automatically */
     const [running, setRunning] = useState(false)
 
-    const [defaultState, setDefaultState] = useState(props.sortingAlgorithm.defaultState(props.barList))
+    const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList))
     const [currentState, setCurrentState] = useState(defaultState)
 
     // == User Interactivity ======================================================================================== //
@@ -31,7 +31,7 @@ const ArraySorter = (props) => {
      * } id 
      */
     const handleSelectBar = (firstBarIndex) => {
-        setCurrentState(props.sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])))
+        setCurrentState(sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])))
     }
 
     // == Control Panel ============================================================================================= //
@@ -42,8 +42,8 @@ const ArraySorter = (props) => {
      * @param {size: {}, analyzed: {}, sorted: {}} newBarArray 
      */
     const handleNewBarArray = (newBarArray) => {
-        setCurrentState(props.sortingAlgorithm.defaultState(newBarArray))
-        setDefaultState(props.sortingAlgorithm.defaultState(newBarArray))
+        setCurrentState(sortingAlgorithm.defaultState(newBarArray))
+        setDefaultState(sortingAlgorithm.defaultState(newBarArray))
     }
 
     /**
@@ -75,7 +75,7 @@ const ArraySorter = (props) => {
      * - sets the status to that returned by the sortingAlgorithm
      */
     const handleStep = () => {
-        setCurrentState(props.sortingAlgorithm.sort(currentState))
+        setCurrentState(sortingAlgorithm.sort(currentState))
     }
 
     // == Auto-run feature ========================================================================================== //
@@ -84,7 +84,7 @@ const ArraySorter = (props) => {
         // try to combine both the status and curent bars states
         setTimeout(
             () => {
-                setCurrentState(props.sortingAlgorithm.sort(currentState))
+                setCurrentState(sortingAlgorithm.sort(currentState))
             },
             250
         )
