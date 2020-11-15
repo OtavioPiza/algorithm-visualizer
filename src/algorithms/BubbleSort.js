@@ -44,9 +44,9 @@ const sort = (state) => {
     /**
      * Determines if the array is sorted
      */
-    const getIsSorted = () => (
+    const getIsSorted = (greater) => (
         (status.upperbound === 0) ||
-        (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched && !status.greater)
+        (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched && !greater)
     )
 
     /**
@@ -66,7 +66,8 @@ const sort = (state) => {
                     { ...bar, sorted: false, analyzed: false }
         ))
 
-        return getIsSorted() ? defaultState(newBars, true) : [
+
+        return getIsSorted(greater) ? defaultState(newBars, true) : [
             {
                 ...status,
                 algorithmStatus:
