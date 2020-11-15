@@ -1,4 +1,13 @@
 /**
+ * Adds or removes a bar from the array
+ * 
+ * @param {boolean} add indicated wheter a bar is to be added or removed
+ */
+const addBar = (add = true, bars) => ( add ? bars.concat(getRandomList(1)) :
+        bars.slice(0, bars.length - 1).map(bar => (bar))
+)
+
+/**
  * Returns a list with almost sorted list
  * 
  * @param {
@@ -8,7 +17,7 @@
 const getAlmostSortedList = (size) => {
     let barList = []
 
-    for (let i =  0; i < size; i++) {
+    for (let i = 0; i < size; i++) {
         barList.push({
             size: 100 * (i + 1) / (size + 1),
             selected: false,
@@ -19,10 +28,10 @@ const getAlmostSortedList = (size) => {
     for (let i = Math.ceil(size / 10); i < size; i++) {
         const bar1 = barList[Math.floor(Math.random() * size)]
         const bar2 = barList[Math.floor(Math.random() * size)]
-        return barList.map(bar => 
+        return barList.map(bar =>
             bar === bar1 ? bar2 :
-            bar === bar2 ? bar1 :
-            bar
+                bar === bar2 ? bar1 :
+                    bar
         )
     }
 }
@@ -79,7 +88,7 @@ const getRandomList = (size) => {
 
     for (let i = 0; i < size; i++) {
         let size = Math.ceil(Math.random() * 100)
-        
+
         if (size < 10) {
             size += 10
         }
@@ -93,10 +102,16 @@ const getRandomList = (size) => {
     return (barList)
 }
 
+/**
+ * Selects a bar from the array and, if two bars are selected, switches them 
+ * 
+ * @param {int} firstBarIndex index of the bar to be selected
+ * @param {array} bars array containig all the bars
+ */
 const selectBar = (firstBarIndex, bars) => {
 
     if (bars[firstBarIndex].selected) {
-        return  bars.map(bar => ({...bar, selected: false}))
+        return bars.map(bar => ({ ...bar, selected: false }))
 
     } else {
         let secondBarIndex = -1
@@ -112,17 +127,17 @@ const selectBar = (firstBarIndex, bars) => {
             return bars.map((bar, i) => {
                 switch (i) {
                     case firstBarIndex:
-                        return {...bars[secondBarIndex], selected: false}
-                    
+                        return { ...bars[secondBarIndex], selected: false }
+
                     case secondBarIndex:
-                        return {...bars[firstBarIndex], selected: false}
+                        return { ...bars[firstBarIndex], selected: false }
 
                     default:
                         return bar
                 }
             })
         } else {
-            return bars.map((bar, i) => i === firstBarIndex ? {...bar, selected: true} : bar)
+            return bars.map((bar, i) => i === firstBarIndex ? { ...bar, selected: true } : bar)
         }
     }
 }
@@ -136,10 +151,10 @@ const selectBar = (firstBarIndex, bars) => {
  */
 const switchBars = (bars, firstBar, secondBar) => (
     bars.map((bar, index) => (
-        index === firstBar ? { ...bar, size: bars[secondBar].size, selected: false} :
-        index === secondBar ? { ...bar, size: bars[firstBar].size, selected: false} :
-        bar
+        index === firstBar ? { ...bar, size: bars[secondBar].size, selected: false } :
+            index === secondBar ? { ...bar, size: bars[firstBar].size, selected: false } :
+                bar
     ))
 )
 
-export default { getAlmostSortedList, getDefaultList, getRandomList, selectBar, switchBars }
+export default { addBar, getAlmostSortedList, getDefaultList, getRandomList, selectBar, switchBars }

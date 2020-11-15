@@ -62,21 +62,18 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
     const handleAdd = (add = true) => {
         if (!add && arraySize <= 2) return
         setArraySize(add ? arraySize + 1 : arraySize - 1)
-        handleNewBarArray((add ? currentState[1].concat(arrayManager.getRandomList(1)) :
-            currentState[1].slice(0, arraySize - 1)).map(bar => ({
-                ...bar,
-                analyzed: false,
-                sorted: false,
-            })))
+        handleNewBarArray(arrayManager.addBar(add, currentState[1]))
     }
 
     /**
      * Handles one step of the sorting algorithm
-     * - sets currentArray to those returned by the sortingAlgorithm
-     * - sets the status to that returned by the sortingAlgorithm
      */
     const handleStep = () => {
         setCurrentState(sortingAlgorithm.sort(currentState))
+    }
+
+    const handleSetList = () => {
+        setDefaultState(sortingAlgorithm.defaultState(currentState[1]))
     }
 
     // == Auto-run feature ========================================================================================== //
@@ -90,7 +87,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                 () => {
                     setCurrentState(sortingAlgorithm.sort(currentState))
                 },
-                50
+                10
             )
         } else {
             setRunning(false)
@@ -127,14 +124,14 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                     eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
                 <Button text="Get Almost Sorted List"
                     eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
-
+                <Button text="Set list" eventHandler={() => handleSetList()} />
 
             </div>
 
             <BottomBar />
 
             <div>
-                <h1>{currentState[0].algorithmStatus}</h1>
+                <h1>{running ? "Running!" : currentState[0].algorithmStatus}</h1>
             </div>
 
             <BottomBar />
