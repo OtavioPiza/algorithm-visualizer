@@ -31,9 +31,10 @@ const ArraySorter = (props) => {
     /* Holds wheter the user wants the simplified version of the array */
     const [simplified, setSimplified] = useState(false)
 
-    /**
-     * User interactivity
-     */
+    /* Holds wheter the algorithm should be running automatically */
+    const [running, setRunning] = useState(false)
+
+    // == User Interactivity ======================================================================================== //
 
     /**
      * Enables one to interact with the array by switching the position of two currentArray, 
@@ -92,9 +93,7 @@ const ArraySorter = (props) => {
         }
     }
 
-    /**
-     * Control Panel
-     */
+    // == Control Panel ============================================================================================= //
 
     /**
      * Sets a new default bar
@@ -146,19 +145,24 @@ const ArraySorter = (props) => {
     }
 
     /**
-     * WIP
-     */
-    const handleRun = () => {
-        do {
-            setTimeout(handleStep(), 10000)
-        } while (!status.sorted)
-    }
-
-    /**
-     * 
+     * Changes the array stlying to a simplified or normla version
      */
     const handleSimplified = () => {
         setSimplified(!simplified)
+    }
+
+    // == Auto-run feature ========================================================================================== //
+
+    console.log(running);
+
+    if (running) {
+        const id = setInterval(() => {
+            if (status.sorted) clearInterval(id)
+            handleStep()
+            console.log(status);
+            
+        }, 1000)
+        setRunning(false)
     }
 
     return (
@@ -174,12 +178,13 @@ const ArraySorter = (props) => {
             <BottomBar />
 
             <div>
-                
+
                 <Button text='Step' eventHandler={() => handleStep()} />
-                <Button text='Run' eventHandler={() => console.log("This feature was not yet implemented")} />
+                <Button text='Run' eventHandler={() => setRunning(!running)} />
                 <Button text='Reset' eventHandler={() => handleReset()} />
-                <Button text={simplified ? "Normal" : "Simplified"} eventHandler={() => handleSimplified()} />
-                
+                <Button text="Add bar" eventHandler={() => handleAdd(true)} />
+                <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
+
             </div>
 
             <BottomBar />
@@ -189,9 +194,8 @@ const ArraySorter = (props) => {
                     eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
                 <Button text="Get Almost Sorted List"
                     eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
-                <Button text="Add bar" eventHandler={() => handleAdd(true)} />
-                <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
                 
+
             </div>
 
             <BottomBar />
@@ -206,7 +210,13 @@ const ArraySorter = (props) => {
                 <p>
                     Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
                     Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, 
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
                 </p>
             </div>
         </div>
