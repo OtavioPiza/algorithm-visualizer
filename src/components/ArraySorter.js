@@ -30,53 +30,40 @@ const ArraySorter = (props) => {
      * id : id of the bar to be selected
      * } id 
      */
-    const handleSelectBar = (id) => {
+    const handleSelectBar = (firstBarIndex) => {
         let newBars
 
-        if (!currentState[1][id].selected) {
-            let i
+        if (currentState[1][firstBarIndex].selected) {
+            newBars = currentState[1].map(bar => ({...bar, selected: false}))
 
-            for (i = 0; i < currentState[1].length - 1; i++) {
-                if (currentState[1][i].selected) break
+        } else {
+            let secondBarIndex = -1
+
+            for (let i = 0; i < currentState[1].length - 1; i++) {
+                if (currentState[1][i].selected) {
+                    secondBarIndex = i
+                    break
+                }
             }
 
-            if (currentState[1][i].selected) {
-                console.log(id, i);
-                const firstBar = {
-                    ...currentState[1][id],
-                    selected: false,
-                    size: currentState[1][i].size
-                }
-
-                const secondBar = {
-                    ...currentState[1][i],
-                    selected: false,
-                    size: currentState[1][id].size
-                }
-
-                newBars = currentState[1].map((bar, index) => {
-                    switch (index) {
-                        case id:
-                            return firstBar
-
-                        case i:
-                            return secondBar
+            if (secondBarIndex !== -1) {
+                newBars = currentState[1].map((bar, i) => {
+                    switch (i) {
+                        case firstBarIndex:
+                            return {...currentState[1][secondBarIndex], selected: false}
                         
+                        case secondBarIndex:
+                            return {...currentState[1][firstBarIndex], selected: false}
+
                         default:
                             return bar
                     }
                 })
+            } else {
+                newBars = currentState[1].map((bar, i) => i === firstBarIndex ? {...bar, selected: true} : bar)
             }
-        } else {
-            newBars = currentState[1].map((bar, index) => (index === id ? {
-                ...currentState[1][id],
-                selected: !currentState[1][id].selected
-            } : bar))
         }
-
         setCurrentState(props.sortingAlgorithm.defaultState(newBars))
-
-
     }
 
     // == Control Panel ============================================================================================= //
