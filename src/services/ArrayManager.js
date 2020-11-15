@@ -101,7 +101,7 @@ const selectBar = (firstBarIndex, bars) => {
     } else {
         let secondBarIndex = -1
 
-        for (let i = 0; i < bars.length - 1; i++) {
+        for (let i = 0; i < bars.length; i++) {
             if (bars[i].selected) {
                 secondBarIndex = i
                 break
