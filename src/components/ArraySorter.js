@@ -167,18 +167,22 @@ const ArraySorter = (props) => {
                 {currentArray.map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
                         selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
-                        simplified={simplified} />
+                        simplified={arraySize > 15 || simplified} />
                 ))}
             </div>
 
+            <BottomBar />
+
             <div>
-                <BottomBar />
+                
                 <Button text='Step' eventHandler={() => handleStep()} />
                 <Button text='Run' eventHandler={() => console.log("This feature was not yet implemented")} />
                 <Button text='Reset' eventHandler={() => handleReset()} />
                 <Button text={simplified ? "Normal" : "Simplified"} eventHandler={() => handleSimplified()} />
-                <BottomBar />
+                
             </div>
+
+            <BottomBar />
 
             <div>
                 <Button text="Get Random List"
@@ -187,11 +191,23 @@ const ArraySorter = (props) => {
                     eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
                 <Button text="Add bar" eventHandler={() => handleAdd(true)} />
                 <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
-                <BottomBar />
+                
             </div>
+
+            <BottomBar />
 
             <div>
                 <h1>{status.algorithmStatus}</h1>
+            </div>
+
+            <BottomBar />
+
+            <div>
+                <p>
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, 
+                </p>
             </div>
         </div>
     )

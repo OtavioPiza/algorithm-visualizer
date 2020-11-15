@@ -39,14 +39,13 @@ const sort = (status, bars) => {
             status.analyzedBarsIndex.map(bar => bar + 1)
     )
 
-    const getIsSorted = () => {
-        console.log(status.analyzedBarsIndex[1], status.upperbound, !status.switched);
-
-        return (
-            (status.upperbound === 0) ||
-            (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched)
-        )
-    }
+    /**
+     * Determines if the array is sorted
+     */
+    const getIsSorted = () => (
+        (status.upperbound === 0) ||
+        (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched)
+    )
 
     /**
      * Compares two bars
