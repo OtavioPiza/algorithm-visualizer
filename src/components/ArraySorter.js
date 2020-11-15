@@ -24,37 +24,59 @@ const ArraySorter = (props) => {
     // == User Interactivity ======================================================================================== //
 
     /**
-     * Selects a bar from the array ana
+     * Selects a bar from the array and, if two bars are selected, switches them
      * 
      * @param {
      * id : id of the bar to be selected
      * } id 
      */
     const handleSelectBar = (id) => {
-        const bar = currentState[1][id]
-        const changedBar = { ...bar, selected: !bar.selected }
         let newBars
-        
 
         if (!currentState[1][id].selected) {
             let i
 
-            for(i = 0; i < currentState[1].length; i++) {
+            for (i = 0; i < currentState[1].length - 1; i++) {
                 if (currentState[1][i].selected) break
             }
 
             if (currentState[1][i].selected) {
-               
-            } else {
+                console.log(id, i);
+                const firstBar = {
+                    ...currentState[1][id],
+                    selected: false,
+                    size: currentState[1][i].size
+                }
 
+                const secondBar = {
+                    ...currentState[1][i],
+                    selected: false,
+                    size: currentState[1][id].size
+                }
+
+                newBars = currentState[1].map((bar, index) => {
+                    switch (index) {
+                        case id:
+                            return firstBar
+
+                        case i:
+                            return secondBar
+                        
+                        default:
+                            return bar
+                    }
+                })
             }
+        } else {
+            newBars = currentState[1].map((bar, index) => (index === id ? {
+                ...currentState[1][id],
+                selected: !currentState[1][id].selected
+            } : bar))
         }
 
-        setCurrentState(props.sortingAlgorithm.defaultState(currentState[1].map((bar, index) => (
-            index === id ? changedBar : bar
-        ))))
+        setCurrentState(props.sortingAlgorithm.defaultState(newBars))
 
-        
+
     }
 
     // == Control Panel ============================================================================================= //
