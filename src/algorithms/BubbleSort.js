@@ -17,7 +17,7 @@ const defaultState = (barArray, isSorted = false) => [
         switched: false,
         step: 0,
     },
-    barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted }))
+    barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
 ]
 
 

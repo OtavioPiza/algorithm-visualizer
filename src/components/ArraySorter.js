@@ -12,24 +12,8 @@ import arrayManager from '../services/arrayManager'
  * } param0 
  */
 const ArraySorter = (props) => {
-
-    /* Holds a default array in case the user wants to reset the algorithm */
-    const [defaultArray, setDefaultArray] = useState(props.barList)
-
-    /* Holds the array that is being manipulated by the sorting algorithm */
-    const [currentArray, setCurrentArray] = useState(defaultArray)
-
     /* Holds the size of the array */
     const [arraySize, setArraySize] = useState(10)
-
-    /* Holds which bars the user has selecte */
-    const [selectedBarList, setSelectedBarList] = useState([])
-
-    /* Holds the status of the algorithm */
-    const [status, setStatus] = useState(props.sortingAlgorithm.defaultState(defaultArray)[0])
-
-    /* Holds wheter the user wants the simplified version of the array */
-    const [simplified, setSimplified] = useState(false)
 
     /* Holds wheter the algorithm should be running automatically */
     const [running, setRunning] = useState(false)
@@ -40,61 +24,37 @@ const ArraySorter = (props) => {
     // == User Interactivity ======================================================================================== //
 
     /**
-     * Enables one to interact with the array by switching the position of two currentArray, 
-     * and ensures, by returing the sorting algorithm to its default state, its functionality
-     */
-    if (selectedBarList.length === 2) {
-        const newFirstBar = {
-            ...currentArray[selectedBarList[0]],
-            size: currentArray[selectedBarList[1]].size,
-            selected: false,
-            analyzed: false,
-            sorted: false,
-        }
-        const newSecondBar = {
-            ...currentArray[selectedBarList[1]],
-            size: currentArray[selectedBarList[0]].size,
-            selected: false,
-            analyzed: false,
-            sorted: false,
-        }
-
-        setCurrentState(currentState[0].map((bar, index) => {
-            switch (index) {
-                case selectedBarList[0]:
-                    return newFirstBar
-
-                case selectedBarList[1]:
-                    return newSecondBar
-
-                default:
-                    return {...bar, selected: false}
-            }
-        }))
-        setSelectedBarList([])
-    }
-
-    /**
-     * Selects a bar from the array
+     * Selects a bar from the array ana
      * 
      * @param {
      * id : id of the bar to be selected
      * } id 
      */
     const handleSelectBar = (id) => {
-        const bar = currentArray[id]
+        const bar = currentState[1][id]
         const changedBar = { ...bar, selected: !bar.selected }
+        let newBars
+        
 
-        setCurrentState(props.sortingAlgorithm.defaultState(currentState.map((bar, index) => (
-            index === id ? changedBar : bar
-            ))))
+        if (!currentState[1][id].selected) {
+            let i
 
-        if (!bar.selected) {
-            setSelectedBarList(selectedBarList.concat(id))
+            for(i = 0; i < currentState[1].length; i++) {
+                if (currentState[1][i].selected) break
+            }
 
-        } else {
-            setSelectedBarList(selectedBarList.filter(selected => selected !== id))
+            if (currentState[1][i].selected) {
+               
+            } else {
+
+            }
         }
+
+        setCurrentState(props.sortingAlgorithm.defaultState(currentState[1].map((bar, index) => (
+            index === id ? changedBar : bar
+        ))))
+
+        
     }
 
     // == Control Panel ============================================================================================= //
@@ -107,8 +67,6 @@ const ArraySorter = (props) => {
     const handleNewBarArray = (newBarArray) => {
         setDefaultState(props.sortingAlgorithm.defaultState(newBarArray))
         setCurrentState(defaultState)
-
-        setSelectedBarList([])
     }
 
     /**
@@ -116,7 +74,6 @@ const ArraySorter = (props) => {
      */
     const handleReset = () => {
         setCurrentState(defaultState)
-        setSelectedBarList([])
     }
 
     /**
@@ -127,13 +84,12 @@ const ArraySorter = (props) => {
     const handleAdd = (add = true) => {
         if (!add && arraySize <= 2) return
         setArraySize(add ? arraySize + 1 : arraySize - 1)
-        handleNewBarArray((add ? currentArray.concat(arrayManager.getRandomList(1)) :
-            currentArray.slice(0, arraySize - 1)).map(bar => ({
+        handleNewBarArray((add ? currentState[1].concat(arrayManager.getRandomList(1)) :
+            currentState[1].slice(0, arraySize - 1)).map(bar => ({
                 ...bar,
                 analyzed: false,
                 sorted: false,
             })))
-
     }
 
     /**
@@ -145,16 +101,9 @@ const ArraySorter = (props) => {
         setCurrentState(props.sortingAlgorithm.sort(currentState))
     }
 
-    /**
-     * Changes the array stlying to a simplified or normla version
-     */
-    const handleSimplified = () => {
-        setSimplified(!simplified)
-    }
-
     // == Auto-run feature ========================================================================================== //
 
-    if (running && !status.sorted) {
+    if (running && !currentState[0].sorted) {
         // try to combine both the status and curent bars states
         setTimeout(
             () => {
@@ -171,7 +120,7 @@ const ArraySorter = (props) => {
                 {currentState[1].map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
                         selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
-                        simplified={arraySize > 15 || simplified} />
+                        simplified={arraySize > 15} />
                 ))}
             </div>
 
