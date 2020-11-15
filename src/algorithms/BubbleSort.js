@@ -46,7 +46,7 @@ const sort = (state) => {
      */
     const getIsSorted = () => (
         (status.upperbound === 0) ||
-        (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched)
+        (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched && !status.greater)
     )
 
     /**
@@ -73,6 +73,7 @@ const sort = (state) => {
                     greater ? "Because the first bar is greater than the second they are switched" :
                         "Because the first bar is not greater than the second they are left unchanged",
                 analyzedBarsIndex: analyzedBarsIndex,
+                greater: greater,
                 step: greater ? 1 : 0,
                 switched: analyzedBarsIndex[0] === 0 ? false : status.switched,
                 upperbound: analyzedBarsIndex[1] === status.upperbound ? status.upperbound - 1 : status.upperbound
