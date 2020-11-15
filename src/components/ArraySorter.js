@@ -34,6 +34,9 @@ const ArraySorter = (props) => {
     /* Holds wheter the algorithm should be running automatically */
     const [running, setRunning] = useState(false)
 
+    const [defaultState, setDefaultState] = useState(props.sortingAlgorithm.defaultState(props.barList))
+    const [currentState, setCurrentState] = useState(defaultState)
+
     // == User Interactivity ======================================================================================== //
 
     /**
@@ -56,8 +59,7 @@ const ArraySorter = (props) => {
             sorted: false,
         }
 
-        setStatus(props.sortingAlgorithm.defaultState(currentArray)[0])
-        setCurrentArray(currentArray.map((bar, index) => {
+        setCurrentState(currentState[0].map((bar, index) => {
             switch (index) {
                 case selectedBarList[0]:
                     return newFirstBar
@@ -66,7 +68,7 @@ const ArraySorter = (props) => {
                     return newSecondBar
 
                 default:
-                    return { ...bar, analyzed: false, sorted: false }
+                    return {...bar, selected: false}
             }
         }))
         setSelectedBarList([])
@@ -83,7 +85,9 @@ const ArraySorter = (props) => {
         const bar = currentArray[id]
         const changedBar = { ...bar, selected: !bar.selected }
 
-        setCurrentArray(currentArray.map((bar, index) => index === id ? changedBar : bar))
+        setCurrentState(props.sortingAlgorithm.defaultState(currentState.map((bar, index) => (
+            index === id ? changedBar : bar
+            ))))
 
         if (!bar.selected) {
             setSelectedBarList(selectedBarList.concat(id))
@@ -101,9 +105,9 @@ const ArraySorter = (props) => {
      * @param {size: {}, analyzed: {}, sorted: {}} newBarArray 
      */
     const handleNewBarArray = (newBarArray) => {
-        setDefaultArray(newBarArray)
-        setStatus(props.sortingAlgorithm.defaultState(newBarArray)[0])
-        setCurrentArray(newBarArray)
+        setDefaultState(props.sortingAlgorithm.defaultState(newBarArray))
+        setCurrentState(defaultState)
+
         setSelectedBarList([])
     }
 
@@ -111,8 +115,7 @@ const ArraySorter = (props) => {
      * Resets the array to its initial state
      */
     const handleReset = () => {
-        setStatus(props.sortingAlgorithm.defaultState(defaultArray)[0])
-        setCurrentArray(defaultArray/*.map(bar => ({...bar, sorted: false}))*/)
+        setCurrentState(defaultState)
         setSelectedBarList([])
     }
 
@@ -139,9 +142,7 @@ const ArraySorter = (props) => {
      * - sets the status to that returned by the sortingAlgorithm
      */
     const handleStep = () => {
-        const result = props.sortingAlgorithm.sort(status, currentArray)
-        setStatus(result[0])
-        setCurrentArray(result[1])
+        setCurrentState(props.sortingAlgorithm.sort(currentState))
     }
 
     /**
@@ -153,22 +154,21 @@ const ArraySorter = (props) => {
 
     // == Auto-run feature ========================================================================================== //
 
-    console.log(running);
-
-    if (running) {
-        const id = setInterval(() => {
-            if (status.sorted) clearInterval(id)
-            handleStep()
-            console.log(status);
-            
-        }, 1000)
-        setRunning(false)
+    if (running && !status.sorted) {
+        // try to combine both the status and curent bars states
+        setTimeout(
+            () => {
+                setCurrentState(props.sortingAlgorithm.sort(currentState))
+            },
+            250
+        )
     }
+
 
     return (
         <div className='ArraySorter'>
             <div className='Array'>
-                {currentArray.map((bar, index) => (
+                {currentState[1].map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
                         selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
                         simplified={arraySize > 15 || simplified} />
@@ -194,14 +194,14 @@ const ArraySorter = (props) => {
                     eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
                 <Button text="Get Almost Sorted List"
                     eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
-                
+
 
             </div>
 
             <BottomBar />
 
             <div>
-                <h1>{status.algorithmStatus}</h1>
+                <h1>{currentState[0].algorithmStatus}</h1>
             </div>
 
             <BottomBar />

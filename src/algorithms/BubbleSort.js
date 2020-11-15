@@ -29,7 +29,9 @@ const defaultState = (barArray, isSorted = false) => [
  * @param {Status of the algorithm} status 
  * @param {Array of Bars} bars 
  */
-const sort = (status, bars) => {
+const sort = (state) => {
+    const status = state[0]
+    const bars = state[1]
 
     /**
      * Returns the next two bars that will be analyzed by te algorithm
