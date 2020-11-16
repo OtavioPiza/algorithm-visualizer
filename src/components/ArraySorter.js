@@ -51,6 +51,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
      * Resets the array to its initial state
      */
     const handleReset = () => {
+        setRunning(false)
         setCurrentState(defaultState)
     }
 
