@@ -13,6 +13,7 @@ const defaultState = (barArray, isSorted = false) => [
         algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
         analyzedBarsIndex: [-1, 0],
         upperbound: barArray.length - 1,
+        lowerbound: 0,
         sorted: isSorted,
         switched: false,
         step: 0,
