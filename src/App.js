@@ -1,4 +1,5 @@
 import React from 'react'
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom'
 import './styles/App.css';
 import Button from './components/Button';
 import BottomBar from './components/BottomBar';
@@ -6,6 +7,7 @@ import Array from './components/Array'
 import ArraySorter from './components/ArraySorter'
 import BubbleSort from './algorithms/bubbleSort'
 import arrayManager from './services/arrayManager';
+
 
 function App() {
 
