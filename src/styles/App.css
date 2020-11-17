@@ -26,7 +26,7 @@
     justify-content: center; 
 }
 
-.container .button-container .Button {
+.container .button-container .RedirectButton {
     height: min(100px, 15vw);
     width: min(300px, 45vw);
     margin: min(1vw, 20px);

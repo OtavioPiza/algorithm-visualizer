@@ -1,6 +1,6 @@
 import React from 'react'
 import './styles/App.css';
-import Button from './components/Button';
+import RedirectButton from './components/RedirectButton';
 import BottomBar from './components/BottomBar';
 import Array from './components/Array'
 import arrayManager from './services/arrayManager';
@@ -20,8 +20,8 @@ const Home = () => {
       </div>
       <BottomBar/>
       <div className='button-container'>
-        <Button text='About'/>
-        <Button text='Explore' id='thisisfine' eventHandler={() => console.log('this is fine')}/>
+        <RedirectButton text='About'/>
+        <RedirectButton text='Explore' id='thisisfine' href={"/bubblesort"}/>
       </div>
     </div>
   );
