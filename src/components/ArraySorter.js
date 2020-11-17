@@ -102,7 +102,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                 {currentState[1].map((bar, index) => (
                     <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
                         selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
-                        simplified={arraySize > 15} />
+                        simplified={arraySize > 15} 
+                        locked={index > currentState[0].upperbound || index < currentState[1].upperbound} />
                 ))}
             </div>
 
