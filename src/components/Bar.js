@@ -4,6 +4,7 @@ import bar from '../styles/components/icons/bar-gray.svg'
 import analyzedBar from '../styles/components/icons/bar-analyzed-orange.svg'
 import selectedBar from '../styles/components/icons/bar-selected-blue.svg'
 import sortedBar from '../styles/components/icons/bar-sorted-green.svg'
+import lockedBar from '../styles/components/icons/bar-light.svg'
 
 /**
  * React component representing a bar from an arrays
@@ -18,13 +19,14 @@ import sortedBar from '../styles/components/icons/bar-sorted-green.svg'
  * } param0 
  * @returns a button that represents a bar in an array
  */
-const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler }) => {
+const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false }) => {
 
     // Selects a background for the bar depending on its state
     const background = 
         selected ? `url(${selectedBar})` :
         analyzed ? `url(${analyzedBar})` :
         sorted ? `url(${sortedBar})` :
+        locked ? `url(${lockedBar})` :
         `url(${bar})`
     
     // Sets the on-screen bar size based on its properties
