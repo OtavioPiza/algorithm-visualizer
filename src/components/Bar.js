@@ -32,7 +32,7 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
     const style = {
         margin: `${simplified ? "0" : "10px"}`,
         border: "0",
-        width: "80px",
+        width: "10%",
         height: size + "%",
 
         backgroundImage: background,
