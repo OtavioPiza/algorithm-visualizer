@@ -1,20 +1,16 @@
 .Button {
     border: 0;
-
-    background: url('icons/button-gray-3x1.svg') center;
-    background-size: 100% 100%;
-    background-color: transparent;
-    background-repeat: no-repeat;
+    padding: 10px;
+    margin: 5px;
 
     font-size: min(3rem, 5vw);
-    color: var(--background-white);
     transition: 150ms;
 }
 
 .Button:hover {
     cursor: pointer;
-    background: url('icons/button-pressed-orange-3x1.svg') top;
-    background-size: 100% 100%;
+    background: url('icons/button-pressed-orange-3x1.svg') top !important;
+    background-size: 100% 100% !important;
 }
 
 .Button:hover span {
