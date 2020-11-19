@@ -3,6 +3,8 @@ import Bar from './Bar'
 import Button from './Button'
 import BottomBar from './BottomBar'
 import arrayManager from '../services/arrayManager'
+import '../styles/components/ArraySorter.css'
+import Header from './Header'
 
 /**
  * 
@@ -97,75 +99,80 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
 
     return (
-        <div className='ArraySorter'>
-            <div className='Array'>
-                {currentState[1].map((bar, index) => (
-                    <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
-                        selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
-                        simplified={arraySize > 15} 
-                        locked={index > currentState[0].upperbound || index < currentState[1].upperbound} />
-                ))}
-            </div>
+        <div className='container'>
+            <Header link="/" />
 
-            <BottomBar />
+            <div className='ArraySorter'>
 
-            <div>
+                <div className='Array'>
+                    {currentState[1].map((bar, index) => (
+                        <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
+                            selected={bar.selected} eventHandler={handleSelectBar} sorted={bar.sorted}
+                            simplified={arraySize > 15}
+                            locked={index > currentState[0].upperbound || index < currentState[1].upperbound} />
+                    ))}
+                </div>
 
-                <Button text='Step' eventHandler={() => handleStep()} />
-                <Button text={running ? 'Stop' : 'Run'} eventHandler={() => setRunning(!running)} red={running}/>
-                <Button text='Reset' eventHandler={() => handleReset()} />
-                <Button text="Add bar" eventHandler={() => handleAdd(true)} />
-                <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
+                <BottomBar />
 
-            </div>
+                <div>
 
-            <BottomBar />
+                    <Button text='Step' eventHandler={() => handleStep()} />
+                    <Button text={running ? 'Stop' : 'Run'} eventHandler={() => setRunning(!running)} red={running} />
+                    <Button text='Reset' eventHandler={() => handleReset()} />
+                    <Button text="Add bar" eventHandler={() => handleAdd(true)} />
+                    <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
 
-            <div>
-                <Button text="Get Random List"
-                    eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
-                <Button text="Get Almost Sorted List"
-                    eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
-                <Button text="Set list" eventHandler={() => handleSetList()} />
+                </div>
 
-            </div>
+                <BottomBar />
 
-            <BottomBar />
+                <div>
+                    <Button text="Get Random List"
+                        eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
+                    <Button text="Get Almost Sorted List"
+                        eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
+                    <Button text="Set list" eventHandler={() => handleSetList()} />
 
-            <div>
-                <h1>{running ? "Running!" : currentState[0].algorithmStatus}</h1>
-            </div>
+                </div>
 
-            <BottomBar />
+                <BottomBar />
 
-            <div>
-                <p>
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                    Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                <div>
+                    <h1>{running ? "Running!" : currentState[0].algorithmStatus}</h1>
+                </div>
+
+                <BottomBar />
+
+                <div>
+                    <p>
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
                 </p>
-            </div>
+                </div>
 
-            <BottomBar />
+                <BottomBar />
 
-            <div>
-                <p>
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                    Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                <div>
+                    <p>
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
+                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
                 </p>
+                </div>
             </div>
         </div>
     )
