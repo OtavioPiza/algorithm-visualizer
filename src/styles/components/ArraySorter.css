@@ -10,7 +10,7 @@
 .ArraySorter .PageHeader {
     grid-area: "header";
 
-    min-width: 100vw;
+    min-width: 99vw;
     background-color: var(--text-light-gray);
     color: var(--background-white);
 
