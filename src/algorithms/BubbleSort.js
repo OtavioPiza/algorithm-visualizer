@@ -21,6 +21,7 @@ const defaultState = (barArray, isSorted = false) => [
     barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
 ]
 
+const name = () => 'BubbleSort'
 
 /**
  * Responsible for the sorting process which is split between two functions:
@@ -101,5 +102,5 @@ const sort = (state) => {
     return status.step === 0 ? compareBars() : changeBars()
 }
 
-export default { sort, defaultState }
+export default { sort, defaultState, name }
 
