@@ -167,17 +167,11 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                 <BottomBar />
 
                 <div>
-                    <code>
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                        Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                </code>
+                    <pre>
+                        <code>
+                            {sortingAlgorithm.pythonImplementation()}
+                        </code>
+                    </pre>
                 </div>
             </div>
         </div>
