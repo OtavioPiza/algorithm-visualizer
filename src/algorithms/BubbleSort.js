@@ -26,6 +26,9 @@ const defaultState = (barArray, isSorted = false) => [
  */
 const name = () => 'Bubble Sort'
 
+/**
+ * Returns a python implementation of the algorithm
+ */
 const pythonImplementation = () => (`
 def bubble_sort(array):
     upperbound = len(array)
@@ -43,6 +46,10 @@ def bubble_sort(array):
         upperbound -= 1
 
     return array
+`)
+
+const about = () => (`
+About about about about about about about about about about about about about about about about about about about
 `)
 
 /**
@@ -124,5 +131,5 @@ const sort = (state) => {
     return status.step === 0 ? compareBars() : changeBars()
 }
 
-export default { sort, defaultState, name, pythonImplementation }
+export default { sort, defaultState, name, pythonImplementation, about }
 

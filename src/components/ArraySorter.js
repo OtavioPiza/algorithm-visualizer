@@ -20,7 +20,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
     /* Holds wheter the algorithm should be running automatically */
     const [running, setRunning] = useState(false)
 
+    /* Holds an initial state the user can reset to */
     const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList))
+
+    /* Holds the current state of the sorting algorithm */
     const [currentState, setCurrentState] = useState(defaultState)
 
     // == User Interactivity ======================================================================================== //
@@ -28,9 +31,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
     /**
      * Selects a bar from the array and, if two bars are selected, switches them
      * 
-     * @param {
-     * id : id of the bar to be selected
-     * } id 
+     * @param {Integer} id index of the bar that was selected
      */
     const handleSelectBar = (firstBarIndex) => {
         setRunning(false)
@@ -40,9 +41,9 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
     // == Control Panel ============================================================================================= //
 
     /**
-     * Sets a new default bar
+     * Sets a new default bar array to be used by the sorting algorithm
      * 
-     * @param {size: {}, analyzed: {}, sorted: {}} newBarArray 
+     * @param {{size: {}, analyzed: {}, sorted: {}}} newBarArray new array of bars that will be used
      */
     const handleNewBarArray = (newBarArray) => {
         setCurrentState(sortingAlgorithm.defaultState(newBarArray))
@@ -50,7 +51,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
     }
 
     /**
-     * Resets the array to its initial state
+     * Resets the array to the initial state
      */
     const handleReset = () => {
         setRunning(false)
@@ -60,7 +61,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
     /**
      * Adds or removes a bar from the array
      * 
-     * @param {boolean} add indicated wheter a bar is to be added or removed
+     * @param {Boolean} add indicated wheter a bar is to be added or removed
      */
     const handleAdd = (add = true) => {
         if (!add && arraySize <= 2) return
@@ -69,18 +70,27 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
     }
 
     /**
-     * Handles one step of the sorting algorithm
+     * Makes the sorting algorithm take one step
      */
     const handleStep = () => {
         setCurrentState(sortingAlgorithm.sort(currentState))
     }
 
+    /**
+     * Sets the current state of the sorting algorithm as the initial state
+     */
     const handleSetList = () => {
         setDefaultState(sortingAlgorithm.defaultState(currentState[1]))
     }
 
-    // == Auto-run feature ========================================================================================== //
+    /**
+     * Switches the auto-run feature
+     */
+    const handleRun = () => {
+        setRunning(!running)
+    }
 
+    // == Auto-run feature ========================================================================================== //
 
     if (running) {
 
@@ -97,6 +107,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
         }
     }
 
+    // == HTML ====================================================================================================== //
 
     return (
         <div className='ArraySorter'>
@@ -121,10 +132,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <BottomBar />
 
-                <div>
+                <div className="ControlPanel">
 
                     <Button text='Step' eventHandler={() => handleStep()} />
-                    <Button text={running ? 'Stop' : 'Run'} eventHandler={() => setRunning(!running)} red={running} />
+                    <Button text={running ? 'Stop' : 'Run'} eventHandler={() => handleRun()} red={running} />
                     <Button text='Reset' eventHandler={() => handleReset()} />
                     <Button text="Add bar" eventHandler={() => handleAdd(true)} />
                     <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
@@ -133,7 +144,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <BottomBar />
 
-                <div>
+                <div className="ArrayManager">
+
                     <Button text="Get Random List"
                         eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
                     <Button text="Get Almost Sorted List"
@@ -144,36 +156,34 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <BottomBar />
 
-                <div>
+                <div className="Status">
                     <h1>{running ? "Running!" : currentState[0].algorithmStatus}</h1>
                 </div>
 
                 <BottomBar />
 
-                <div>
+                <div className="About">
+                    
                     <p>
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                        Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
+                        {sortingAlgorithm.about()}
                     </p>
+
                 </div>
 
                 <BottomBar />
 
-                <div>
+                <div className="Implementation">
+                    
                     <pre>
                         <code>
                             {sortingAlgorithm.pythonImplementation()}
                         </code>
                     </pre>
+
                 </div>
+
             </div>
+
         </div>
     )
 }
