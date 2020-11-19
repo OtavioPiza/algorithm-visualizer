@@ -1,8 +1,25 @@
 .Header {
-    min-width: 100vw;
-    min-height: 6vh;
+    grid-area: "header";
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: "title back";
+    min-width: min(95vw, min(90vw, 1000px) + max(10vw, 20px));
+}
 
-    background-color: var(--text-light-gray);
+.Header a {
+    grid-area: "title";
+    text-align: left;
     text-decoration: none;
+    justify-self: right;
+    align-self: center;
     color: var(--background-white);
+}
+
+.Header h1 {
+    align-self: center;
+    justify-self: left;
+    grid-area: "back";
+    margin: 0;
+    font-size: 4vh;
 }
