@@ -106,7 +106,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                 <Header link="/" title={sortingAlgorithm.name()} />
 
             </header>
-            
+
 
             <div className='Sorter'>
 
@@ -167,7 +167,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                 <BottomBar />
 
                 <div>
-                    <p>
+                    <code>
                         Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
                         Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
                         Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
@@ -177,7 +177,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                         Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
                         Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
                         Implementation goes here, Implementation goes here, Implementation goes here, Implementation goes here,
-                </p>
+                </code>
                 </div>
             </div>
         </div>
