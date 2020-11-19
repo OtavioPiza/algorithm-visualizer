@@ -5,10 +5,10 @@ const Header = ({link, title}) => {
 
     return (
         <div className="Header">
-            <a href={link}> Go back </a>
             <h1>
                 {title}
             </h1>
+            <a href={link}> Go back </a>
         </div>
     )
 }
