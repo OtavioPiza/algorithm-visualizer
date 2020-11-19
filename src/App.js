@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter as HashRouter, Route } from 'react-router-dom'
+import { HashRouter as Router, Route } from 'react-router-dom'
 import BubbleSort from './BubbleSort'
 import Home from './Home'
 
@@ -7,7 +7,7 @@ import Home from './Home'
 function App() {
 
   return (
-    <HashRouter basename="/">
+    <Router basename="/">
 
 
       <Route exact path="/" component={Home} />
@@ -15,7 +15,7 @@ function App() {
 
 
 
-    </HashRouter>
+    </Router>
   );
 }
 
