@@ -24,7 +24,7 @@ body {
   margin: 0;
   border: 0;
   box-sizing: border-box;
-  overflow-y: overlay;
+  overflow-x: hidden;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
