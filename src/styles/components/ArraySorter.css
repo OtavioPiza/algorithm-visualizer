@@ -79,10 +79,16 @@
     margin: 0;
 }
 
-.ArraySorter .Sorter .About {
+.ArraySorter .Sorter .About, .Implementation {
     font-size: 1.6rem;
+    margin: 0;
 }
 
-.ArraySorter .Sorter .Implementation {
-    font-size: 1.6rem;
+.ArraySorter .Sorter .Implementation pre, .About p {
+    margin-top: 0;
+}
+
+.ArraySorter .Sorter .Implementation h3, .About h3  {
+    font-size: 1.8rem;
+    margin-bottom: 0;
 }

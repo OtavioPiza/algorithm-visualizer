@@ -29,8 +29,8 @@ const name = () => 'Bubble Sort'
 /**
  * Returns a python implementation of the algorithm
  */
-const pythonImplementation = () => (`
-def bubble_sort(array):
+const pythonImplementation = () => (
+`def bubble_sort(array):
     upperbound = len(array)
     switched = True
 
