@@ -1,5 +1,5 @@
 import React from 'react'
-import bubbleSort from './algorithms/bubbleSort'
+import bubbleSort from './algorithms/sorting/bubbleSort'
 import arrayManager from './services/arrayManager';
 import ArraySorter from './components/ArraySorter'
 

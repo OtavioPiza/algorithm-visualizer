@@ -1,4 +1,4 @@
-import arrayManager from '../services/arrayManager'
+import arrayManager from '../../services/arrayManager'
 
 /**
  * Default status for the array

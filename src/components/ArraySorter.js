@@ -7,11 +7,9 @@ import '../styles/components/ArraySorter.css'
 import Header from './Header'
 
 /**
+ * A plataform that implements a sorting algorithm
  * 
- * @param {
- * currentArray: list of bar objects
- * sortingAlgorithm: sortingAlgorithm
- * } param0 
+ * @param {sortingAlgorithm, Bar[]} 
  */
 const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
     /* Holds the size of the array */
@@ -92,6 +90,9 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
     // == Auto-run feature ========================================================================================== //
 
+    /**
+     * Auto-run
+     */
     if (running) {
 
         if (!currentState[0].sorted) {
