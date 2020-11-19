@@ -1,9 +1,9 @@
 import React from 'react'
-import './styles/App.css';
 import RedirectButton from './components/RedirectButton';
 import BottomBar from './components/BottomBar';
 import Array from './components/Array'
 import arrayManager from './services/arrayManager';
+import './styles/Home.css';
 
 
 const Home = () => {
