@@ -88,7 +88,11 @@
     margin-top: 0;
 }
 
+.ArraySorter .Sorter .About p {
+    text-align: justify;
+}
+
 .ArraySorter .Sorter .Implementation h3, .About h3  {
     font-size: 1.8rem;
-    margin-bottom: 0;
+    margin-bottom: 0.3rem;
 }

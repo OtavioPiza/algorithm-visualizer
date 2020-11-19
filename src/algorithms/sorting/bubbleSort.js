@@ -30,7 +30,7 @@ const name = () => 'Bubble Sort'
  * Returns a python implementation of the algorithm
  */
 const pythonImplementation = () => (
-`def bubble_sort(array):
+    `def bubble_sort(array):
     upperbound = len(array)
     switched = True
 
@@ -48,8 +48,10 @@ const pythonImplementation = () => (
     return array
 `)
 
-const about = () => (`
-About about about about about about about about about about about about about about about about about about about
+const about = () => (`Bubble sort is a sorting algorithm that repeatedly steps through the list, compares adjacent ` + 
+`elements and swaps them if they are in the wrong order. One of its key strenghts is the ability to detect that the ` + 
+`list is sorted efficiently without external help. Bubble sort should be avoided in the case of large collections. ` +
+`It will not be efficient in the case of a reverse-ordered collection.
 `)
 
 /**
