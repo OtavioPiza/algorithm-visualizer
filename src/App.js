@@ -7,16 +7,11 @@ import Home from './Home'
 function App() {
 
   return (
-    <Router>
-
-      <Switch>
+    <HashRouter basename="/">
 
         <Route path="/bubblesort" component={BubbleSort} />
-        <Route path="/" component={Home} />
 
-      </Switch>
-
-    </Router>
+    </HashRouter>
   );
 }
 
