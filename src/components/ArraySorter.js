@@ -164,6 +164,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                 <BottomBar />
 
                 <div className="About">
+
+                    <h3>
+                        About
+                    </h3>
                     
                     <p>
                         {sortingAlgorithm.about()}
@@ -175,6 +179,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <div className="Implementation">
                     
+                    <h3>
+                        Python Implementation
+                    </h3>
+
                     <pre>
                         <code>
                             {sortingAlgorithm.pythonImplementation()}

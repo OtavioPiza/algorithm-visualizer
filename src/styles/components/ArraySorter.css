@@ -62,11 +62,11 @@
     background-size: 500% 500% !important;
     background-position: center !important;
     
-    font-size: min(2vh, 2rem);
+    font-size: 1.6rem;
 }
 
 .ArraySorter .Sorter .Status {
-    min-height: 7vh;
+    min-height: 7.5vh;
     
     display: flex;
     justify-content: center;
@@ -77,4 +77,12 @@
     text-align: center;
     align-self: center;
     margin: 0;
+}
+
+.ArraySorter .Sorter .About {
+    font-size: 1.6rem;
+}
+
+.ArraySorter .Sorter .Implementation {
+    font-size: 1.6rem;
 }
