@@ -43,32 +43,27 @@ const getDefaultList = () => {
     return (
         [
             {
-                size: 70,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 90,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 30,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 50,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 80,
+                size: 55,
                 selected: false,
                 analyzed: false
             },
             {
                 size: 40,
+                selected: false,
+                analyzed: false
+            },
+            {
+                size: 85,
+                selected: false,
+                analyzed: false
+            },
+            {
+                size: 70,
+                selected: false,
+                analyzed: false
+            },
+            {
+                size: 100,
                 selected: false,
                 analyzed: false
             }

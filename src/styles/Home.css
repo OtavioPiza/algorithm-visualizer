@@ -1,4 +1,4 @@
-.container {
+.Home {
     background-color: var(--background-white);
     max-width: min(90vw, 1000px);
     min-height: 100vh;
@@ -6,27 +6,31 @@
     padding-right: max(7vw, 1rem);
 }
 
-.container .text-container {
+.Home .text-container {
     text-align: center;
 }
 
-.container .text-container strong {
+.Home .logo-container {
+    padding-top: 3vh;
+}
+
+.Home .text-container strong {
     font-size: min(8rem, 15vw);
     color: var(--text-dark-gray);
 }
 
-.container .text-container p {
+.Home .text-container p {
     margin-top: min(1rem, 1vh);
     font-size: min(2rem, 4vw);
     color: var(--text-light-gray);
 }
 
-.container .button-container {
+.Home .button-container {
     display: flex;
     justify-content: center; 
 }
 
-.container .button-container .RedirectButton {
+.Home .button-container .RedirectButton {
     height: min(100px, 15vw);
     width: min(300px, 45vw);
     margin: min(1vw, 20px);

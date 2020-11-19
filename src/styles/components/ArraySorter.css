@@ -1,47 +1,55 @@
-.container {
-    
+.ArraySorter {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 94fr;
+    grid-template-areas: "header" "main";
+    justify-items: center;
 }
 
 
 .Header {
+    grid-area: "header";
+
     min-width: 100vw;
-    min-height: 6vh;
+    /* min-height: 6vh; */
 
     background-color: var(--text-light-gray);
     text-decoration: none;
     color: var(--background-white);
 }
 
-.ArraySorter {
+.Sorter {
+    grid-area: "main";
+
     background-color: var(--background-white);
     max-width: min(90vw, 1000px);
     min-height: 100vh;
     padding-left: max(7vw, 1rem);
     padding-right: max(7vw, 1rem);
-    margin: auto;
+    margin-left: 10px;
 }
 
-.ArraySorter .text-container {
+.Sorter .text-container {
     text-align: center;
 }
 
-.ArraySorter .text-container strong {
+.Sorter .text-container strong {
     font-size: min(8rem, 15vw);
     color: var(--text-dark-gray);
 }
 
-.ArraySorter .text-container p {
+.Sorter .text-container p {
     margin-top: min(1rem, 1vh);
     font-size: min(2rem, 4vw);
     color: var(--text-light-gray);
 }
 
-.ArraySorter .button-container {
+.Sorter .button-container {
     display: flex;
     justify-content: center; 
 }
 
-.ArraySorter .button-container .RedirectButton {
+.Sorter .button-container .RedirectButton {
     height: min(100px, 15vw);
     width: min(300px, 45vw);
     margin: min(1vw, 20px);

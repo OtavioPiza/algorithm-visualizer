@@ -99,10 +99,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
 
     return (
-        <div className='container'>
+        <div className='ArraySorter'>
             <Header link="/" />
 
-            <div className='ArraySorter'>
+            <div className='Sorter'>
 
                 <div className='Array'>
                     {currentState[1].map((bar, index) => (

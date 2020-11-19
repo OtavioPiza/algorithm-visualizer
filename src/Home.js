@@ -9,7 +9,7 @@ import './styles/Home.css';
 const Home = () => {
 
   return (
-    <div className='container'>
+    <div className='Home'>
       <div className='logo-container'>
         <Array barList={ arrayManager.getDefaultList() }/>
       </div>
