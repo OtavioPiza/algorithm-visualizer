@@ -1,14 +1,15 @@
 import React from 'react'
 import "../styles/components/Header.css"
+import { Link } from 'react-router-dom'
 
-const Header = ({link, title}) => {
+const Header = ({link='/', title}) => {
 
     return (
         <div className="Header">
             <h1>
                 {title}
             </h1>
-            <a href={link}> Go back </a>
+            <Link to={link}>Go back</Link>
         </div>
     )
 }

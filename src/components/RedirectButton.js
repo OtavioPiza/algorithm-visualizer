@@ -1,12 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import '../styles/components/RedirectButton.css'
 
 const RedirectButton = ({ href, text, id, className }) => (
-    <a id={id} className={ className === undefined ? 'RedirectButton' : className} href={href} text={text}>
+    <Link id={id} className={className === undefined ? 'RedirectButton' : className} to={href}>
+
         <span>
             {text}
         </span>
-    </a>
+
+    </Link>
 )
 
 export default RedirectButton
