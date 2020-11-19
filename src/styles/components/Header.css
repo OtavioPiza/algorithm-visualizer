@@ -1,0 +1,8 @@
+.Header {
+    min-width: 100vw;
+    min-height: 6vh;
+
+    background-color: var(--text-light-gray);
+    text-decoration: none;
+    color: var(--background-white);
+}
