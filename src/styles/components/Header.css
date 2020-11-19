@@ -1,7 +1,7 @@
 .Header {
     grid-area: "header";
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 6fr 1fr;
     grid-template-rows: 1fr;
     grid-template-areas: "title back";
     min-width: min(95vw, min(90vw, 1000px) + max(10vw, 20px));

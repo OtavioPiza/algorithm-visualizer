@@ -147,9 +147,9 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <div className="ArrayManager">
 
-                    <Button text="Get Random List"
+                    <Button text="Random List"
                         eventHandler={() => handleNewBarArray(arrayManager.getRandomList(arraySize))} />
-                    <Button text="Get Almost Sorted List"
+                    <Button text="Almost Sorted List"
                         eventHandler={() => handleNewBarArray(arrayManager.getAlmostSortedList(arraySize))} />
                     <Button text="Set list" eventHandler={() => handleSetList()} />
 
