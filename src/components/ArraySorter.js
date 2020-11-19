@@ -161,7 +161,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                         Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
                         Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
                         Text goes here, Text goes here, Text goes here, Text goes here, Text goes here, Text goes here,
-                </p>
+                    </p>
                 </div>
 
                 <BottomBar />

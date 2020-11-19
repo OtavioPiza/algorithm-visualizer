@@ -21,7 +21,29 @@ const defaultState = (barArray, isSorted = false) => [
     barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
 ]
 
-const name = () => 'BubbleSort'
+/**
+ * Returns the name of the algorithm
+ */
+const name = () => 'Bubble Sort'
+
+const pythonImplementation = () => (`
+def bubble_sort(array):
+    upperbound = len(array)
+    switched = True
+
+    while switched and upperbound > 1:
+        switched = False
+
+        for i in range(1, upperbound):
+
+            if array[i - 1] > array[i]:
+                switched = True
+                array[i - 1], array[i] = array[i], array[i - 1]
+
+        upperbound -= 1
+
+    return array
+`)
 
 /**
  * Responsible for the sorting process which is split between two functions:
@@ -102,5 +124,5 @@ const sort = (state) => {
     return status.step === 0 ? compareBars() : changeBars()
 }
 
-export default { sort, defaultState, name }
+export default { sort, defaultState, name, pythonImplementation }
 
