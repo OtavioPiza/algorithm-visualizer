@@ -31,3 +31,26 @@
     padding-left: max(5vw, 10px);
     padding-right: max(5vw, 10px);
 }
+
+.ArraySorter .Sorter .ControlPanel {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.ArraySorter .Sorter .ControlPanel .Button {
+
+    margin: 0;
+    padding-left: auto;
+    padding-right: auto;
+    
+    background-size: 500% 500% !important;
+    background-position: center !important;
+   
+}
+
+.ArraySorter .Sorter .Status {
+    min-height: 7vh;
+    text-align: center;
+    text-justify: center;
+}

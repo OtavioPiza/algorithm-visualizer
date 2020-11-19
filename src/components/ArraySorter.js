@@ -138,8 +138,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                     <Button text='Step' eventHandler={() => handleStep()} />
                     <Button text={running ? 'Stop' : 'Run'} eventHandler={() => handleRun()} red={running} />
                     <Button text='Reset' eventHandler={() => handleReset()} />
-                    <Button text="Add bar" eventHandler={() => handleAdd(true)} />
-                    <Button text="Remove bar" eventHandler={() => handleAdd(false)} />
+                    <Button text="Add" eventHandler={() => handleAdd(true)} />
+                    <Button text="Remove" eventHandler={() => handleAdd(false)} />
 
                 </div>
 
