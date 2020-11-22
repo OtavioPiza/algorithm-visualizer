@@ -1,9 +1,9 @@
 .Home {
     background-color: var(--background-white);
-    max-width: min(90vw, 1000px);
+    width: min(90vw, 1000px);
     min-height: 100vh;
-    padding-left: max(7vw, 1rem);
-    padding-right: max(7vw, 1rem);
+    padding-left: max(5vw, 10px);
+    padding-right: max(5vw, 10px);
 }
 
 .Home .text-container {
