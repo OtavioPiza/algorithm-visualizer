@@ -17,9 +17,6 @@ const defaultState = (barArray, isSorted = false) => [
         sorted: isSorted,
         switched: false,
         step: 0,
-        worseComplexity: barArray.length * barArray.length,
-        bestComplexity: barArray.length,
-        currentComplexity: 0,
     },
     barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
 ]
@@ -114,7 +111,6 @@ const sort = (state) => {
                 step: greater ? 1 : 0,
                 switched: analyzedBarsIndex[0] === 0 ? false : status.switched,
                 upperbound: analyzedBarsIndex[1] === status.upperbound ? status.upperbound - 1 : status.upperbound,
-                currentComplexity: status.currentComplexity + 1,
             },
             newBars
         ]

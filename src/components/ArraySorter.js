@@ -163,22 +163,6 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <BottomBar />
 
-                <div className='Complexity'>
-                    
-                    <h3>
-                        Complexity
-                    </h3>
-
-                    Worse case: {currentState[0].worseComplexity}
-                    <br />
-                    Best case: {currentState[0].bestComplexity}
-                    <br />
-                    Current case: {currentState[0].currentComplexity}
-
-                </div>
-
-                <BottomBar />
-
                 <div className="About">
 
                     <h3>
