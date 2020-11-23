@@ -1,3 +1,4 @@
+import React from 'react'
 import arrayManager from '../../services/arrayManager'
 
 /**
@@ -48,11 +49,17 @@ const pythonImplementation = () => (
     return array
 `)
 
-const about = () => (`Bubble sort is a sorting algorithm that repeatedly steps through the list, compares adjacent ` + 
-`elements and swaps them if they are in the wrong order. One of its key strenghts is the ability to detect that the ` + 
-`list is sorted efficiently without external help. Bubble sort should be avoided in the case of large collections. ` +
-`It will not be efficient in the case of a reverse-ordered collection.
-`)
+const about = () => (
+    <p>
+        Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, and 
+        swaps them if they are in the wrong order. After each pass through the list, the algorithm is sure that the 
+        largest element is placed at the last index, which from that point on is no longer analyzed.
+        <br/>
+        One of Bubble Sort's key strengths is its ability to detect that the list is sorted efficiently without 
+        external help by recording if it had to switch any elements. If none were switched while iterating through the 
+        list, the algorithm knows that all the list's items are in the correct location.
+    </p>
+)
 
 /**
  * Responsible for the sorting process which is split between two functions:

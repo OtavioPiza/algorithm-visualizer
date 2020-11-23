@@ -169,9 +169,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
                         About
                     </h3>
                     
-                    <p>
-                        {sortingAlgorithm.about()}
-                    </p>
+                    {sortingAlgorithm.about()}
 
                 </div>
 
