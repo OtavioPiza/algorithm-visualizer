@@ -1,14 +1,15 @@
 .Header {
-    grid-area: "header";
     display: grid;
-    grid-template-columns: 6fr 1fr;
-    grid-template-rows: 1fr;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
     grid-template-areas: "title back";
+
     min-width: min(95vw, min(90vw, 1000px) + max(10vw, 20px));
 }
 
 .Header a {
-    grid-area: "title";
+    grid-area: back;
+    
     text-align: left;
     text-decoration: none;
     justify-self: right;
@@ -17,9 +18,10 @@
 }
 
 .Header h1 {
+    grid-area: title;
+
     align-self: center;
     justify-self: left;
-    grid-area: "back";
     margin: 0;
     font-size: 4vh;
 }

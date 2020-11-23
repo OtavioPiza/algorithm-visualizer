@@ -1,7 +1,7 @@
 .Button {
     border: 0;
     padding: 10px;
-    margin: 5px;
+    margin: 0;
     background-size: 100% 100% !important;
     font-size: min(3rem, 5vw);
     transition: 150ms;

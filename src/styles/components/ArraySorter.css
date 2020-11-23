@@ -3,39 +3,38 @@
     grid-template-columns: 1fr;
     grid-template-rows: 6fr 94fr;
     grid-template-areas: "header" "main";
+    
     justify-items: center;
 }
 
-
 .ArraySorter .PageHeader {
-    grid-area: "header";
+    grid-area: header;
 
     min-width: 100vw;
+
+    display: flex;
+    justify-content: center;
+
     background-color: var(--text-light-gray);
     color: var(--background-white);
-
-
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: 1fr;
-    grid-area: "header";
-    justify-items: center;
 }
 
 .ArraySorter .Sorter {
-    grid-area: "main";
-
-    background-color: var(--background-white);
+    grid-area: main;
+    
     width: min(90vw, 1000px);
     min-height: 94vh;
     padding-left: max(5vw, 10px);
     padding-right: max(5vw, 10px);
+
+    background-color: var(--background-white);
 }
 
 .ArraySorter .Sorter .ControlPanel {
     display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    
     min-height: 3vh;
 }
 
@@ -56,14 +55,14 @@
 
 .ArraySorter .Sorter .ArrayManager .Button {
     margin: 0;
-    padding-left: auto;
-    padding-right: auto;
     
     background-size: 500% 500% !important;
     background-position: center !important;
     
-    font-size: 1.6rem;
+    font-size: min(2vh, 2rem);
 }
+
+/* TODO implement this somewhere else */
 
 .ArraySorter .Sorter .Status {
     min-height: 7.5vh;
