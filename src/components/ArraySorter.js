@@ -163,15 +163,22 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <BottomBar />
 
-                {currentState[0].worseComplexity}
-                
-                <br/>
+                <div className='Complexity'>
+                    <h1>
+                        Algorithm Complexity
+                    </h1>
 
-                {currentState[0].bestComplexity}
+                    <p>
 
-                <br/>
-                
-                {currentState[0].currentComplexity}
+                        Worse case complexity: {currentState[0].worseComplexity}
+                        <br />
+                        Best case complexity: {currentState[0].bestComplexity}
+                        <br />
+                        Current case complexity: {currentState[0].currentComplexity}
+
+                    </p>
+
+                </div>
 
                 <BottomBar />
 

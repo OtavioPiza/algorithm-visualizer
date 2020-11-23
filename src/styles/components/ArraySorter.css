@@ -80,3 +80,14 @@
 
     size: min(2vh, 2rem);
 }
+
+.ArraySorter .Sorter .Complexity h1 {  
+    margin-top: 2rem;
+    font-size: min(2vh, 2rem);
+    margin-bottom: 0;
+}
+
+.ArraySorter .Sorter .Complexity p {
+    font-size: min(1.7vh, 1.7rem);
+    margin-top: 0.2rem;
+}

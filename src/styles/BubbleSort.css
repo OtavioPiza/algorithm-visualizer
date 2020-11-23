@@ -9,6 +9,7 @@
 .ArraySorter .Sorter .Implementation h3, .About h3  {
     font-size: min(2vh, 2rem);
     margin-bottom: 0;
+    margin-top: 2rem;
 }
 
 .ArraySorter .Sorter .About p, ul  {
