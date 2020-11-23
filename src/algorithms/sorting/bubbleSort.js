@@ -30,8 +30,17 @@ const name = () => 'Bubble Sort'
 /**
  * Returns a python implementation of the algorithm
  */
-const pythonImplementation = () => (
-    `def bubble_sort(array):
+const implementation = () => (
+    <div className="Implementation">
+
+        <h3>
+            Python Implementation
+        </h3>
+
+        <pre>
+            <code>
+                {
+`def bubble_sort(array):
     upperbound = len(array)
     switched = True
 
@@ -44,10 +53,13 @@ const pythonImplementation = () => (
                 switched = True
                 array[i - 1], array[i] = array[i], array[i - 1]
 
-        upperbound -= 1
+    upperbound -= 1
 
-    return array
-`)
+return array`}
+            </code>
+        </pre>
+    </div>
+)
 
 const about = () => (
 
@@ -160,5 +172,5 @@ const sort = (state) => {
     return status.step === 0 ? compareBars() : changeBars()
 }
 
-export default { sort, defaultState, name, pythonImplementation, about }
+export default { sort, defaultState, name, implementation, about }
 
