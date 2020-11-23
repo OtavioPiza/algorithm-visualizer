@@ -7,7 +7,7 @@ import Home from './Home'
 function App() {
 
   return (
-    <Router basename="algorithm-visualizer/">
+    <Router basename="/">
 
       <Route exact path="/" component={Home} />
       <Route path="/bubblesort" component={BubbleSort} />

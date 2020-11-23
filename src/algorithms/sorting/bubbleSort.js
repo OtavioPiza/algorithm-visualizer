@@ -9,7 +9,7 @@ import arrayManager from '../../services/arrayManager'
  * 
  * @returns {status }
  */
-const defaultState = (barArray, isSorted = false) => [
+const defaultState = (barArray, isSorted = false, currentComplexity) => [
     {
         algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
         analyzedBarsIndex: [-1, 0],
@@ -18,6 +18,9 @@ const defaultState = (barArray, isSorted = false) => [
         sorted: isSorted,
         switched: false,
         step: 0,
+        worseComplexity: (barArray.length * (barArray.length - 1)) / 2,
+        bestComplexity: barArray.length - 1,
+        currentComplexity: currentComplexity === undefined ? 0 : currentComplexity,
     },
     barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
 ]
@@ -140,7 +143,7 @@ const sort = (state) => {
         ))
 
 
-        return getIsSorted(greater) ? defaultState(newBars, true) : [
+        return getIsSorted(greater) ? defaultState(newBars, true, status.currentComplexity) : [
             {
                 ...status,
                 algorithmStatus:
@@ -151,6 +154,7 @@ const sort = (state) => {
                 step: greater ? 1 : 0,
                 switched: analyzedBarsIndex[0] === 0 ? false : status.switched,
                 upperbound: analyzedBarsIndex[1] === status.upperbound ? status.upperbound - 1 : status.upperbound,
+                currentComplexity: status.currentComplexity + 1,
             },
             newBars
         ]

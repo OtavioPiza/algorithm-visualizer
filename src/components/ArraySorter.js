@@ -163,6 +163,18 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
                 <BottomBar />
 
+                {currentState[0].worseComplexity}
+                
+                <br/>
+
+                {currentState[0].bestComplexity}
+
+                <br/>
+                
+                {currentState[0].currentComplexity}
+
+                <BottomBar />
+
                 {sortingAlgorithm.about()}
 
                 <BottomBar />
