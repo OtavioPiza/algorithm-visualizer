@@ -50,24 +50,44 @@ const pythonImplementation = () => (
 `)
 
 const about = () => (
-    <p>
-        Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, and 
-        swaps them if they are in the wrong order. After each pass through the list, the algorithm is sure that the 
-        largest element is placed at the last index, which from that point on is no longer analyzed.
-        <br/>
-        One of Bubble Sort's key strengths is its ability to detect that the list is sorted efficiently without 
-        external help by recording if it had to switch any elements. If none were switched while iterating through the 
-        list, the algorithm knows that all the list's items are in the correct location.
-    </p>
+
+    <div className="About">
+
+        <h3>
+            About Bubble Sort
+        </h3>
+
+        <p>
+            Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, and
+            swaps them if they are in the wrong order. After each pass through the list, the algorithm is sure that the
+            largest element is placed at the last index, which from that point on is no longer analyzed.
+            <br />
+            One of Bubble Sort's key strengths is its ability to detect that the list is sorted efficiently without
+            external help by recording if it had to switch any elements. If none were switched while iterating through the
+            list, the algorithm knows that all the list's items are in the correct location.
+        </p>
+
+        <h3>
+            How our implementation Works
+        </h3>
+
+        <ul>
+            <li><strong>Blue: </strong>bar is selected by the user</li>
+            <li><strong>Orange: </strong>bar is currently analyzed</li>
+            <li><strong>Gray: </strong>bar is considered sorted by the algorithm</li>
+            <li><strong>Green: </strong>the list is sorted</li>
+        </ul>
+
+    </div>
 )
 
 /**
  * Responsible for the sorting process which is split between two functions:
  *  >> compareBars
  *  >> switchBars
- * 
- * @param {Status of the algorithm} status 
- * @param {Array of Bars} bars 
+ *
+ * @param {Status of the algorithm} status
+ * @param {Array of Bars} bars
  */
 const sort = (state) => {
     const status = state[0]
