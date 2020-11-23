@@ -24,6 +24,7 @@
     
     width: min(90vw, 1000px);
     min-height: 94vh;
+
     padding-left: max(5vw, 10px);
     padding-right: max(5vw, 10px);
 
@@ -32,7 +33,7 @@
 
 .ArraySorter .Sorter .ControlPanel {
     display: grid;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     
     min-height: 3vh;
@@ -49,8 +50,10 @@
 
 .ArraySorter .Sorter .ArrayManager {
     display: grid;
-    grid-template-rows: 1fr;
+    grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
+
+    min-height: 3vh;
 }
 
 .ArraySorter .Sorter .ArrayManager .Button {
@@ -62,36 +65,18 @@
     font-size: min(2vh, 2rem);
 }
 
-/* TODO implement this somewhere else */
-
 .ArraySorter .Sorter .Status {
-    min-height: 7.5vh;
+    min-height: min(7vh, 8rem);
     
     display: flex;
     justify-content: center;
-    
 }
 
 .ArraySorter .Sorter .Status h1 {
     text-align: center;
     align-self: center;
+    
     margin: 0;
-}
 
-.ArraySorter .Sorter .About, .Implementation {
-    font-size: 1.6rem;
-    margin: 0;
-}
-
-.ArraySorter .Sorter .Implementation pre, .About p {
-    margin-top: 0;
-}
-
-.ArraySorter .Sorter .About p {
-    text-align: justify;
-}
-
-.ArraySorter .Sorter .Implementation h3, .About h3  {
-    font-size: 1.8rem;
-    margin-bottom: 0.3rem;
+    size: min(2vh, 2rem);
 }

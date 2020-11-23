@@ -74,13 +74,14 @@ const about = () => (
             swaps them if they are in the wrong order. After each pass through the list, the algorithm is sure that the
             largest element is placed at the last index, which from that point on is no longer analyzed.
             <br />
+            <br />
             One of Bubble Sort's key strengths is its ability to detect that the list is sorted efficiently without
             external help by recording if it had to switch any elements. If none were switched while iterating through the
             list, the algorithm knows that all the list's items are in the correct location.
         </p>
 
         <h3>
-            How our implementation Works
+            How our Implementation Works
         </h3>
 
         <ul>

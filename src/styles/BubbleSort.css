@@ -1,0 +1,21 @@
+.ArraySorter .Sorter .Implementation, .About {
+    font-size: min(1.7vh, 1.7rem);
+}
+
+.ArraySorter .Sorter .About {
+    text-align: justify;
+}
+
+.ArraySorter .Sorter .Implementation h3, .About h3  {
+    font-size: min(2vh, 2rem);
+    margin-bottom: 0;
+}
+
+.ArraySorter .Sorter .About p, ul  {
+    margin-top: 0.2rem;
+}
+
+.ArraySorter .Sorter .Implementation pre {
+    white-space: pre-wrap;
+    margin-top: 0.2rem;
+}
