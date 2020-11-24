@@ -1,23 +1,27 @@
 import React, { useState } from 'react'
-import isSorted from '../services/isSorted'
 import Bar from './Bar'
+import isSorted from '../services/isSorted'
 import '../styles/components/Array.css'
 
 /**
  * React component representing an array of Bar components
  * - responsible for the interaction between the user and the bars
- * - does NOT support algorithms integration: @reference ArraysSorter.js
+ * - does NOT support integration with algorithms
  * 
- * @param {
- *  bars: array of bars objects
- * } param0
- * @returns an array containing a Bar component for each bar on the provided list
+ * @param {Bar[], Boolean} param    : array of bars and if they should be simplified or not
+ * 
+ * @returns {Array} : an array containing a Bar component for each bar on the provided list
  */
 const Array = ({ barList, simplified }) => {
     const [bars, setBars] = useState(barList)
     const [barsSelected, setBarsSelected] = useState([])
     const sorted = isSorted(bars)
 
+    /**
+     * Selects a Bar in the provided index
+     * 
+     * @param {Number} id index of the bar
+     */
     const selectBar = (id) => {
         const bar = bars[id]
         const changedBar = {...bar, selected: !bar.selected}
@@ -32,6 +36,9 @@ const Array = ({ barList, simplified }) => {
         }
     }
 
+    /**
+     * Switches two selected bars
+     */
     if (barsSelected.length === 2) {
         const firstBar = bars[barsSelected[0]]
         const secondBar = bars[barsSelected[1]]
