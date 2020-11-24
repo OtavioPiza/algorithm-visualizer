@@ -3,31 +3,24 @@
     grid-template-columns: 1fr;
     grid-template-rows: 6fr 94fr;
     grid-template-areas: "header" "main";
-    
     justify-items: center;
 }
 
 .ArraySorter .PageHeader {
     grid-area: header;
-
     min-width: 100vw;
-
     display: flex;
     justify-content: center;
-
     background-color: var(--text-light-gray);
     color: var(--background-white);
 }
 
 .ArraySorter .Sorter {
     grid-area: main;
-    
     width: min(90vw, 1000px);
     min-height: 94vh;
-
     padding-left: max(5vw, 10px);
     padding-right: max(5vw, 10px);
-
     background-color: var(--background-white);
 }
 
@@ -35,16 +28,13 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
-    
     min-height: 3vh;
 }
 
 .ArraySorter .Sorter .ControlPanel .Button {
     margin: 0;
-    
     background-size: 500% 500% !important;
     background-position: center !important;
-   
     font-size: min(2vh, 2rem);
 }
 
@@ -52,22 +42,18 @@
     display: grid;
     grid-template-rows: auto;
     grid-template-columns: 1fr 1fr 1fr;
-
     min-height: 3vh;
 }
 
 .ArraySorter .Sorter .ArrayManager .Button {
     margin: 0;
-    
     background-size: 500% 500% !important;
     background-position: center !important;
-    
     font-size: min(2vh, 2rem);
 }
 
 .ArraySorter .Sorter .Status {
     min-height: min(7vh, 8rem);
-    
     display: flex;
     justify-content: center;
 }
@@ -75,13 +61,11 @@
 .ArraySorter .Sorter .Status h1 {
     text-align: center;
     align-self: center;
-    
     margin: 0;
-
     size: min(2vh, 2rem);
 }
 
-.ArraySorter .Sorter .Complexity h1 {  
+.ArraySorter .Sorter .Complexity h1 {
     margin-top: 2rem;
     font-size: min(2vh, 2rem);
     margin-bottom: 0;

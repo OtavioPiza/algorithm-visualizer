@@ -1,17 +1,28 @@
-.Home {
-    background-color: var(--background-white);
-    width: min(90vw, 1000px);
+.Container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    grid-template-areas: "main";
     min-height: 100vh;
+    background-color: var(--background-white);
+}
+
+.Home {
+    grid-area: main;
+    align-self: center;
+    width: min(90vw, 1000px);
     padding-left: max(5vw, 10px);
     padding-right: max(5vw, 10px);
+    padding-bottom: 8vh;
+}
+
+.Home .logo-container .Array {
+    padding: 0 0 2vh 0;
+    height: 25vh;
 }
 
 .Home .text-container {
     text-align: center;
-}
-
-.Home .logo-container {
-    padding-top: 3vh;
 }
 
 .Home .text-container strong {
@@ -27,7 +38,7 @@
 
 .Home .button-container {
     display: flex;
-    justify-content: center; 
+    justify-content: center;
 }
 
 .Home .button-container .RedirectButton {

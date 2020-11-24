@@ -1,9 +1,9 @@
 :root {
     --background-white: #F4F4F4;
     --background-gray: #DADADA;
-    --bar-light-blue:#0063A2; 
-    --bar-dark-blue: #004775; 
-    --bar-light-gray: #3A3535; 
+    --bar-light-blue: #0063A2;
+    --bar-dark-blue: #004775;
+    --bar-light-gray: #3A3535;
     --bar-dark-gray: #322F2F;
     --bar-light-green: #009205;
     --bar-dark-green: #007910;
@@ -15,21 +15,19 @@
 }
 
 body {
-  font-family: 'Roboto';
-  background-image: url('images/background.png');
-  background-repeat: repeat;
-  background-attachment: fixed;
-  background-position: center;
-  background-size: 2500px;
-  margin: 0;
-  border: 0;
-  box-sizing: border-box;
-  overflow-x: hidden;
-
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    font-family: 'Roboto';
+    background-image: url('images/background.png');
+    background-repeat: repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: 2500px;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
-
