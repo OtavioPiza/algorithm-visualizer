@@ -10,9 +10,7 @@ const addBar = (add = true, bars) => ( add ? bars.concat(getRandomList(1)) :
 /**
  * Returns a list with almost sorted list
  * 
- * @param {
- * size of the list of bars
- * } size 
+ * @param {Integer} size size of the array
  */
 const getAlmostSortedList = (size) => {
     let barList = []
@@ -37,7 +35,7 @@ const getAlmostSortedList = (size) => {
 }
 
 /**
- * Returns a list with the logo bars
+ * Returns a list with the logo's bars
  */
 const getDefaultList = () => {
     return (
@@ -74,9 +72,7 @@ const getDefaultList = () => {
 /**
  * Returns a list with randomly sized bars
  * 
- * @param {
- * size of the list of bars
- * } size 
+ * @param {Integer} size size of the array
  */
 const getRandomList = (size) => {
     let barList = []
