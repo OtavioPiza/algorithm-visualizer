@@ -2,12 +2,11 @@ import React from 'react'
 import arrayManager from '../../services/arrayManager'
 
 /**
- * Default status for the array
+ * Returns the state of the algorithm
  * 
- * @param {size: {}, analyzed: {}, sorted: {}} barArray
- * @param {boolean} isSorted true if the list is sorted
- * 
- * @returns {status }
+ * @param {Bar[]} barArray              : an array with the bars to be sorted
+ * @param {Boolean} isSorted            : if the array is sorted or not   
+ * @param {Number} currentComplexity    : current complexity of the algorithm
  */
 const defaultState = (barArray, isSorted = false, currentComplexity) => [
     {
@@ -26,84 +25,11 @@ const defaultState = (barArray, isSorted = false, currentComplexity) => [
 ]
 
 /**
- * Returns the name of the algorithm
- */
-const name = () => 'Bubble Sort'
-
-/**
- * Returns a python implementation of the algorithm
- */
-const implementation = () => (
-    <div className="Implementation">
-
-        <h3>
-            Python Implementation
-        </h3>
-
-        <pre>
-            <code>
-                {
-                    `def bubble_sort(array):
-    upperbound = len(array)
-    switched = True
-
-    while switched and upperbound > 1:
-        switched = False
-
-        for i in range(1, upperbound):
-
-            if array[i - 1] > array[i]:
-                switched = True
-                array[i - 1], array[i] = array[i], array[i - 1]
-
-    upperbound -= 1
-
-return array`}
-            </code>
-        </pre>
-    </div>
-)
-
-const about = () => (
-
-    <div className="About">
-
-        <h3>
-            About Bubble Sort
-        </h3>
-
-        <p>
-            Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, and
-            swaps them if they are in the wrong order. After each pass through the list, the algorithm is sure that the
-            largest element is placed at the last index, which from that point on is no longer analyzed.
-            <br />
-            <br />
-            One of Bubble Sort's key strengths is its ability to detect that the list is sorted efficiently without
-            external help by recording if it had to switch any elements. If none were switched while iterating through the
-            list, the algorithm knows that all the list's items are in the correct location.
-        </p>
-
-        <h3>
-            How our Implementation Works
-        </h3>
-
-        <ul>
-            <li><strong>Blue: </strong>bar is selected by the user</li>
-            <li><strong>Orange: </strong>bar is currently analyzed</li>
-            <li><strong>Gray: </strong>bar is considered sorted by the algorithm</li>
-            <li><strong>Green: </strong>the list is sorted</li>
-        </ul>
-
-    </div>
-)
-
-/**
- * Responsible for the sorting process which is split between two functions:
- *  >> compareBars
- *  >> switchBars
- *
- * @param {Status of the algorithm} status
- * @param {Array of Bars} bars
+ * Takes one step in the sorting algorithm
+ * 
+ * @param {State} state : state of the algorithm
+ * 
+ * @returns {State}     : new state of the algorithm
  */
 const sort = (state) => {
     const status = state[0]
@@ -177,5 +103,85 @@ const sort = (state) => {
     return status.step === 0 ? compareBars() : changeBars()
 }
 
-export default { sort, defaultState, name, implementation, about }
+/**
+ * Returns the name of the algorithm
+ * 
+ * @returns {String}    : name of the sorting algorithm
+ */
+const name = () => 'Bubble Sort'
 
+/**
+ * Returns the about section of the algorithm
+ * 
+ * @returns {String}    : about section of the algorithm
+ */
+const about = () => (
+
+    <div className="About">
+
+        <h3>
+            About Bubble Sort
+        </h3>
+
+        <p>
+            Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, and
+            swaps them if they are in the wrong order. After each pass through the list, the algorithm is sure that the
+            largest element is placed at the last index, which from that point on is no longer analyzed.
+            <br />
+            <br />
+            One of Bubble Sort's key strengths is its ability to detect that the list is sorted efficiently without
+            external help by recording if it had to switch any elements. If none were switched while iterating through the
+            list, the algorithm knows that all the list's items are in the correct location.
+        </p>
+
+        <h3>
+            How our Implementation Works
+        </h3>
+
+        <ul>
+            <li><strong>Blue: </strong>bar is selected by the user</li>
+            <li><strong>Orange: </strong>bar is currently analyzed</li>
+            <li><strong>Gray: </strong>bar is considered sorted by the algorithm</li>
+            <li><strong>Green: </strong>the list is sorted</li>
+        </ul>
+
+    </div>
+)
+
+/**
+ * Returns a python implementation of the algorithm
+ * 
+ * @returns {HTML}  : returns an implementation of the algorithm
+ */
+const implementation = () => (
+    <div className="Implementation">
+
+        <h3>
+            Python Implementation
+        </h3>
+
+        <pre>
+            <code>
+                {
+                    `def bubble_sort(array):
+    upperbound = len(array)
+    switched = True
+
+    while switched and upperbound > 1:
+        switched = False
+
+        for i in range(1, upperbound):
+
+            if array[i - 1] > array[i]:
+                switched = True
+                array[i - 1], array[i] = array[i], array[i - 1]
+
+    upperbound -= 1
+
+return array`}
+            </code>
+        </pre>
+    </div>
+)
+
+export default { sort, defaultState, name, implementation, about }
