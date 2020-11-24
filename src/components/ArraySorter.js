@@ -62,7 +62,9 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
      * @param {Boolean} add indicated wheter a bar is to be added or removed
      */
     const handleAdd = (add = true) => {
-        if ((!add && arraySize <= 2) || arraySize >= 83) return
+        setRunning(false)
+
+        if (!add && arraySize <= 2) return
         setArraySize(add ? arraySize + 1 : arraySize - 1)
         handleNewBarArray(arrayManager.addBar(add, currentState[1]))
     }
@@ -110,8 +112,6 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
             setRunning(false)
         }
     }
-
-    console.log(arraySize);
 
     // == HTML ====================================================================================================== //
 
