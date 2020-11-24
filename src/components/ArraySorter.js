@@ -9,19 +9,20 @@ import Header from './Header'
 /**
  * A plataform that implements a sorting algorithm
  * 
- * @param {sortingAlgorithm, Bar[]} 
+ * @param {sortingAlgorithm, Bar[]} param sorting algorithm and array of bars
  */
 const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
+    
     /* Holds the size of the array */
     const [arraySize, setArraySize] = useState(10)
 
-    /* Holds wheter the algorithm should be running automatically */
+    /* Holds wheter the algorithm is running */
     const [running, setRunning] = useState(false)
 
-    /* Holds an initial state the user can reset to */
+    /* Holds an initial state of the algorithm the user can reset to */
     const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList))
 
-    /* Holds the current state of the sorting algorithm */
+    /* Holds the current state of the algorithm */
     const [currentState, setCurrentState] = useState(defaultState)
 
     // == User Interactivity ======================================================================================== //
