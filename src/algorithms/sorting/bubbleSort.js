@@ -18,7 +18,7 @@ const defaultState = (barArray, isSorted = false, currentComplexity) => [
         sorted: isSorted,
         switched: false,
         step: 0,
-        worseComplexity: (barArray.length * (barArray.length - 1)) / 2,
+        worseComplexity: (barArray.length * (barArray.length - 1)) / 2 + 1,
         bestComplexity: barArray.length - 1,
         currentComplexity: currentComplexity === undefined ? 0 : currentComplexity,
     },
@@ -43,7 +43,7 @@ const implementation = () => (
         <pre>
             <code>
                 {
-`def bubble_sort(array):
+                    `def bubble_sort(array):
     upperbound = len(array)
     switched = True
 
@@ -143,7 +143,7 @@ const sort = (state) => {
         ))
 
 
-        return getIsSorted(greater) ? defaultState(newBars, true, status.currentComplexity) : [
+        return getIsSorted(greater) ? defaultState(newBars, true, status.currentComplexity + 1) : [
             {
                 ...status,
                 algorithmStatus:

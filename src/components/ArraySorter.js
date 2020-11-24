@@ -71,7 +71,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
      * Makes the sorting algorithm take one step
      */
     const handleStep = () => {
-        setCurrentState(sortingAlgorithm.sort(currentState))
+        
+        if (!currentState[0].sorted) {
+            setCurrentState(sortingAlgorithm.sort(currentState))
+        } 
     }
 
     /**
