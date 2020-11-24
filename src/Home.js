@@ -5,7 +5,9 @@ import Array from './components/Array'
 import arrayManager from './services/arrayManager';
 import './styles/Home.css';
 
-
+/**
+ * React component representing the Home page of the application
+ */
 const Home = () => {
 
   return (

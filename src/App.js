@@ -3,7 +3,9 @@ import { HashRouter as Router, Route } from 'react-router-dom'
 import BubbleSort from './BubbleSort'
 import Home from './Home'
 
-
+/**
+ * React app
+ */
 function App() {
 
   return (
