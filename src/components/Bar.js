@@ -19,7 +19,7 @@ import lockedBar from '../styles/components/icons/bar-light.svg'
  * } param0 
  * @returns a button that represents a bar in an array
  */
-const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false }) => {
+const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false, }) => {
 
     // Selects a background for the bar depending on its state
     const background = 
@@ -29,12 +29,10 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
         locked ? `url(${lockedBar})` :
         `url(${bar})`
     
-    // Sets the on-screen bar size based on its properties
-    // @TODO
     const style = {
-        margin: `${simplified ? "0" : "10px"}`,
+        margin: `${simplified ? "0" : "1%"}`,
         border: "0",
-        width: "10%",
+        width: `10%`,
         height: size + "%",
 
         backgroundImage: background,
