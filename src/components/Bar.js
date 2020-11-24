@@ -21,7 +21,9 @@ import lockedBar from '../styles/components/icons/bar-light.svg'
  */
 const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false, }) => {
 
-    // Selects a background for the bar depending on its state
+    /**
+     * Selects a background for the bar depending on its state
+     */
     const background = 
         selected ? `url(${selectedBar})` :
         analyzed ? `url(${analyzedBar})` :
@@ -29,6 +31,9 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
         locked ? `url(${lockedBar})` :
         `url(${bar})`
     
+    /**
+     * Determines the style of the bar depending on its state
+     */
     const style = {
         margin: `${simplified ? "0" : "1%"}`,
         padding: "0",
@@ -41,6 +46,8 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
         backgroundSize: `${simplified ? "500% 500%" : "100% 100%"}`,
         backgroundPosition: "center",
     }
+
+    // == HTML ====================================================================================================== //
 
     return (
         <button className={ className === undefined ? 'Bar' : className } id={ id } 
