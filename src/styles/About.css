@@ -1,0 +1,25 @@
+.AboutAV {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 6fr 94fr;
+    grid-template-areas: "header" "main";
+    justify-items: center;
+}
+
+.AboutAV .PageHeader {
+    grid-area: header;
+    min-width: 100vw;
+    display: flex;
+    justify-content: center;
+    background-color: var(--text-light-gray);
+    color: var(--background-white);
+}
+
+.AboutAV .TextContainer {
+    grid-area: main;
+    width: min(90vw, 1000px);
+    min-height: 94vh;
+    padding-left: max(5vw, 10px);
+    padding-right: max(5vw, 10px);
+    background-color: var(--background-white);
+}

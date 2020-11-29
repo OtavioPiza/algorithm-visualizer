@@ -3,7 +3,7 @@
     grid-template-columns: auto;
     grid-template-rows: auto;
     grid-template-areas: "title back";
-
+    background-color: var(--text-light-gray);
     min-width: min(95vw, min(90vw, 1000px) + max(10vw, 20px));
 }
 
@@ -19,7 +19,7 @@
 
 .Header h1 {
     grid-area: title;
-
+    color: var(--background-white);
     align-self: center;
     justify-self: left;
     margin: 0;
