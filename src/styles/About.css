@@ -1,4 +1,4 @@
-.AboutAV {
+.About {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: 6fr 94fr;
@@ -6,7 +6,7 @@
     justify-items: center;
 }
 
-.AboutAV .PageHeader {
+.About .PageHeader {
     grid-area: header;
     min-width: 100vw;
     display: flex;
@@ -15,7 +15,7 @@
     color: var(--background-white);
 }
 
-.AboutAV .TextContainer {
+.About .TextContainer {
     grid-area: main;
     width: min(90vw, 1000px);
     min-height: 94vh;

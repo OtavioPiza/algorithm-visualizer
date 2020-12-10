@@ -8,7 +8,7 @@ import './styles/About.css'
 function About() {
 
   return (
-      <div className='AboutAV'>
+      <div className='About'>
           
           <div className='PageHeader'>
           
