@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Bar from './Bar'
 import isSorted from '../services/isSorted'
 import '../styles/components/Array.css'
-import { selectBar } from '../services/arrayManager'
+import arrayManager from '../services/arrayManager'
 
 /**
  * React component representing an array of Bar components
@@ -18,9 +18,6 @@ const Array = ({ barList, simplified }) => {
     /* Holds an array of bars */
     const [bars, setBars] = useState(barList)
 
-    /* Holds the index of the selected bars */
-    const [barsSelected, setBarsSelected] = useState([])
-
     /* Holds whether the array is sorted */
     const sorted = isSorted(bars)
 
@@ -32,42 +29,7 @@ const Array = ({ barList, simplified }) => {
      * @param {Number} id index of the bar
      */
     const selectBar = (id) => {
-        const bar = bars[id]
-        const changedBar = { ...bar, selected: !bar.selected }
-
-        setBars(bars.map((bar, index) => index === id ? changedBar : bar))
-
-        if (!bar.selected) {
-            setBarsSelected(barsSelected.concat(id))
-
-        } else {
-            setBarsSelected(barsSelected.filter(selected => selected !== id))
-        }
-    }
-    /**
-     * Switches two selected bars
-     */
-    if (barsSelected.length === 2) {
-        console.log(barsSelected);
-        const firstBar = bars[barsSelected[0]]
-        const secondBar = bars[barsSelected[1]]
-
-        const newFirstBar = { ...firstBar, size: secondBar.size, selected: false }
-        const newSecondBar = { ...secondBar, size: firstBar.size, selected: false }
-
-        setBars(bars.map((bar, index) => {
-            switch (index) {
-                case barsSelected[0]:
-                    return newFirstBar
-
-                case barsSelected[1]:
-                    return newSecondBar
-
-                default:
-                    return bar
-            }
-        }))
-        setBarsSelected([])
+        setBars(arrayManager.selectBar(id, bars))
     }
 
     // == HTML ====================================================================================================== //
