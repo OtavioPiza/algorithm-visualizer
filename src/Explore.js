@@ -1,5 +1,7 @@
 import React from 'react'
+import BottomBar from './components/BottomBar'
 import Header from './components/Header'
+import RedirectButton from './components/RedirectButton'
 import './styles/Explore.css'
 
 /**
@@ -19,8 +21,12 @@ function Explore() {
           <div className='TextContainer'>
 
             <h1>
-                About
+                Sorting algorithms
             </h1>
+
+            <BottomBar></BottomBar>
+
+            <RedirectButton href='bubblesort' text='Bubble Sort' />
 
           </div>
 

@@ -24,7 +24,7 @@ const Home = () => {
         <BottomBar />
         <div className='button-container'>
           <RedirectButton text='About' href='about'/>
-          <RedirectButton text='Explore' id='thisisfine' href={"/bubblesort"} />
+          <RedirectButton text='Explore' id='thisisfine' href="explore" />
         </div>
       </div>
     </div>
