@@ -3,6 +3,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import About from './About'
 import BubbleSort from './BubbleSort'
 import Home from './Home'
+import Explore from './Explore'
 
 /**
  * React app
@@ -14,6 +15,7 @@ function App() {
 
       <Switch>
         <Route exact path="/bubblesort" component={BubbleSort} />
+        <Route exact path="/explore" component={Explore} />
         <Route exact path="/about" component={About} />
         <Route exact path="/" component={Home} />
       </Switch>
