@@ -1,7 +1,7 @@
 .ArraySorter {
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: 6fr 94fr;
+    grid-template-rows: 8vh 1fr;
     grid-template-areas: "header" "main";
     justify-items: center;
 }
