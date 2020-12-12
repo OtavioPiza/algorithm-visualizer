@@ -18,7 +18,7 @@
 .ArraySorter .Sorter {
     grid-area: main;
     width: min(90vw, 1000px);
-    min-height: 94vh;
+    min-height: 92vh;
     padding-left: max(5vw, 10px);
     padding-right: max(5vw, 10px);
     background-color: var(--background-white);

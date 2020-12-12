@@ -23,3 +23,22 @@
     padding-right: max(5vw, 10px);
     background-color: var(--background-white);
 }
+
+.Explore .TextContainer h1 {
+    font-size: 3vh;
+    margin-bottom: 0.1vh;
+}
+
+.Explore .TextContainer .SortingAlgorithms {
+    display: flex;
+    min-width: 100%;
+}
+
+.Explore .TextContainer .SortingAlgorithms .RedirectButton {
+    width: 40%;
+    margin: 1% 5%;
+}
+
+.Explore .TextContainer .SortingAlgorithms span{
+    padding: 15px;
+}

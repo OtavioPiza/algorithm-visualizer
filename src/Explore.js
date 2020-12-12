@@ -10,28 +10,35 @@ import './styles/Explore.css'
 function Explore() {
 
   return (
-      <div className='Explore'>
-          
-          <div className='PageHeader'>
-          
-            <Header title='Explore'/>
+    <div className='Explore'>
 
-          </div>
+      <div className='PageHeader'>
 
-          <div className='TextContainer'>
+        <Header title='Explore' />
 
-            <h1>
-                Sorting algorithms
+      </div>
+
+      <div className='TextContainer'>
+
+
+
+        <h1>
+          Sorting algorithms
             </h1>
 
-            <BottomBar></BottomBar>
+        <BottomBar></BottomBar>
 
-            <RedirectButton href='bubblesort' text='Bubble Sort' />
+        <div className='SortingAlgorithms'>
 
-          </div>
+          <RedirectButton href='bubblesort' text='Bubble Sort' />
+          <RedirectButton href='bubblesort' text='Bubble Sort' />
+
+        </div>
+
+      </div>
 
 
-      </div> 
+    </div>
   )
 }
 
