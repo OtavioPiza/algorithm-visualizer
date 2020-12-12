@@ -121,7 +121,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
             <header className='PageHeader'>
 
-                <Header link="/" title={sortingAlgorithm.name()} />
+                <Header link="explore" title={sortingAlgorithm.name()} />
 
             </header>
 
