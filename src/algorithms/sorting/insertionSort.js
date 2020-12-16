@@ -17,8 +17,8 @@ const defaultState = (barArray, isSorted = false, currentComplexity) => [
         sorted: isSorted,
         switched: false,
         step: 0,
-        worseComplexity: (barArray.length * (barArray.length - 1)) / 2 + 1,
-        bestComplexity: barArray.length - 1,
+        worseComplexity: 0,
+        bestComplexity: 0,
         currentComplexity: currentComplexity === undefined ? 0 : currentComplexity,
     },
     barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
@@ -44,11 +44,11 @@ const sort = (state) => {
     )
 
     /**
-     * Determines if the array is sorted
+     * Returns the previous two bars that will be compared
      */
-    const getIsSorted = () => {
-        
-    }
+    const getPreviousBars = () => (
+        status.analyzedBarsIndex[0] === 0 ? [0, 1] : status.analyzedBarsIndex.map(index => index + 1)
+    )
 
     /**
      * Compares two bars
