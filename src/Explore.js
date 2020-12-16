@@ -31,7 +31,7 @@ function Explore() {
         <div className='SortingAlgorithms'>
 
           <RedirectButton href='bubblesort' text='Bubble Sort' />
-          <RedirectButton href='bubblesort' text='Bubble Sort' />
+          <RedirectButton href='bubblesort' text='Insertion Sort' />
 
         </div>
 
