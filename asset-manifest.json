@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/algorithm-visualizer/static/css/main.dde40c1d.chunk.css",
-    "main.js": "/algorithm-visualizer/static/js/main.1009d5b5.chunk.js",
-    "main.js.map": "/algorithm-visualizer/static/js/main.1009d5b5.chunk.js.map",
+    "main.css": "/algorithm-visualizer/static/css/main.86fcef54.chunk.css",
+    "main.js": "/algorithm-visualizer/static/js/main.2d13b1ae.chunk.js",
+    "main.js.map": "/algorithm-visualizer/static/js/main.2d13b1ae.chunk.js.map",
     "runtime-main.js": "/algorithm-visualizer/static/js/runtime-main.a104d120.js",
     "runtime-main.js.map": "/algorithm-visualizer/static/js/runtime-main.a104d120.js.map",
-    "static/js/2.b183fb4a.chunk.js": "/algorithm-visualizer/static/js/2.b183fb4a.chunk.js",
-    "static/js/2.b183fb4a.chunk.js.map": "/algorithm-visualizer/static/js/2.b183fb4a.chunk.js.map",
+    "static/js/2.cff96052.chunk.js": "/algorithm-visualizer/static/js/2.cff96052.chunk.js",
+    "static/js/2.cff96052.chunk.js.map": "/algorithm-visualizer/static/js/2.cff96052.chunk.js.map",
     "index.html": "/algorithm-visualizer/index.html",
-    "precache-manifest.344968ab9cb2e51122abc5efa25f176d.js": "/algorithm-visualizer/precache-manifest.344968ab9cb2e51122abc5efa25f176d.js",
+    "precache-manifest.ef0c226fd730a1313d3df01befeaa361.js": "/algorithm-visualizer/precache-manifest.ef0c226fd730a1313d3df01befeaa361.js",
     "service-worker.js": "/algorithm-visualizer/service-worker.js",
-    "static/css/main.dde40c1d.chunk.css.map": "/algorithm-visualizer/static/css/main.dde40c1d.chunk.css.map",
-    "static/js/2.b183fb4a.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.b183fb4a.chunk.js.LICENSE.txt",
+    "static/css/main.86fcef54.chunk.css.map": "/algorithm-visualizer/static/css/main.86fcef54.chunk.css.map",
+    "static/js/2.cff96052.chunk.js.LICENSE.txt": "/algorithm-visualizer/static/js/2.cff96052.chunk.js.LICENSE.txt",
     "static/media/main.css": "/algorithm-visualizer/static/media/background.3a380e8a.png",
     "static/media/bar-analyzed-orange.svg": "/algorithm-visualizer/static/media/bar-analyzed-orange.f382d282.svg",
     "static/media/bar-gray.svg": "/algorithm-visualizer/static/media/bar-gray.ec07d47c.svg",
@@ -23,8 +23,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.a104d120.js",
-    "static/js/2.b183fb4a.chunk.js",
-    "static/css/main.dde40c1d.chunk.css",
-    "static/js/main.1009d5b5.chunk.js"
+    "static/js/2.cff96052.chunk.js",
+    "static/css/main.86fcef54.chunk.css",
+    "static/js/main.2d13b1ae.chunk.js"
   ]
 }
