@@ -8,21 +8,32 @@ import arrayManager from '../../services/arrayManager'
  * @param {Boolean} isSorted            : if the array is sorted or not   
  * @param {Number} currentComplexity    : current complexity of the algorithm
  */
-const defaultState = (barArray, isSorted = false, currentComplexity) => [
-    {
-        algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
-        analyzedBarsIndex: [-1, 0],
-        upperbound: barArray.length - 1,
-        lowerbound: 0,
-        sorted: isSorted,
-        switched: false,
-        step: 0,
-        worseComplexity: (barArray.length * (barArray.length - 1)) / 2 + 1,
-        bestComplexity: barArray.length - 1,
-        currentComplexity: currentComplexity === undefined ? 0 : currentComplexity,
-    },
-    barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
-]
+const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
+    const algorithmStatus = sorted ? "Finished sorting!" : "Ready to start sorting!"
+    const analyzedBarsIndex = [-1, 0]
+    const upperbound = barArray.length - 1
+    const lowerbound = 0
+    const switched = false
+    const step = 0
+    const worseComplexity = (barArray.length * (barArray.length - 1)) / 2 + 1
+    const bestComplexity = barArray - 1
+
+    return [
+        {
+            algorithmStatus,
+            analyzedBarsIndex,
+            upperbound,
+            lowerbound,
+            sorted,
+            switched,
+            step,
+            worseComplexity,
+            bestComplexity,
+            currentComplexity,
+        },
+        barArray.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
+    ]
+}
 
 /**
  * Takes one step in the sorting algorithm
