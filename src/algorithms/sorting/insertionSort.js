@@ -15,7 +15,6 @@ const defaultState = (barArray, isSorted = false, currentComplexity) => [
         upperbound: barArray.length - 1,
         lowerbound: 0,
         sorted: isSorted,
-        switched: false,
         step: 0,
         worseComplexity: 0,
         bestComplexity: 0,
@@ -38,30 +37,65 @@ const sort = (state) => {
     /**
      * Returns the next two bars that will be analyzed by te algorithm
      */
-    const getNextBars = () => (
-        status.analyzedBarsIndex[0] >= status.upperbound ? [0, 1] :
-            status.analyzedBarsIndex.map(bar => bar + 1)
-    )
+    const compareNextBars = () => {
+        const analyzedBarsIndex = status.analyzedBarsIndex.map(index => index + 1)
+        const greater = bars[analyzedBarsIndex[0]] > bars[analyzedBarsIndex[1]]
+        const newBars = bars.map((bar, index) => (
+        index === analyzedBarsIndex[0] || index === analyzedBarsIndex[1] 
+        ? {...bar, sorted: false, analyzed: true}  
+        : {...bar, sorted: false, analyzed: false}  
+    ))
+    const algorithmStatus = greater
+
+        return [
+            {
+                ...status,
+                algorithmStatus: algorithmStatus,
+                analyzedBarsIndex: analyzedBarsIndex,
+                greater: greater,
+                step: greater ? 0 : 1,
+            },
+            newBars
+        ]
+    }
 
     /**
      * Returns the previous two bars that will be compared
      */
-    const getPreviousBars = () => (
-        status.analyzedBarsIndex[0] === 0 ? [0, 1] : status.analyzedBarsIndex.map(index => index + 1)
-    )
+    const getPreviousBars = () => {
+
+    }
 
     /**
      * Compares two bars
      */
     const compareBars = () => {
-        
+
     }
 
     /**
      * Changes the two bars and updates the status
      */
-    const changeBars = () => {
+    const switchBars = () => {
 
+        return [
+            {
+                ...status,
+                algorithmStatus: "Switched the two bars",
+                step: 0,
+            },
+            arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
+        ]
+    }
+
+    switch(status.step) {
+        case 0:
+            return compareNextBars()
+        
+        case 1:
+            return switchBars()
+
+        case 2:
     }
 }
 
