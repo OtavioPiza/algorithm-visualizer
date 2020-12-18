@@ -12,18 +12,11 @@ import Header from './Header'
  * @param {sortingAlgorithm, Bar[]} param sorting algorithm and array of bars
  */
 const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
-    
-    /* Holds the size of the array */
-    const [arraySize, setArraySize] = useState(10)
-
-    /* Holds wheter the algorithm is running */
-    const [running, setRunning] = useState(false)
-
-    /* Holds an initial state of the algorithm the user can reset to */
-    const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList))
-
-    /* Holds the current state of the algorithm */
-    const [currentState, setCurrentState] = useState(defaultState)
+    const [arraySize, setArraySize] = useState(10)                  // Size of the array
+    const [running, setRunning] = useState(false)                   // If the algoithm is running
+    const [defaultState, setDefaultState]                           // A default state the user can reset to
+        = useState(sortingAlgorithm.defaultState(barList))
+    const [currentState, setCurrentState] = useState(defaultState)  // The current state of the algorithm
 
     // == User Interactivity ======================================================================================== //
 
@@ -74,10 +67,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
      * Makes the sorting algorithm take one step
      */
     const handleStep = () => {
-        
+
         if (!currentState[0].sorted) {
             setCurrentState(sortingAlgorithm.sort(currentState))
-        } 
+        }
     }
 
     /**
