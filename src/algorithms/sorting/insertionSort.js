@@ -12,6 +12,7 @@ const defaultState = (barArray, isSorted = false, currentComplexity) => [
     {
         algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
         analyzedBarsIndex: [-1, 0],
+        maxAnalyzedBarsIndex: [-1, 0],
         upperbound: barArray.length - 1,
         lowerbound: 0,
         sorted: isSorted,
@@ -38,20 +39,23 @@ const sort = (state) => {
      * Returns the next two bars that will be analyzed by te algorithm
      */
     const compareNextBars = () => {
-        const analyzedBarsIndex = status.analyzedBarsIndex.map(index => index + 1)
-        const greater = bars[analyzedBarsIndex[0]] > bars[analyzedBarsIndex[1]]
+        const maxAnalyzedBarsIndex = status.maxAnalyzedBarsIndex.map(index => index + 1)
+        const greater = bars[maxAnalyzedBarsIndex[1]].size > bars[maxAnalyzedBarsIndex[0]].size
         const newBars = bars.map((bar, index) => (
-        index === analyzedBarsIndex[0] || index === analyzedBarsIndex[1] 
-        ? {...bar, sorted: false, analyzed: true}  
-        : {...bar, sorted: false, analyzed: false}  
-    ))
-    const algorithmStatus = greater
+        index === maxAnalyzedBarsIndex[0] || index === maxAnalyzedBarsIndex[1] 
+            ? {...bar, sorted: false, analyzed: true}  
+            : {...bar, sorted: false, analyzed: false}  
+        ))
+        const algorithmStatus = greater
+
+            console.log(greater);
 
         return [
             {
                 ...status,
                 algorithmStatus: algorithmStatus,
-                analyzedBarsIndex: analyzedBarsIndex,
+                analyzedBarsIndex: maxAnalyzedBarsIndex,
+                maxAnalyzedBarsIndex: maxAnalyzedBarsIndex,
                 greater: greater,
                 step: greater ? 0 : 1,
             },
@@ -59,18 +63,30 @@ const sort = (state) => {
         ]
     }
 
-    /**
-     * Returns the previous two bars that will be compared
-     */
-    const getPreviousBars = () => {
+    const comparePreviousBars = () => {
+        
+        if (status.analyzedBarsIndex[0] === 0) {
+            return compareNextBars()
+        }
+        const analyzedBarsIndex = status.analyzedBarsIndex.map(index => index - 1)
+        const greater = bars[analyzedBarsIndex[0]].size < bars[analyzedBarsIndex[1]].size
+        const algorithmStatus = greater
+        const newBars = bars.map((bar, index) => (
+            index === analyzedBarsIndex[0] || index === analyzedBarsIndex[1] 
+            ? {...bar, sorted: false, analyzed: true}  
+            : {...bar, sorted: false, analyzed: false}  
+        ))
 
-    }
-
-    /**
-     * Compares two bars
-     */
-    const compareBars = () => {
-
+        return [
+            {
+                ...status,
+                algorithmStatus: algorithmStatus,
+                analyzedBarsIndex: analyzedBarsIndex,
+                greater: greater,
+                step: greater ? 0 : 1
+            },
+            newBars
+        ]
     }
 
     /**
@@ -82,7 +98,7 @@ const sort = (state) => {
             {
                 ...status,
                 algorithmStatus: "Switched the two bars",
-                step: 0,
+                step: 2,
             },
             arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
         ]
@@ -90,12 +106,16 @@ const sort = (state) => {
 
     switch(status.step) {
         case 0:
-            return compareNextBars()
+            console.log('Step 0');
+            return compareNextBars
         
         case 1:
-            return switchBars()
+            console.log('Step 1');
+            return switchBars
 
         case 2:
+            console.log('Step 2');
+            return comparePreviousBars
     }
 }
 
