@@ -38,7 +38,7 @@ const sort = (state) => {
     /**
      * Returns the next two bars that will be analyzed by te algorithm
      */
-    const compareNextBars = () => {        
+    const compareNextBars = () => {
         const maxAnalyzedBarsIndex = status.maxAnalyzedBarsIndex.map(index => index + 1)
 
         if (!bars[maxAnalyzedBarsIndex[1]]) {
@@ -61,6 +61,7 @@ const sort = (state) => {
                 maxAnalyzedBarsIndex: maxAnalyzedBarsIndex,
                 greater: greater,
                 step: greater ? 0 : 1,
+                lowerbound: status.lowerbound + 1
             },
             newBars
         ]
@@ -95,17 +96,15 @@ const sort = (state) => {
     /**
      * Changes the two bars and updates the status
      */
-    const switchBars = () => {
+    const switchBars = () => [
+        {
+            ...status,
+            algorithmStatus: "Switched the two bars",
+            step: 2,
+        },
+        arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
+    ]
 
-        return [
-            {
-                ...status,
-                algorithmStatus: "Switched the two bars",
-                step: 2,
-            },
-            arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
-        ]
-    }
 
     switch (status.step) {
         case 0:
@@ -116,6 +115,10 @@ const sort = (state) => {
 
         case 2:
             return comparePreviousBars
+
+        default:
+            console.log('Something went wrong')
+            return defaultState()
     }
 }
 
