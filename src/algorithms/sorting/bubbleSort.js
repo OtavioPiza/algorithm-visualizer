@@ -16,7 +16,7 @@ const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
     const switched = false
     const step = 0
     const worseComplexity = (barArray.length * (barArray.length - 1)) / 2 + 1
-    const bestComplexity = barArray - 1
+    const bestComplexity = barArray.length - 1
 
     return [
         {

@@ -8,21 +8,34 @@ import arrayManager from '../../services/arrayManager'
  * @param {Boolean} isSorted            : if the array is sorted or not   
  * @param {Number} currentComplexity    : current complexity of the algorithm
  */
-const defaultState = (barArray, isSorted = false, currentComplexity) => [
-    {
-        algorithmStatus: isSorted ? "Finished sorting!" : "Ready to start sorting!",
-        analyzedBarsIndex: [-1, 0],
-        maxAnalyzedBarsIndex: [-1, 0],
-        upperbound: barArray.length - 1,
-        lowerbound: 0,
-        sorted: isSorted,
-        step: 0,
-        worseComplexity: 0,
-        bestComplexity: 0,
-        currentComplexity: currentComplexity === undefined ? 0 : currentComplexity,
-    },
-    barArray.map(bar => ({ ...bar, analyzed: false, sorted: isSorted })),
-]
+const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
+    const algorithmStatus = sorted ? "Finished sorting!" : "Ready to start sorting!"
+    const analyzedBarsIndex = [-1, 0]
+    const maxAnalyzedBarsIndex = [-1, 0]
+    const upperbound = barArray.length - 1
+    const lowerbound = 0
+    const switched = false
+    const step = 0
+    const worseComplexity = (barArray.length * (barArray.length - 1)) / 2
+    const bestComplexity = barArray.length - 1
+
+    return [
+        {
+            algorithmStatus,
+            analyzedBarsIndex,
+            maxAnalyzedBarsIndex,
+            upperbound,
+            lowerbound,
+            sorted,
+            switched,
+            step,
+            worseComplexity,
+            bestComplexity,
+            currentComplexity,
+        },
+        barArray.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
+    ]
+}
 
 /**
  * Takes one step in the sorting algorithm
@@ -42,7 +55,7 @@ const sort = (state) => {
         const maxAnalyzedBarsIndex = status.maxAnalyzedBarsIndex.map(index => index + 1)
 
         if (!bars[maxAnalyzedBarsIndex[1]]) {
-            return defaultState(bars, true)
+            return defaultState(bars, true, status.currentComplexity)
         }
 
         const greater = bars[maxAnalyzedBarsIndex[1]].size > bars[maxAnalyzedBarsIndex[0]].size
@@ -61,7 +74,8 @@ const sort = (state) => {
                 maxAnalyzedBarsIndex: maxAnalyzedBarsIndex,
                 greater: greater,
                 step: greater ? 0 : 1,
-                lowerbound: status.lowerbound + 1
+                lowerbound: status.lowerbound + 1,
+                currentComplexity: status.currentComplexity + 1
             },
             newBars
         ]
@@ -73,7 +87,7 @@ const sort = (state) => {
             return compareNextBars()
         }
         const analyzedBarsIndex = status.analyzedBarsIndex.map(index => index - 1)
-        const greater = bars[analyzedBarsIndex[0]].size < bars[analyzedBarsIndex[1]].size
+        const greater = bars[analyzedBarsIndex[1]].size > bars[analyzedBarsIndex[0]].size
         const algorithmStatus = greater
         const newBars = bars.map((bar, index) => (
             index === analyzedBarsIndex[0] || index === analyzedBarsIndex[1]
@@ -87,7 +101,8 @@ const sort = (state) => {
                 algorithmStatus: algorithmStatus,
                 analyzedBarsIndex: analyzedBarsIndex,
                 greater: greater,
-                step: greater ? 0 : 1
+                step: greater ? 0 : 1,
+                currentComplexity: status.currentComplexity + 1
             },
             newBars
         ]
