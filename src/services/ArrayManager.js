@@ -113,4 +113,4 @@ const switchBars = (bars, firstBar, secondBar) => (
     ))
 )
 
-export default { addBar, getAlmostSortedList, getDefaultList, getRandomList, selectBar, switchBars }
+export default { addBar, getAlmostSortedList, getRandomList, selectBar, switchBars }
