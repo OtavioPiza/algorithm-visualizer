@@ -35,41 +35,6 @@ const getAlmostSortedList = (size) => {
 }
 
 /**
- * Returns a list with the logo's bars
- */
-const getDefaultList = () => {
-    return (
-        [
-            {
-                size: 55,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 40,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 85,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 70,
-                selected: false,
-                analyzed: false
-            },
-            {
-                size: 100,
-                selected: false,
-                analyzed: false
-            }
-        ]
-    )
-}
-
-/**
  * Returns a list with randomly sized bars
  * 
  * @param {Integer} size size of the array
