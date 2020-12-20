@@ -51,7 +51,7 @@ const sort = (state) => {
     /**
      * Returns the next two bars that will be analyzed by te algorithm
      */
-    const compareNextBars = () => {
+    const compareNextBars = ({ algorithmStatus = 'default' }) => {
         const maxAnalyzedBarsIndex = status.maxAnalyzedBarsIndex.map(index => index + 1)
 
         if (!bars[maxAnalyzedBarsIndex[1]]) {
@@ -59,7 +59,6 @@ const sort = (state) => {
         }
 
         const greater = bars[maxAnalyzedBarsIndex[1]].size > bars[maxAnalyzedBarsIndex[0]].size
-        const algorithmStatus = greater
         const newBars = bars.map((bar, index) => (
             index === maxAnalyzedBarsIndex[0] || index === maxAnalyzedBarsIndex[1]
                 ? { ...bar, sorted: false, analyzed: true }
@@ -81,10 +80,13 @@ const sort = (state) => {
         ]
     }
 
+    /**
+     * Compares the previous bars
+     */
     const comparePreviousBars = () => {
 
         if (status.analyzedBarsIndex[0] === 0) {
-            return compareNextBars()
+            return compareNextBars({ algorithmStatus: 'tests' })
         }
         const analyzedBarsIndex = status.analyzedBarsIndex.map(index => index - 1)
         const greater = bars[analyzedBarsIndex[1]].size > bars[analyzedBarsIndex[0]].size
