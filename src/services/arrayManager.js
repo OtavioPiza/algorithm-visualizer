@@ -7,6 +7,9 @@ const addBar = (add = true, bars) => ( add ? bars.concat(getRandomList(1)) :
         bars.slice(0, bars.length - 1).map(bar => (bar))
 )
 
+/**
+ * Returns the default list similar to that of the logo
+ */
 const getDefaultList = () => [
     {
         size: 40
