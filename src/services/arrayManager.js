@@ -7,6 +7,24 @@ const addBar = (add = true, bars) => ( add ? bars.concat(getRandomList(1)) :
         bars.slice(0, bars.length - 1).map(bar => (bar))
 )
 
+const getDefaultList = () => [
+    {
+        size: 40
+    },
+    {
+        size: 20
+    },
+    {
+        size: 80
+    },
+    {
+        size: 60
+    },
+    {
+        size: 100
+    }
+]
+
 /**
  * Returns a list with almost sorted list
  * 
@@ -113,4 +131,4 @@ const switchBars = (bars, firstBar, secondBar) => (
     ))
 )
 
-export default { addBar, getAlmostSortedList, getRandomList, selectBar, switchBars }
+export default { addBar, getAlmostSortedList, getRandomList, selectBar, switchBars, getDefaultList }

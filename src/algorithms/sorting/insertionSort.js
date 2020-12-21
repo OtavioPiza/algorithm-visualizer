@@ -86,7 +86,7 @@ const sort = (state) => {
     const comparePreviousBars = () => {
 
         if (status.analyzedBarsIndex[0] === 0) {
-            return compareNextBars({ algorithmStatus: 'tests' })
+            return compareNextBars({ algorithmStatus: 'Now that the bars to the left are properly sorted, the agorithm moves on from where it left.' })
         }
         const analyzedBarsIndex = status.analyzedBarsIndex.map(index => index - 1)
         const greater = bars[analyzedBarsIndex[1]].size > bars[analyzedBarsIndex[0]].size
