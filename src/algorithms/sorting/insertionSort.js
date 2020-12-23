@@ -195,7 +195,7 @@ const implementation = () => (
 
         <pre>
             <code>
-                {`TODO`}
+                {`impo`}
             </code>
         </pre>
     </div>
