@@ -7,19 +7,21 @@ import Home from './Home'
 import Explore from './Explore'
 
 /**
- * This is the page that 
+ * This is the page that
  */
-function App() {
+const App = () => {
 
   return (
     <Router basename="/">
 
       <Switch>
+
         <Route exact path="/bubblesort" component={BubbleSort} />
         <Route exact path="/insertionsort" component={InsertionSort} />
         <Route exact path="/explore" component={Explore} />
         <Route exact path="/about" component={About} />
         <Route exact path="/" component={Home} />
+
       </Switch>
 
     </Router>
