@@ -7,7 +7,7 @@ import Home from './Home'
 import Explore from './Explore'
 
 /**
- * React app
+ * This is the page that 
  */
 function App() {
 
