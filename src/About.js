@@ -19,7 +19,7 @@ function About() {
       <div className='TextContainer'>
 
         <h1>
-                About
+          About
         </h1>
 
       </div>
