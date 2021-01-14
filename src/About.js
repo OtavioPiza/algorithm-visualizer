@@ -8,25 +8,25 @@ import './styles/About.css'
 function About() {
 
   return (
-      <div className='About'>
+    <div className='About'>
           
-          <div className='PageHeader'>
+      <div className='PageHeader'>
           
-            <Header title='About'/>
+        <Header title='About'/>
 
-          </div>
+      </div>
 
-          <div className='TextContainer'>
+      <div className='TextContainer'>
 
-            <h1>
+        <h1>
                 About
-            </h1>
+        </h1>
 
-          </div>
+      </div>
 
 
-      </div> 
+    </div> 
   )
 }
 
-export default About;
+export default About

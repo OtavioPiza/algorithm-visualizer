@@ -21,39 +21,39 @@ import lockedBar from '../styles/components/icons/bar-light.svg'
  */
 const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false, }) => {
 
-    /**
+  /**
      * Selects a background for the bar depending on its state
      */
-    const background = 
+  const background = 
         selected ? `url(${selectedBar})` :
-        analyzed ? `url(${analyzedBar})` :
-        sorted ? `url(${sortedBar})` :
-        locked ? `url(${lockedBar})` :
-        `url(${bar})`
+          analyzed ? `url(${analyzedBar})` :
+            sorted ? `url(${sortedBar})` :
+              locked ? `url(${lockedBar})` :
+                `url(${bar})`
     
-    /**
+  /**
      * Determines the style of the bar depending on its state
      */
-    const style = {
-        margin: `${simplified ? "0" : "1%"}`,
-        padding: "0",
-        border: "0",
-        width: `10%`,
-        height: size + "%",
+  const style = {
+    margin: `${simplified ? '0' : '1%'}`,
+    padding: '0',
+    border: '0',
+    width: '10%',
+    height: size + '%',
 
-        backgroundImage: background,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: `${simplified ? "500% 500%" : "100% 100%"}`,
-        backgroundPosition: "center",
-    }
+    backgroundImage: background,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: `${simplified ? '500% 500%' : '100% 100%'}`,
+    backgroundPosition: 'center',
+  }
 
-    // == HTML ====================================================================================================== //
+  // == HTML ====================================================================================================== //
 
-    return (
-        <button className={ className === undefined ? 'Bar' : className } id={ id } 
-            style={ style } onClick={ () => eventHandler(id) }>
-        </button>
-    )
+  return (
+    <button className={ className === undefined ? 'Bar' : className } id={ id } 
+      style={ style } onClick={ () => eventHandler(id) }>
+    </button>
+  )
 }
 
-export default Bar;
+export default Bar

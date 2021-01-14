@@ -9,7 +9,7 @@ import '../styles/components/BottomBar.css'
  * @returns {BottomBar} BottomBar
  */
 const BottomBar = ({ className }) => (
-    <footer className={ className === undefined ? 'BottomBar' : className }/>
+  <footer className={ className === undefined ? 'BottomBar' : className }/>
 )
 
 export default BottomBar

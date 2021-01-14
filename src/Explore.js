@@ -24,7 +24,7 @@ function Explore() {
 
         <h1>
           Sorting algorithms
-            </h1>
+        </h1>
 
         <BottomBar></BottomBar>
 
@@ -42,4 +42,4 @@ function Explore() {
   )
 }
 
-export default Explore;
+export default Explore

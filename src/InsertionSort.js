@@ -11,7 +11,7 @@ const BubbleSort = () => {
 
   return (
     <ArraySorter barList={arrayManager.getRandomList(10)} sortingAlgorithm={insertionSort} />
-  );
+  )
 }
 
-export default BubbleSort;
+export default BubbleSort

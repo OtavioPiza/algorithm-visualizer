@@ -15,34 +15,34 @@ import arrayManager from '../services/arrayManager'
  */
 const Array = ({ barList, simplified }) => {
 
-    /* Holds an array of bars */
-    const [bars, setBars] = useState(barList)
+  /* Holds an array of bars */
+  const [bars, setBars] = useState(barList)
 
-    /* Holds whether the array is sorted */
-    const sorted = isSorted(bars)
+  /* Holds whether the array is sorted */
+  const sorted = isSorted(bars)
 
-    // == User Interactivity ======================================================================================== //
+  // == User Interactivity ======================================================================================== //
 
-    /**
+  /**
      * Selects a Bar in the provided index
      * 
      * @param {Number} id index of the bar
      */
-    const selectBar = (id) => {
-        setBars(arrayManager.selectBar(id, bars))
-    }
+  const selectBar = (id) => {
+    setBars(arrayManager.selectBar(id, bars))
+  }
 
-    // == HTML ====================================================================================================== //
+  // == HTML ====================================================================================================== //
 
-    return (
-        <div className='Array'>
-            {bars.map((bar, index) => (
-                <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
-                    selected={bar.selected} eventHandler={selectBar} sorted={sorted}
-                    simplified={simplified} />
-            ))}
-        </div>
-    )
+  return (
+    <div className='Array'>
+      {bars.map((bar, index) => (
+        <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
+          selected={bar.selected} eventHandler={selectBar} sorted={sorted}
+          simplified={simplified} />
+      ))}
+    </div>
+  )
 }
 
 export default Array

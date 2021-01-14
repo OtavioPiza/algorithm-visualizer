@@ -8,13 +8,13 @@ import '../styles/components/RedirectButton.css'
  * @param {String, String, Integer, String} param0 link, text, id, classname
  */
 const RedirectButton = ({ href, text, id, className }) => (
-    <Link id={id} className={className === undefined ? 'RedirectButton' : className} to={href}>
+  <Link id={id} className={className === undefined ? 'RedirectButton' : className} to={href}>
 
-        <span>
-            {text}
-        </span>
+    <span>
+      {text}
+    </span>
 
-    </Link>
+  </Link>
 )
 
 export default RedirectButton

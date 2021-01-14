@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10a85de5-9089-4d0a-b64b-cb85f4c4ce9e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/BubbleSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/BubbleSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Explore.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Explore.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/InsertionSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/InsertionSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/sorting/bubbleSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/sorting/bubbleSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/sorting/insertionSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/sorting/insertionSort.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Array.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Array.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ArraySorter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ArraySorter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Bar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Bar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BottomBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BottomBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Button.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Button.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/RedirectButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RedirectButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/serviceWorker.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/serviceWorker.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/arrayManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/arrayManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/services/isSorted.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/isSorted.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1n2NbxeAwABuPO3g245HuiEpUKm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Git\algorithm-visualizer" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="lint" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.lint" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10a85de5-9089-4d0a-b64b-cb85f4c4ce9e" name="Default Changelist" comment="" />
+      <created>1610584303045</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1610584303045</updated>
+      <workItem from="1610584305625" duration="363000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

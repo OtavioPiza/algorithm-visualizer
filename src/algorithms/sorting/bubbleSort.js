@@ -9,30 +9,30 @@ import arrayManager from '../../services/arrayManager'
  * @param {Number} currentComplexity    : current complexity of the algorithm
  */
 const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
-    const algorithmStatus = sorted ? "Finished sorting!" : "Ready to start sorting!"
-    const analyzedBarsIndex = [-1, 0]
-    const upperbound = barArray.length - 1
-    const lowerbound = 0
-    const switched = false
-    const step = 0
-    const worseComplexity = (barArray.length * (barArray.length - 1)) / 2 + 1
-    const bestComplexity = barArray.length - 1
+  const algorithmStatus = sorted ? 'Finished sorting!' : 'Ready to start sorting!'
+  const analyzedBarsIndex = [-1, 0]
+  const upperbound = barArray.length - 1
+  const lowerbound = 0
+  const switched = false
+  const step = 0
+  const worseComplexity = (barArray.length * (barArray.length - 1)) / 2 + 1
+  const bestComplexity = barArray.length - 1
 
-    return [
-        {
-            algorithmStatus,
-            analyzedBarsIndex,
-            upperbound,
-            lowerbound,
-            sorted,
-            switched,
-            step,
-            worseComplexity,
-            bestComplexity,
-            currentComplexity,
-        },
-        barArray.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
-    ]
+  return [
+    {
+      algorithmStatus,
+      analyzedBarsIndex,
+      upperbound,
+      lowerbound,
+      sorted,
+      switched,
+      step,
+      worseComplexity,
+      bestComplexity,
+      currentComplexity,
+    },
+    barArray.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
+  ]
 }
 
 /**
@@ -43,75 +43,75 @@ const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
  * @returns {State}     : new state of the algorithm
  */
 const sort = (state) => {
-    const status = state[0]
-    const bars = state[1]
+  const status = state[0]
+  const bars = state[1]
 
-    /**
+  /**
      * Returns the next two bars that will be analyzed by te algorithm
      */
-    const getNextBars = () => (
-        status.analyzedBarsIndex[0] >= status.upperbound ? [0, 1] :
-            status.analyzedBarsIndex.map(bar => bar + 1)
-    )
+  const getNextBars = () => (
+    status.analyzedBarsIndex[0] >= status.upperbound ? [0, 1] :
+      status.analyzedBarsIndex.map(bar => bar + 1)
+  )
 
-    /**
+  /**
      * Determines if the array is sorted
      */
-    const getIsSorted = (greater) => (
-        (status.upperbound === 0) ||
+  const getIsSorted = (greater) => (
+    (status.upperbound === 0) ||
         (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched && !greater)
-    )
+  )
 
-    /**
+  /**
      * Compares two bars
      */
-    const compareBars = () => {
-        // Holds the indexes of the bars being currently analyzed
-        const analyzedBarsIndex = getNextBars()
+  const compareBars = () => {
+    // Holds the indexes of the bars being currently analyzed
+    const analyzedBarsIndex = getNextBars()
 
-        // Holds wheater the first bar is greater than the second
-        const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size
+    // Holds wheater the first bar is greater than the second
+    const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size
 
-        // Holds a new list of bars where only the analzed bars are orange
-        const newBars = bars.map((bar, index) => (
-            index === analyzedBarsIndex[0] ? { ...bar, sorted: false, analyzed: true } :
-                index === analyzedBarsIndex[1] ? { ...bar, sorted: false, analyzed: true } :
-                    { ...bar, sorted: false, analyzed: false }
-        ))
+    // Holds a new list of bars where only the analzed bars are orange
+    const newBars = bars.map((bar, index) => (
+      index === analyzedBarsIndex[0] ? { ...bar, sorted: false, analyzed: true } :
+        index === analyzedBarsIndex[1] ? { ...bar, sorted: false, analyzed: true } :
+          { ...bar, sorted: false, analyzed: false }
+    ))
 
 
-        return getIsSorted(greater) ? defaultState(newBars, true, status.currentComplexity + 1) : [
-            {
-                ...status,
-                algorithmStatus:
-                    greater ? "Because the first bar is greater than the second they are switched" :
-                        "Because the first bar is not greater than the second they are left unchanged",
-                analyzedBarsIndex: analyzedBarsIndex,
-                greater: greater,
-                step: greater ? 1 : 0,
-                switched: analyzedBarsIndex[0] === 0 ? false : status.switched,
-                upperbound: analyzedBarsIndex[1] === status.upperbound ? status.upperbound - 1 : status.upperbound,
-                currentComplexity: status.currentComplexity + 1,
-            },
-            newBars
-        ]
-    }
+    return getIsSorted(greater) ? defaultState(newBars, true, status.currentComplexity + 1) : [
+      {
+        ...status,
+        algorithmStatus:
+                    greater ? 'Because the first bar is greater than the second they are switched' :
+                      'Because the first bar is not greater than the second they are left unchanged',
+        analyzedBarsIndex: analyzedBarsIndex,
+        greater: greater,
+        step: greater ? 1 : 0,
+        switched: analyzedBarsIndex[0] === 0 ? false : status.switched,
+        upperbound: analyzedBarsIndex[1] === status.upperbound ? status.upperbound - 1 : status.upperbound,
+        currentComplexity: status.currentComplexity + 1,
+      },
+      newBars
+    ]
+  }
 
-    /**
+  /**
      * Changes the two bars and updates the status
      */
-    const changeBars = () => [
-        {
-            ...status,
-            algorithmStatus: "Switched the two bars",
-            step: 0,
-            switched: true,
-        },
-        arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
-    ]
+  const changeBars = () => [
+    {
+      ...status,
+      algorithmStatus: 'Switched the two bars',
+      step: 0,
+      switched: true,
+    },
+    arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
+  ]
 
 
-    return status.step === 0 ? compareBars() : changeBars()
+  return status.step === 0 ? compareBars() : changeBars()
 }
 
 /**
@@ -128,35 +128,35 @@ const name = () => 'Bubble Sort'
  */
 const about = () => (
 
-    <div className="BubbleSortAbout">
+  <div className="BubbleSortAbout">
 
-        <h3>
+    <h3>
             About Bubble Sort
-        </h3>
+    </h3>
 
-        <p>
+    <p>
             Bubble Sort is a sorting algorithm that repeatedly steps through the list, compares adjacent elements, and
             swaps them if they are in the wrong order. After each pass through the list, the algorithm is sure that the
             largest element is placed at the last index, which from that point on is no longer analyzed.
-            <br />
-            <br />
+      <br />
+      <br />
             One of Bubble Sort's key strengths is its ability to detect that the list is sorted efficiently without
             external help by recording if it had to switch any elements. If none were switched while iterating through the
             list, the algorithm knows that all the list's items are in the correct location.
-        </p>
+    </p>
 
-        <h3>
+    <h3>
             How our Implementation Works
-        </h3>
+    </h3>
 
-        <ul>
-            <li><strong>Blue: </strong>bar is selected by the user</li>
-            <li><strong>Orange: </strong>bar is currently analyzed</li>
-            <li><strong>Gray: </strong>bar is considered sorted by the algorithm</li>
-            <li><strong>Green: </strong>the list is sorted</li>
-        </ul>
+    <ul>
+      <li><strong>Blue: </strong>bar is selected by the user</li>
+      <li><strong>Orange: </strong>bar is currently analyzed</li>
+      <li><strong>Gray: </strong>bar is considered sorted by the algorithm</li>
+      <li><strong>Green: </strong>the list is sorted</li>
+    </ul>
 
-    </div>
+  </div>
 )
 
 /**
@@ -165,16 +165,16 @@ const about = () => (
  * @returns {HTML}  : returns an implementation of the algorithm
  */
 const implementation = () => (
-    <div className="BubbleSortImplementation">
+  <div className="BubbleSortImplementation">
 
-        <h3>
+    <h3>
             Python Implementation
-        </h3>
+    </h3>
 
-        <pre>
-            <code>
-                {
-                    `def bubble_sort(array):
+    <pre>
+      <code>
+        {
+          `def bubble_sort(array):
     upperbound = len(array)
     switched = True
 
@@ -190,9 +190,9 @@ const implementation = () => (
     upperbound -= 1
 
 return array`}
-            </code>
-        </pre>
-    </div>
+      </code>
+    </pre>
+  </div>
 )
 
 export default { sort, defaultState, name, implementation, about }
