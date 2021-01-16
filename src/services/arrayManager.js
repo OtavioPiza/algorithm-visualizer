@@ -1,6 +1,6 @@
 /**
  * Adds or removes a bar from the array
- * 
+ *
  * @param {boolean} add indicated wheter a bar is to be added or removed
  */
 const addBar = (add = true, bars) => ( add ? bars.concat(getRandomList(1)) :
@@ -30,7 +30,7 @@ const getDefaultList = () => [
 
 /**
  * Returns a list with almost sorted list
- * 
+ *
  * @param {Integer} size size of the array
  */
 const getAlmostSortedList = (size) => {
@@ -57,7 +57,7 @@ const getAlmostSortedList = (size) => {
 
 /**
  * Returns a list with randomly sized bars
- * 
+ *
  * @param {Integer} size size of the array
  */
 const getRandomList = (size) => {
@@ -80,8 +80,8 @@ const getRandomList = (size) => {
 }
 
 /**
- * Selects a bar from the array and, if two bars are selected, switches them 
- * 
+ * Selects a bar from the array and, if two bars are selected, switches them
+ *
  * @param {int} firstBarIndex index of the bar to be selected
  * @param {array} bars array containig all the bars
  */
@@ -121,10 +121,10 @@ const selectBar = (firstBarIndex, bars) => {
 
 /**
  * Switches two bars reseting their selected and analyzed properties to false
- * 
- * @param {Arrays of bars} bars 
- * @param {Index of the first bar} firstBar 
- * @param {Index of the second bar} secondBar 
+ *
+ * @param {Arrays of bars} bars
+ * @param {Index of the first bar} firstBar
+ * @param {Index of the second bar} secondBar
  */
 const switchBars = (bars, firstBar, secondBar) => (
   bars.map((bar, index) => (

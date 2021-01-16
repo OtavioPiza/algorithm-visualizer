@@ -3,9 +3,9 @@ import arrayManager from '../../services/arrayManager'
 
 /**
  * Returns the state of the algorithm
- * 
+ *
  * @param {Bar[]} barArray              : an array with the bars to be sorted
- * @param {Boolean} isSorted            : if the array is sorted or not   
+ * @param {Boolean} isSorted            : if the array is sorted or not
  * @param {Number} currentComplexity    : current complexity of the algorithm
  */
 const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
@@ -37,9 +37,9 @@ const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
 
 /**
  * Takes one step in the sorting algorithm
- * 
+ *
  * @param {State} state : state of the algorithm
- * 
+ *
  * @returns {State}     : new state of the algorithm
  */
 const sort = (state) => {
@@ -116,14 +116,14 @@ const sort = (state) => {
 
 /**
  * Returns the name of the algorithm
- * 
+ *
  * @returns {String}    : name of the sorting algorithm
  */
 const name = () => 'Bubble Sort'
 
 /**
  * Returns the about section of the algorithm
- * 
+ *
  * @returns {String}    : about section of the algorithm
  */
 const about = () => (
@@ -161,7 +161,7 @@ const about = () => (
 
 /**
  * Returns a python implementation of the algorithm
- * 
+ *
  * @returns {HTML}  : returns an implementation of the algorithm
  */
 const implementation = () => (
@@ -195,4 +195,6 @@ return array`}
   </div>
 )
 
-export default { sort, defaultState, name, implementation, about }
+const SortingAlgorithm = { sort, defaultState, name, implementation, about }
+
+export default SortingAlgorithm

@@ -8,9 +8,9 @@ import arrayManager from '../services/arrayManager'
  * React component representing an array of Bar components
  * - responsible for the interaction between the user and the bars
  * - does NOT support integration with algorithms
- * 
+ *
  * @param {Bar[], Boolean} param    : array of bars and if they should be simplified or not
- * 
+ *
  * @returns {Array} : an array containing a Bar component for each bar on the provided list
  */
 const Array = ({ barList, simplified }) => {
@@ -25,7 +25,7 @@ const Array = ({ barList, simplified }) => {
 
   /**
      * Selects a Bar in the provided index
-     * 
+     *
      * @param {Number} id index of the bar
      */
   const selectBar = (id) => {

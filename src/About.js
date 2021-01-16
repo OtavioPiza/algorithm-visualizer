@@ -9,9 +9,9 @@ function About() {
 
   return (
     <div className='About'>
-          
+
       <div className='PageHeader'>
-          
+
         <Header title='About'/>
 
       </div>
@@ -25,7 +25,7 @@ function About() {
       </div>
 
 
-    </div> 
+    </div>
   )
 }
 

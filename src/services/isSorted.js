@@ -1,6 +1,6 @@
 /**
  * Returns if an array of bars is sorted or not
- * 
+ *
  * @param {Array} list array of bars
  */
 const isSorted = (list) => {

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 /**
  * React component representing a header
- * 
+ *
  * @param {String, String} param0 link, title
  */
 const Header = ({ link = '/', title }) => (

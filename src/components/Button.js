@@ -5,8 +5,8 @@ import '../styles/components/Button.css'
 
 /**
  * React component representing a button
- * 
- * @param {{Function, String, Integer, String, Boolean}} param 
+ *
+ * @param {{Function, String, Integer, String, Boolean}} param
  */
 const Button = ({ eventHandler, text, id, className, red = false }) => {
 

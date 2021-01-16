@@ -4,7 +4,7 @@ import '../styles/components/RedirectButton.css'
 
 /**
  * React component representing a redirect button
- * 
+ *
  * @param {String, String, Integer, String} param0 link, text, id, classname
  */
 const RedirectButton = ({ href, text, id, className }) => (

@@ -8,7 +8,7 @@ import Header from './Header'
 
 /**
  * A plataform that implements a sorting algorithm
- * 
+ *
  * @param {sortingAlgorithm, Bar[]} param sorting algorithm and array of bars
  */
 const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
@@ -22,7 +22,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
   /**
      * Selects a bar from the array and, if two bars are selected, switches them
-     * 
+     *
      * @param {Integer} id index of the bar that was selected
      */
   const handleSelectBar = (firstBarIndex) => {
@@ -34,7 +34,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
   /**
      * Sets a new default bar array to be used by the sorting algorithm
-     * 
+     *
      * @param {{size: {}, analyzed: {}, sorted: {}}} newBarArray new array of bars that will be used
      */
   const handleNewBarArray = (newBarArray) => {
@@ -52,7 +52,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
   /**
      * Adds or removes a bar from the array
-     * 
+     *
      * @param {Boolean} add indicated wheter a bar is to be added or removed
      */
   const handleAdd = (add = true) => {

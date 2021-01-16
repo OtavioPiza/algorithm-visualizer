@@ -8,15 +8,15 @@ import lockedBar from '../styles/components/icons/bar-light.svg'
 
 /**
  * React component representing a bar from an arrays
- * 
- * @param { 
+ *
+ * @param {
  *  className:      overwrites the default className
  *  id:             provides the id of the bar (use position in array)
  *  size:           sets the size of the bar
  *  selected:       informs wheter the bar is selected by the unsorted
  *  sorted:         informs wheter the bar is on a sorted (1) unsorted (0) or reversed (-1) array
  *  eventHandler:   provides a handler for an onClick event
- * } param0 
+ * } param0
  * @returns a button that represents a bar in an array
  */
 const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false, }) => {
@@ -24,13 +24,13 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
   /**
      * Selects a background for the bar depending on its state
      */
-  const background = 
+  const background =
         selected ? `url(${selectedBar})` :
           analyzed ? `url(${analyzedBar})` :
             sorted ? `url(${sortedBar})` :
               locked ? `url(${lockedBar})` :
                 `url(${bar})`
-    
+
   /**
      * Determines the style of the bar depending on its state
      */
@@ -50,7 +50,7 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
   // == HTML ====================================================================================================== //
 
   return (
-    <button className={ className === undefined ? 'Bar' : className } id={ id } 
+    <button className={ className === undefined ? 'Bar' : className } id={ id }
       style={ style } onClick={ () => eventHandler(id) }>
     </button>
   )
