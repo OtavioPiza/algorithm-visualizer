@@ -5,10 +5,10 @@ import arrayManager from '../../services/arrayManager'
  * Returns the state of the algorithm
  *
  * @param {Bar[]} barArray              : an array with the bars to be sorted
- * @param {Boolean} isSorted            : if the array is sorted or not
- * @param {Number} currentComplexity    : current complexity of the algorithm
+ * @param {Boolean} sorted            : if the array is sorted or not
+ * @param {Number} complexity    : current complexity of the algorithm
  */
-const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
+const defaultState = (barArray, sorted = false, complexity = 0) => {
   const algorithmStatus = sorted ? 'Finished sorting!' : 'Ready to start sorting!'
   const analyzedBarsIndex = [-1, 0]
   const maxAnalyzedBarsIndex = [-1, 0]
@@ -31,7 +31,7 @@ const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
       step,
       worseComplexity,
       bestComplexity,
-      currentComplexity,
+      complexity,
     },
     barArray.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
   ]
@@ -55,7 +55,7 @@ const sort = (state) => {
     const maxAnalyzedBarsIndex = status.maxAnalyzedBarsIndex.map(index => index + 1)
 
     if (!bars[maxAnalyzedBarsIndex[1]]) {
-      return defaultState(bars, true, status.currentComplexity)
+      return defaultState(bars, true, status.complexity)
     }
 
     const greater = bars[maxAnalyzedBarsIndex[1]].size > bars[maxAnalyzedBarsIndex[0]].size
@@ -76,7 +76,7 @@ const sort = (state) => {
         maxAnalyzedBarsIndex: maxAnalyzedBarsIndex,
         step: greater ? 0 : 1,
         lowerbound: status.lowerbound + 1,
-        currentComplexity: status.currentComplexity + 1
+        complexity: status.complexity + 1
       },
       newBars
     ]
@@ -108,7 +108,7 @@ const sort = (state) => {
         algorithmStatus,
         analyzedBarsIndex,
         step: greater ? 0 : 1,
-        currentComplexity: status.currentComplexity + 1
+        complexity: status.complexity + 1
       },
       newBars
     ]

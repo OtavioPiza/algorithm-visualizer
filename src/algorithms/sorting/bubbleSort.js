@@ -2,21 +2,22 @@ import React from 'react'
 import arrayManager from '../../services/arrayManager'
 
 /**
- * Returns the state of the algorithm
+ * Uses the state provided to take one step in the execution of the sorting algorithm returning
+ * a new state after that
  *
- * @param {Bar[]} barArray              : an array filled with Bar objects ({ size: int })
- * @param {Boolean} sorted              : if the array is sorted or not
- * @param {Number} currentComplexity    : current complexity of the algorithm
+ * @param {Bar[]} bars           : an array filled with Bar objects ({ size: int })
+ * @param {Boolean} sorted       : if the array is sorted or not
+ * @param {Number} complexity    : current complexity of the algorithm
  */
-const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
+const defaultState = (bars, sorted = false, complexity  = 0) => {
   const algorithmStatus = sorted ? 'Finished sorting!' : 'Ready to start sorting!'
   const analyzedBarsIndex = [-1, 0]
-  const upperbound = barArray.length - 1
+  const upperbound = bars.length - 1
   const lowerbound = 0
   const switched = false
   const step = 0
-  const worseComplexity = (barArray.length * (barArray.length - 1)) / 2 + 1
-  const bestComplexity = barArray.length - 1
+  const worseComplexity = (bars.length * (bars.length - 1)) / 2 + 1
+  const bestComplexity = bars.length - 1
 
   return [
     {
@@ -29,9 +30,9 @@ const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
       step,
       worseComplexity,
       bestComplexity,
-      currentComplexity,
+      complexity,
     },
-    barArray.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
+    bars.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
   ]
 }
 
@@ -73,7 +74,7 @@ const sort = (state) => {
     ))
 
     return getIsSorted(greater)
-      ? defaultState(newBars, true, status.currentComplexity + 1)
+      ? defaultState(newBars, true, status.complexity + 1)
       : [
         {
           ...status,
@@ -90,7 +91,7 @@ const sort = (state) => {
           upperbound: analyzedBarsIndex[1] === status.upperbound
             ? status.upperbound - 1
             : status.upperbound,
-          currentComplexity: status.currentComplexity + 1,
+          complexity: status.complexity + 1,
         },
         newBars
       ]
