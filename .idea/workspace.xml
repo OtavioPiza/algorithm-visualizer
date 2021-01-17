@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="10a85de5-9089-4d0a-b64b-cb85f4c4ce9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/algorithms/sorting/bubbleSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/sorting/bubbleSort.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,6 +60,8 @@
       <option name="presentableId" value="Default" />
       <updated>1610584303045</updated>
       <workItem from="1610584305625" duration="1163000" />
+      <workItem from="1610805433436" duration="15000" />
+      <workItem from="1610806247385" duration="22000" />
     </task>
     <servers />
   </component>
@@ -77,5 +78,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>
