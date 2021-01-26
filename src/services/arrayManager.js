@@ -3,7 +3,7 @@
  *
  * @param {boolean} add indicated wheter a bar is to be added or removed
  */
-const addBar = (add = true, bars) => ( add ? bars.concat(getRandomList(1)) :
+const addBar = (add = true, bars) => ( add ? bars.concat({ size: Math.floor(100 * Math.random()) }) :
   bars.slice(0, bars.length - 1).map(bar => (bar))
 )
 
@@ -29,20 +29,31 @@ const getDefaultList = () => [
 ]
 
 /**
- * Returns a list with almost sorted list
+ * Returns an ordered list with bar objects
  *
- * @param {Integer} size size of the array
+ * @param size
+ * @returns {[]}
  */
-const getAlmostSortedList = (size) => {
-  let barList = []
+const getList = (size) => {
+  let list = []
 
   for (let i = 0; i < size; i++) {
-    barList.push({
+    list.push({
       size: 100 * (i + 1) / (size + 1),
       selected: false,
       analyzed: false,
     })
   }
+  return list
+}
+
+/**
+ * Returns a list with almost sorted list
+ *
+ * @param {Integer} size size of the array
+ */
+const getAlmostSortedList = (size) => {
+  let barList = getList(size)
 
   for (let i = Math.ceil(size / 10); i < size; i++) {
     const bar1 = barList[Math.floor(Math.random() * size)]
@@ -61,22 +72,20 @@ const getAlmostSortedList = (size) => {
  * @param {Integer} size size of the array
  */
 const getRandomList = (size) => {
-  let barList = []
+  let barList = getList(size)
 
-  for (let i = 0; i < size; i++) {
-    let size = Math.ceil(Math.random() * 100)
+  let currentIndex = barList.length, temporaryValue, randomIndex
 
-    if (size < 10) {
-      size += 10
-    }
+  while (0 !== currentIndex) {
 
-    barList.push({
-      size: size,
-      selected: false,
-      analyzed: false,
-    })
+    randomIndex = Math.floor(Math.random() * currentIndex)
+    currentIndex -= 1
+
+    temporaryValue = barList[currentIndex]
+    barList[currentIndex] = barList[randomIndex]
+    barList[randomIndex] = temporaryValue
   }
-  return (barList)
+  return barList
 }
 
 /**
