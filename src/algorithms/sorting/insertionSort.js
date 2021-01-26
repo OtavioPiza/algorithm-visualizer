@@ -164,11 +164,24 @@ const about = () => (
     </h3>
 
     <p>
-            Insertion sort is another brute force sorting algorithm.
+      {`
+      Insertion sort is another brute force sorting algorithm. It works similarly to what you do when, for example,
+      sorting a deck of cards: moving lower valued cards down the list until the card to its left is as low as it can
+      be. Then the algorithm moves on to the next object in the list. This procedure generates a sorted list to the
+      left of the last analyzed item.
+      `}
+
+      <br/> <br/>
+
+      {`
+      Similarly, Bubble Sort can enhance Insertion Sort's performance by not checking all the cards to the left of the
+      one analyzed. Because we know the array to the left of the item is sorted, we can stop after finding the first
+      item that has a value greater or equal to the one analyzed and proceed with the algorithm.
+      `}
     </p>
 
     <h3>
-            How our Implementation Works
+      How our Implementation Works
     </h3>
 
     <ul>
