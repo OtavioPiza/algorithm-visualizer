@@ -1,7 +1,7 @@
 import React from 'react'
 import arrayManager from './services/arrayManager'
 import ArraySorter from './components/ArraySorter'
-import './styles/BubbleSort.css'
+import './styles/InsertionSort.css'
 import insertionSort from './algorithms/sorting/insertionSort'
 
 /**

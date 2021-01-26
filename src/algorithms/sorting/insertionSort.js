@@ -157,7 +157,7 @@ const name = () => 'Insertion Sort'
  */
 const about = () => (
 
-  <div className="InsertionSortAbout">
+  <div className="about">
 
     <h3>
             About Insertion Sort
@@ -200,7 +200,7 @@ const about = () => (
  * @returns {HTML}  : returns an implementation of the algorithm
  */
 const implementation = () => (
-  <div className="BubbleSortImplementation">
+  <div className="implementation">
 
     <h3>
             Python Implementation
