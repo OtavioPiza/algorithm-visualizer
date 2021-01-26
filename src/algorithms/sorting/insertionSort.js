@@ -83,8 +83,8 @@ const sort = (state) => {
   }
 
   /**
-     * Compares the previous bars
-     */
+   * Compares the previous bars
+   */
   const comparePreviousBars = () => {
 
     if (status.analyzedBarsIndex[0] === 0) {
@@ -115,8 +115,8 @@ const sort = (state) => {
   }
 
   /**
-     * Changes the two bars and updates the status
-     */
+   * Changes the two bars and updates the status
+   */
   const switchBars = () => [
     {
       ...status,
@@ -164,7 +164,7 @@ const about = () => (
     </h3>
 
     <p>
-            TODO
+            Insertion sort is another brute force sorting algorithm.
     </p>
 
     <h3>
