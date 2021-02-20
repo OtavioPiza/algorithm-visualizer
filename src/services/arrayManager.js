@@ -3,6 +3,8 @@
  *
  * @param {boolean} add indicated whether a bar is to be added or removed
  * @param bars
+ *
+ * @return ({size: number})[]
  */
 const addBar = (add = true, bars) => (
   add
@@ -11,7 +13,9 @@ const addBar = (add = true, bars) => (
 )
 
 /**
- * Returns the default list similar to that of the logo
+ * Returns an array of bar objects which simulate the logo of the application
+ *
+ * @return ({size: number})[]
  */
 const getDefaultList = () => [
   {
@@ -32,10 +36,12 @@ const getDefaultList = () => [
 ]
 
 /**
- * Returns an ordered list with bar objects
+ * Returns a sorted array of bar objects with the provided number of elements where the bars' size are proportionally
+ * divided
  *
  * @param size
- * @returns {[]}
+ *
+ * @returns ({size: number})[]
  */
 const getList = (size) => {
   let list = []
@@ -51,9 +57,11 @@ const getList = (size) => {
 }
 
 /**
- * Returns a list with almost sorted list
+ * Returns an array of bar objects with the provided number of elements where at least one bar is not sorted
  *
- * @param {Integer} size size of the array
+ * @param size
+ *
+ * @returns ({size: number})[]
  */
 const getAlmostSortedList = (size) => {
   let barList = getList(size)
