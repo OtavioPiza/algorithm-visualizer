@@ -4,6 +4,7 @@
     <list default="true" id="10a85de5-9089-4d0a-b64b-cb85f4c4ce9e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.eslintcache" beforeDir="false" afterPath="$PROJECT_DIR$/.eslintcache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/algorithms/sorting/insertionSort.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/algorithms/sorting/insertionSort.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/services/arrayManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/services/arrayManager.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +37,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.JavaScript" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -74,7 +75,9 @@
       <workItem from="1610806247385" duration="22000" />
       <workItem from="1610919454405" duration="28000" />
       <workItem from="1610919752782" duration="2366000" />
-      <workItem from="1611622283311" duration="3177000" />
+      <workItem from="1611622283311" duration="4377000" />
+      <workItem from="1613845515493" duration="920000" />
+      <workItem from="1613849125766" duration="1600000" />
     </task>
     <servers />
   </component>

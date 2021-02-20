@@ -1,10 +1,13 @@
 /**
- * Adds or removes a bar from the array
+ * Returns a new array of bar objects with either a new bar appended to the old one or the left-most bar removed
  *
- * @param {boolean} add indicated wheter a bar is to be added or removed
+ * @param {boolean} add indicated whether a bar is to be added or removed
+ * @param bars
  */
-const addBar = (add = true, bars) => ( add ? bars.concat({ size: Math.floor(100 * Math.random()) }) :
-  bars.slice(0, bars.length - 1).map(bar => (bar))
+const addBar = (add = true, bars) => (
+  add
+    ? bars.concat({ size: Math.floor(100 * Math.random()) })
+    : bars.slice(0, bars.length - 1)
 )
 
 /**
