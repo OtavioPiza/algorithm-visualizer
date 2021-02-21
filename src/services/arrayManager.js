@@ -6,11 +6,13 @@
  *
  * @returns ({size: number})[size]
  */
-const addBar = (add = true, bars) => (
-  add
-    ? bars.concat({ size: Math.floor(100 * Math.random()) })
-    : bars.slice(0, bars.length - 1)
-)
+const addBar = (add = true, bars) => {
+  return (
+    add
+      ? bars.concat({ size: Math.floor(100 * Math.random()) })
+      : bars.slice(0, bars.length - 1)
+  )
+}
 
 /**
  * Returns an array of bar objects which simulate the logo of the application
@@ -144,4 +146,35 @@ const selectBar = (index, bars) => {
   }
 }
 
-export default { addBar, getAlmostSortedList, getRandomList, selectBar, getDefaultList }
+/**
+ * Returns if an array of bar objects is sorted or not
+ *
+ * @param bars: array of bar objects
+ *
+ * @returns boolean: whether the array is sorted
+ */
+const isSorted = (bars) => {
+  let sorted = 1
+
+  for (let i = 1; i < bars.length; i++) {
+
+    if (bars[i].size < bars[i - 1].size) {
+      sorted = 0
+      break
+    }
+  }
+  if (sorted !== 1) {
+    sorted = -1
+
+    for (let i = 1; i < bars.length; i++) {
+
+      if (bars[i].size > bars[i - 1].size) {
+        sorted = 0
+        break
+      }
+    }
+  }
+  return sorted
+}
+
+export default { addBar, getAlmostSortedList, getRandomList, selectBar, getDefaultList, isSorted }

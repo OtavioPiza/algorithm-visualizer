@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import Bar from './Bar'
-import isSorted from '../services/isSorted'
 import '../styles/components/Array.css'
 import arrayManager from '../services/arrayManager'
 
@@ -19,7 +18,7 @@ const Array = ({ barList, simplified }) => {
   const [bars, setBars] = useState(barList)
 
   /* Holds whether the array is sorted */
-  const sorted = isSorted(bars)
+  const sorted = arrayManager.isSorted(bars)
 
   // == User Interactivity ======================================================================================== //
 
