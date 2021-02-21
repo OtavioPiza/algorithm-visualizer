@@ -4,7 +4,7 @@
  * @param {boolean} add indicated whether a bar is to be added or removed
  * @param bars
  *
- * @return ({size: number})[]
+ * @return ({size: number})[size]
  */
 const addBar = (add = true, bars) => (
   add
@@ -15,7 +15,7 @@ const addBar = (add = true, bars) => (
 /**
  * Returns an array of bar objects which simulate the logo of the application
  *
- * @return ({size: number})[]
+ * @return ({size: number})[size]
  */
 const getDefaultList = () => [
   {
@@ -41,7 +41,7 @@ const getDefaultList = () => [
  *
  * @param size
  *
- * @returns ({size: number})[]
+ * @returns ({size: number})[size]
  */
 const getList = (size) => {
   let list = []
@@ -61,26 +61,30 @@ const getList = (size) => {
  *
  * @param size
  *
- * @returns ({size: number})[]
+ * @returns ({size: number})[size]
  */
 const getAlmostSortedList = (size) => {
   let barList = getList(size)
 
-  for (let i = Math.ceil(size / 10); i < size; i++) {
+  for (let i = 0; i < size / 3; i++) {
     const bar1 = barList[Math.floor(Math.random() * size)]
     const bar2 = barList[Math.floor(Math.random() * size)]
     return barList.map(bar =>
-      bar === bar1 ? bar2 :
-        bar === bar2 ? bar1 :
-          bar
+      bar === bar1
+        ? bar2 :
+        bar === bar2
+          ? bar1
+          : bar
     )
   }
 }
 
 /**
- * Returns a list with randomly sized bars
+ * Returns an array of bar objects where all the elements are randomly positioned
  *
- * @param {Integer} size size of the array
+ * @param size
+ *
+ * @returns ({size: number})[size]
  */
 const getRandomList = (size) => {
   let barList = getList(size)
