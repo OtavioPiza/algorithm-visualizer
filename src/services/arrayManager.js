@@ -4,7 +4,7 @@
  * @param {boolean} add indicated whether a bar is to be added or removed
  * @param bars
  *
- * @return ({size: number})[size]
+ * @returns ({size: number})[size]
  */
 const addBar = (add = true, bars) => (
   add
@@ -15,7 +15,7 @@ const addBar = (add = true, bars) => (
 /**
  * Returns an array of bar objects which simulate the logo of the application
  *
- * @return ({size: number})[size]
+ * @returns ({size: number})[size]
  */
 const getDefaultList = () => [
   {
@@ -106,6 +106,8 @@ const getRandomList = (size) => {
  *
  * @param index: index of the bar to be selected
  * @param bars: array of bar objects
+ *
+ * @returns ({size: number})[size]
  */
 const selectBar = (index, bars) => {
 
@@ -142,19 +144,4 @@ const selectBar = (index, bars) => {
   }
 }
 
-/**
- * Switches two bars reseting their selected and analyzed properties to false
- *
- * @param {Arrays of bars} bars
- * @param {Index of the first bar} firstBar
- * @param {Index of the second bar} secondBar
- */
-const switchBars = (bars, firstBar, secondBar) => (
-  bars.map((bar, index) => (
-    index === firstBar ? { ...bar, size: bars[secondBar].size, selected: false } :
-      index === secondBar ? { ...bar, size: bars[firstBar].size, selected: false } :
-        bar
-  ))
-)
-
-export default { addBar, getAlmostSortedList, getRandomList, selectBar, switchBars, getDefaultList }
+export default { addBar, getAlmostSortedList, getRandomList, selectBar, getDefaultList }
