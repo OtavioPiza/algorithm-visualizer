@@ -10,7 +10,7 @@ import arrayManager from '../services/arrayManager'
  *
  * @param {Bar[], Boolean} param    : array of bars and if they should be simplified or not
  *
- * @returns {Array} : an array containing a Bar component for each bar on the provided list
+ * @returns {JSX.Element} : an array containing a Bar component for each bar on the provided list
  */
 const Array = ({ barList, simplified }) => {
 
