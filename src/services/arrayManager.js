@@ -68,7 +68,7 @@ const getAlmostSortedList = (size) => {
 
   for (let i = 0; i < Math.ceil(size / 9); i++) {
     let temporaryIndexOne = Math.floor(Math.random() * size)
-    let temporaryIndexTwo = Math.floor(((Math.random() * (size / 4)) + temporaryIndexOne) % size)
+    let temporaryIndexTwo = Math.floor((Math.ceil(Math.random() * (size / 4)) + temporaryIndexOne) % size)
     let temporaryValue = barList[temporaryIndexOne]
 
     barList[temporaryIndexOne] = barList[temporaryIndexTwo]
@@ -104,12 +104,12 @@ const getRandomList = (size) => {
 /**
  * Selects a bar from the array and, if two bars are selected, switches them
  *
- * @param {int} firstBarIndex index of the bar to be selected
- * @param {array} bars array containig all the bars
+ * @param index: index of the bar to be selected
+ * @param bars: array of bar objects
  */
-const selectBar = (firstBarIndex, bars) => {
+const selectBar = (index, bars) => {
 
-  if (bars[firstBarIndex].selected) {
+  if (bars[index].selected) {
     return bars.map(bar => ({ ...bar, selected: false }))
 
   } else {
@@ -124,19 +124,20 @@ const selectBar = (firstBarIndex, bars) => {
 
     if (secondBarIndex !== -1) {
       return bars.map((bar, i) => {
+
         switch (i) {
-        case firstBarIndex:
+        case index:
           return { ...bars[secondBarIndex], selected: false }
 
         case secondBarIndex:
-          return { ...bars[firstBarIndex], selected: false }
+          return { ...bars[index], selected: false }
 
         default:
           return bar
         }
       })
     } else {
-      return bars.map((bar, i) => i === firstBarIndex ? { ...bar, selected: true } : bar)
+      return bars.map((bar, i) => i === index ? { ...bar, selected: true } : bar)
     }
   }
 }
