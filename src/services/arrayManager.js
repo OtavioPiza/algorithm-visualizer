@@ -66,17 +66,15 @@ const getList = (size) => {
 const getAlmostSortedList = (size) => {
   let barList = getList(size)
 
-  for (let i = 0; i < size / 3; i++) {
-    const bar1 = barList[Math.floor(Math.random() * size)]
-    const bar2 = barList[Math.floor(Math.random() * size)]
-    return barList.map(bar =>
-      bar === bar1
-        ? bar2 :
-        bar === bar2
-          ? bar1
-          : bar
-    )
+  for (let i = 0; i < Math.ceil(size / 9); i++) {
+    let temporaryIndexOne = Math.floor(Math.random() * size)
+    let temporaryIndexTwo = Math.floor(((Math.random() * (size / 4)) + temporaryIndexOne) % size)
+    let temporaryValue = barList[temporaryIndexOne]
+
+    barList[temporaryIndexOne] = barList[temporaryIndexTwo]
+    barList[temporaryIndexTwo] = temporaryValue
   }
+  return barList
 }
 
 /**
