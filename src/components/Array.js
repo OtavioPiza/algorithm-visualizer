@@ -6,7 +6,7 @@ import arrayManager from '../services/arrayManager'
 /**
  * React component representing an array of Bar components
  * - responsible for the interaction between the user and the bars
- * - does NOT support integration with algorithms
+ * - does NOT support integration with any algorithm algorithms
  *
  * @param {Bar[], Boolean} param    : array of bars and if they should be simplified or not
  *
