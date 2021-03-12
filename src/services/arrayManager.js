@@ -177,4 +177,12 @@ const isSorted = (bars) => {
   return sorted
 }
 
-export default { addBar, getAlmostSortedList, getRandomList, selectBar, getDefaultList, isSorted }
+const switchBars = (bars, firstBarIndex, secondBarIndex) => {
+  const firstBar = bars[firstBarIndex]
+  const secondBar = bars[secondBarIndex]
+
+  return bars.map((bar, index) => index === secondBarIndex ? firstBar : index === firstBarIndex ? secondBar : bar)
+}
+
+
+export default { addBar, getAlmostSortedList, getRandomList, selectBar, getDefaultList, isSorted, switchBars }
