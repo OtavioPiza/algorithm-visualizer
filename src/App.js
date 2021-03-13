@@ -1,7 +1,7 @@
 import React from 'react'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import About from './About'
-import BubbleSort from './BubbleSort'
+import BubbleSort from './pages/sorting/BubbleSort'
 import InsertionSort from './InsertionSort'
 import Home from './Home'
 import Explore from './Explore'

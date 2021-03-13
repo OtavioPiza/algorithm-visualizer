@@ -20,7 +20,7 @@ import '../styles/components/ArraySorter.css'
  */
 const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
   const [running, setRunning] = useState(false)
-  const [arraySize, setArraySize] = useState(10)
+  const [arraySize, setArraySize] = useState(barList.length)
   const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList))
   const [currentState, setCurrentState] = useState(defaultState)
 
@@ -49,8 +49,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
   }
 
   /**
-     * Resets the array to the initial state
-     */
+   * Resets the array to the initial state
+   */
   const handleReset = () => {
     setRunning(false)
     setCurrentState(defaultState)
