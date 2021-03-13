@@ -1,42 +1,48 @@
+/* Libraries */
 import React, { useState } from 'react'
+
+/* Components */
 import Bar from './Bar'
 import Button from './Button'
 import BottomBar from './BottomBar'
-import arrayManager from '../services/arrayManager'
-import '../styles/components/ArraySorter.css'
 import Header from './Header'
 
+/* Services */
+import arrayManager from '../services/arrayManager'
+
+/* Styles */
+import '../styles/components/ArraySorter.css'
+
 /**
- * A plataform that implements a sorting algorithm
+ * A platform that implements a sorting algorithm
  *
  * @param {sortingAlgorithm, Bar[]} param sorting algorithm and array of bars
  */
 const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
-  const [arraySize, setArraySize] = useState(10)                  // Size of the array
-  const [running, setRunning] = useState(false)                   // If the algoithm is running
-  const [defaultState, setDefaultState]                           // A default state the user can reset to
-        = useState(sortingAlgorithm.defaultState(barList))
-  const [currentState, setCurrentState] = useState(defaultState)  // The current state of the algorithm
+  const [running, setRunning] = useState(false)
+  const [arraySize, setArraySize] = useState(10)
+  const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList))
+  const [currentState, setCurrentState] = useState(defaultState)
 
-  // == User Interactivity ======================================================================================== //
+  // == User Interactivity ========================================================================================== //
 
   /**
-     * Selects a bar from the array and, if two bars are selected, switches them
-     *
-     * @param {Integer} id index of the bar that was selected
-     */
+   * Selects a bar from the array and, if two bars are selected, switches them
+   *
+   * @param firstBarIndex
+   */
   const handleSelectBar = (firstBarIndex) => {
     setRunning(false)
     setCurrentState(sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])))
   }
 
-  // == Control Panel ============================================================================================= //
+  // == Control Panel =============================================================================================== //
 
   /**
-     * Sets a new default bar array to be used by the sorting algorithm
-     *
-     * @param {{size: {}, analyzed: {}, sorted: {}}} newBarArray new array of bars that will be used
-     */
+   * Sets a new default bar array to be used by the sorting algorithm
+   *
+   * @param {{size: {}, analyzed: {}, sorted: {}}} newBarArray new array of bars that will be used
+   */
   const handleNewBarArray = (newBarArray) => {
     setCurrentState(sortingAlgorithm.defaultState(newBarArray))
     setDefaultState(sortingAlgorithm.defaultState(newBarArray))
@@ -95,6 +101,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
   if (running) {
 
     if (!currentState[0].sorted) {
+
       // try to combine both the status and curent bars states
       setTimeout(
         () => {
