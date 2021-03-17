@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="10a85de5-9089-4d0a-b64b-cb85f4c4ce9e" name="Default Changelist" comment="" />
+=======
+<<<<<<< Updated upstream
+    <list default="true" id="10a85de5-9089-4d0a-b64b-cb85f4c4ce9e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Array.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Array.js" afterDir="false" />
+    </list>
+=======
+    <list default="true" id="10a85de5-9089-4d0a-b64b-cb85f4c4ce9e" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
+>>>>>>> main
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -70,11 +81,18 @@
       <workItem from="1610806247385" duration="22000" />
       <workItem from="1610919454405" duration="28000" />
       <workItem from="1610919752782" duration="2366000" />
+<<<<<<< Updated upstream
       <workItem from="1611622283311" duration="4377000" />
       <workItem from="1613845515493" duration="920000" />
       <workItem from="1613849125766" duration="7955000" />
       <workItem from="1613940801403" duration="1448000" />
+<<<<<<< HEAD
       <workItem from="1614729139596" duration="731000" />
+=======
+=======
+      <workItem from="1615498141369" duration="15000" />
+>>>>>>> Stashed changes
+>>>>>>> main
     </task>
     <servers />
   </component>
