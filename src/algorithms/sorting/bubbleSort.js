@@ -1,5 +1,5 @@
-import React from 'react'
-import arrayManager from '../../services/arrayManager'
+import React from 'react';
+import arrayManager from '../../services/arrayManager';
 
 /**
  * Uses the state provided to take one step in the execution of the sorting algorithm returning
@@ -9,15 +9,15 @@ import arrayManager from '../../services/arrayManager'
  * @param {Boolean} sorted       : if the array is sorted or not
  * @param {Number} complexity    : current complexity of the algorithm
  */
-const defaultState = (bars, sorted = false, complexity  = 0) => {
-  const algorithmStatus = sorted ? 'Finished sorting!' : 'Ready to start sorting!'
-  const analyzedBarsIndex = [-1, 0]
-  const upperbound = bars.length - 1
-  const lowerbound = 0
-  const switched = false
-  const step = 0
-  const worseComplexity = (bars.length * (bars.length - 1)) / 2 + 1
-  const bestComplexity = bars.length - 1
+const defaultState = (bars, sorted = false, complexity = 0) => {
+  const algorithmStatus = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
+  const analyzedBarsIndex = [-1, 0];
+  const upperbound = bars.length - 1;
+  const lowerbound = 0;
+  const switched = false;
+  const step = 0;
+  const worseComplexity = (bars.length * (bars.length - 1)) / 2 + 1;
+  const bestComplexity = bars.length - 1;
 
   return [
     {
@@ -32,28 +32,28 @@ const defaultState = (bars, sorted = false, complexity  = 0) => {
       bestComplexity,
       complexity,
     },
-    bars.map(bar => ({ ...bar, analyzed: false, sorted: sorted })),
-  ]
-}
+    bars.map((bar) => ({...bar, analyzed: false, sorted: sorted})),
+  ];
+};
 
 /**
  * Takes one step in the sorting algorithm
  *
  * @param {oldState} state : state of the algorithm
- * @returns {newState}     : new state of the algorithm
+ * @return {newState}     : new state of the algorithm
  */
 const sort = (state) => {
-  const status = state[0]
-  const bars = state[1]
+  const status = state[0];
+  const bars = state[1];
 
   /**
    * Returns the next two bars that will be analyzed by te algorithm
    */
   const getNextBars = () => (
-    status.analyzedBarsIndex[1] > status.upperbound
-      ? [0, 1]
-      : status.analyzedBarsIndex.map(bar => bar + 1)
-  )
+    status.analyzedBarsIndex[1] > status.upperbound ?
+      [0, 1] :
+      status.analyzedBarsIndex.map((bar) => bar + 1)
+  );
 
   /**
    * Determines if the array is sorted
@@ -61,41 +61,41 @@ const sort = (state) => {
   const getIsSorted = (greater) => (
     (status.upperbound === 0) ||
       (status.analyzedBarsIndex[1] === status.upperbound - 1 && !status.switched && !greater)
-  )
+  );
 
   /**
    * Compares two bars
    */
   const compareBars = () => {
-    const analyzedBarsIndex = getNextBars()
-    const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size
+    const analyzedBarsIndex = getNextBars();
+    const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size;
     const newBars = bars.map((bar, index) => (
-      { ...bar, sorted: false, analyzed: analyzedBarsIndex.includes(index) }
-    ))
+      {...bar, sorted: false, analyzed: analyzedBarsIndex.includes(index)}
+    ));
 
-    return getIsSorted(greater)
-      ? defaultState(newBars, true, status.complexity + 1)
-      : [
+    return getIsSorted(greater) ?
+      defaultState(newBars, true, status.complexity + 1) :
+      [
         {
           ...status,
           algorithmStatus:
-            greater
-              ? 'Because the first bar is greater than the second they are switched'
-              : 'Because the first bar is not greater than the second they are left unchanged',
+            greater ?
+              'Because the first bar is greater than the second they are switched' :
+              'Because the first bar is not greater than the second they are left unchanged',
           analyzedBarsIndex: analyzedBarsIndex,
           greater: greater,
           step: greater ? 1 : 0,
-          switched: analyzedBarsIndex[0] === 0
-            ? false
-            : status.switched,
-          upperbound: analyzedBarsIndex[1] === status.upperbound
-            ? status.upperbound - 1
-            : status.upperbound,
+          switched: analyzedBarsIndex[0] === 0 ?
+            false :
+            status.switched,
+          upperbound: analyzedBarsIndex[1] === status.upperbound ?
+            status.upperbound - 1 :
+            status.upperbound,
           complexity: status.complexity + 1,
         },
-        newBars
-      ]
-  }
+        newBars,
+      ];
+  };
 
   /**
    * Changes the two bars and updates the status
@@ -107,28 +107,28 @@ const sort = (state) => {
       step: 0,
       switched: true,
     },
-    arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1])
-  ]
+    arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1]),
+  ];
 
   /**
    * Returns the next step of the sorting algorithm based on the state provided in the parameters
    */
-  return status.step === 0
-    ? compareBars()
-    : changeBars()
-}
+  return status.step === 0 ?
+    compareBars() :
+    changeBars();
+};
 
 /**
  * Returns the name of the algorithm
  *
- * @returns {String}    : name of the sorting algorithm
+ * @return {String}    : name of the sorting algorithm
  */
-const name = () => 'Bubble Sort'
+const name = () => 'Bubble Sort';
 
 /**
  * Returns the about section of the algorithm
  *
- * @returns {JSX.Element}
+ * @return {JSX.Element}
  */
 const about = () => (
 
@@ -167,12 +167,12 @@ const about = () => (
     </ul>
 
   </div>
-)
+);
 
 /**
  * Returns a python implementation of the algorithm
  *
- * @returns {JSX.Element}  : returns an implementation of the algorithm
+ * @return {JSX.Element}  : returns an implementation of the algorithm
  */
 const implementation = () => (
   <div className="BubbleSortImplementation">
@@ -204,8 +204,8 @@ return array
       </code>
     </pre>
   </div>
-)
+);
 
-const SortingAlgorithm = { sort, defaultState, name, implementation, about }
+const SortingAlgorithm = {sort, defaultState, name, implementation, about};
 
-export default SortingAlgorithm
+export default SortingAlgorithm;

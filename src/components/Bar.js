@@ -1,10 +1,10 @@
-import React from 'react'
-import '../styles/components/Bar.css'
-import bar from '../styles/components/icons/bar-gray.svg'
-import analyzedBar from '../styles/components/icons/bar-analyzed-orange.svg'
-import selectedBar from '../styles/components/icons/bar-selected-blue.svg'
-import sortedBar from '../styles/components/icons/bar-sorted-green.svg'
-import lockedBar from '../styles/components/icons/bar-light.svg'
+import React from 'react';
+import '../styles/components/Bar.css';
+import bar from '../styles/components/icons/bar-gray.svg';
+import analyzedBar from '../styles/components/icons/bar-analyzed-orange.svg';
+import selectedBar from '../styles/components/icons/bar-selected-blue.svg';
+import sortedBar from '../styles/components/icons/bar-sorted-green.svg';
+import lockedBar from '../styles/components/icons/bar-light.svg';
 
 /**
  * React component representing a bar from an arrays
@@ -19,8 +19,7 @@ import lockedBar from '../styles/components/icons/bar-light.svg'
  * } param0
  * @returns a button that represents a bar in an array
  */
-const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false, }) => {
-
+const Bar = ({className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false}) => {
   /**
      * Selects a background for the bar depending on its state
      */
@@ -29,7 +28,7 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
           analyzed ? `url(${analyzedBar})` :
             sorted ? `url(${sortedBar})` :
               locked ? `url(${lockedBar})` :
-                `url(${bar})`
+                `url(${bar})`;
 
   /**
      * Determines the style of the bar depending on its state
@@ -45,7 +44,7 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
     backgroundRepeat: 'no-repeat',
     backgroundSize: `${simplified ? '500% 500%' : '100% 100%'}`,
     backgroundPosition: 'center',
-  }
+  };
 
   // == HTML ====================================================================================================== //
 
@@ -53,7 +52,7 @@ const Bar = ({ className, id, size, analyzed, selected, sorted, simplified, even
     <button className={ className === undefined ? 'Bar' : className } id={ id }
       style={ style } onClick={ () => eventHandler(id) }>
     </button>
-  )
-}
+  );
+};
 
-export default Bar
+export default Bar;

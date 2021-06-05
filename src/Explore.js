@@ -1,14 +1,13 @@
-import React from 'react'
-import BottomBar from './components/BottomBar'
-import Header from './components/Header'
-import RedirectButton from './components/RedirectButton'
-import './styles/Explore.css'
+import React from 'react';
+import BottomBar from './components/BottomBar';
+import Header from './components/Header';
+import RedirectButton from './components/RedirectButton';
+import './styles/Explore.css';
 
 /**
  * React app
  */
 function Explore() {
-
   return (
     <div className='Explore'>
 
@@ -19,7 +18,6 @@ function Explore() {
       </div>
 
       <div className='TextContainer'>
-
 
 
         <h1>
@@ -39,7 +37,7 @@ function Explore() {
 
 
     </div>
-  )
+  );
 }
 
-export default Explore
+export default Explore;

@@ -1,7 +1,7 @@
-import React, { useState } from 'react'
-import Bar from './Bar'
-import '../styles/components/Array.css'
-import arrayManager from '../services/arrayManager'
+import React, {useState} from 'react';
+import Bar from './Bar';
+import '../styles/components/Array.css';
+import arrayManager from '../services/arrayManager';
 
 /**
  * React component representing an array of Bar components
@@ -12,13 +12,12 @@ import arrayManager from '../services/arrayManager'
  *
  * @returns {JSX.Element} : an array containing a Bar component for each bar on the provided list
  */
-const Array = ({ barList, simplified }) => {
-
+const Array = ({barList, simplified}) => {
   /* Holds an array of bars */
-  const [bars, setBars] = useState(barList)
+  const [bars, setBars] = useState(barList);
 
   /* Holds whether the array is sorted */
-  const sorted = arrayManager.isSorted(bars)
+  const sorted = arrayManager.isSorted(bars);
 
   // == User Interactivity ======================================================================================== //
 
@@ -28,8 +27,8 @@ const Array = ({ barList, simplified }) => {
      * @param {Number} id index of the bar
      */
   const selectBar = (id) => {
-    setBars(arrayManager.selectBar(id, bars))
-  }
+    setBars(arrayManager.selectBar(id, bars));
+  };
 
   // == HTML ====================================================================================================== //
 
@@ -41,7 +40,7 @@ const Array = ({ barList, simplified }) => {
           simplified={simplified} />
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Array
+export default Array;

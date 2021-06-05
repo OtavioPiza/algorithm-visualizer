@@ -1,15 +1,14 @@
-import React from 'react'
-import RedirectButton from './components/RedirectButton'
-import BottomBar from './components/BottomBar'
-import Array from './components/Array'
-import arrayManager from './services/arrayManager'
-import './styles/Home.css'
+import React from 'react';
+import RedirectButton from './components/RedirectButton';
+import BottomBar from './components/BottomBar';
+import Array from './components/Array';
+import arrayManager from './services/arrayManager';
+import './styles/Home.css';
 
 /**
  * React component representing the Home page of the application
  */
 const Home = () => {
-
   return (
     <div className='Container'>
       <div className='Home'>
@@ -28,7 +27,7 @@ const Home = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

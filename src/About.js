@@ -1,32 +1,29 @@
-import React from 'react'
-import Header from './components/Header'
-import './styles/About.css'
+import React from 'react';
+import Header from './components/Header';
+import './styles/About.css';
 
 /**
- * React app
+ * About field
+ *
+ * @return {JSX.Element} about page
  */
-function About() {
+const About = () => (
+  <div className='About'>
 
-  return (
-    <div className='About'>
+    <div className='PageHeader'>
 
-      <div className='PageHeader'>
-
-        <Header title='About'/>
-
-      </div>
-
-      <div className='TextContainer'>
-
-        <h1>
-          About
-        </h1>
-
-      </div>
-
+      <Header title='About'/>
 
     </div>
-  )
-}
 
-export default About
+    <div className='TextContainer'>
+
+      <h1>
+          About
+      </h1>
+
+    </div>
+
+  </div>
+);
+export default About;

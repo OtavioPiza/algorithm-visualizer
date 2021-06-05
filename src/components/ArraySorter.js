@@ -1,28 +1,28 @@
 /* Libraries */
-import React, { useState } from 'react'
+import React, {useState} from 'react';
 
 /* Components */
-import Bar from './Bar'
-import Button from './Button'
-import BottomBar from './BottomBar'
-import Header from './Header'
+import Bar from './Bar';
+import Button from './Button';
+import BottomBar from './BottomBar';
+import Header from './Header';
 
 /* Services */
-import arrayManager from '../services/arrayManager'
+import arrayManager from '../services/arrayManager';
 
 /* Styles */
-import '../styles/components/ArraySorter.css'
+import '../styles/components/ArraySorter.css';
 
 /**
  * A platform that implements a sorting algorithm
  *
  * @param {sortingAlgorithm, Bar[]} param sorting algorithm and array of bars
  */
-const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
-  const [running, setRunning] = useState(false)
-  const [arraySize, setArraySize] = useState(barList.length)
-  const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList))
-  const [currentState, setCurrentState] = useState(defaultState)
+const ArraySorter = ({sortingAlgorithm, barList = arrayManager.getRandomList(10)}) => {
+  const [running, setRunning] = useState(false);
+  const [arraySize, setArraySize] = useState(barList.length);
+  const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList));
+  const [currentState, setCurrentState] = useState(defaultState);
 
   // == User Interactivity ========================================================================================== //
 
@@ -32,9 +32,9 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
    * @param firstBarIndex
    */
   const handleSelectBar = (firstBarIndex) => {
-    setRunning(false)
-    setCurrentState(sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])))
-  }
+    setRunning(false);
+    setCurrentState(sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])));
+  };
 
   // == Control Panel =============================================================================================== //
 
@@ -44,17 +44,17 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
    * @param {{size: {}, analyzed: {}, sorted: {}}} newBarArray new array of bars that will be used
    */
   const handleNewBarArray = (newBarArray) => {
-    setCurrentState(sortingAlgorithm.defaultState(newBarArray))
-    setDefaultState(sortingAlgorithm.defaultState(newBarArray))
-  }
+    setCurrentState(sortingAlgorithm.defaultState(newBarArray));
+    setDefaultState(sortingAlgorithm.defaultState(newBarArray));
+  };
 
   /**
    * Resets the array to the initial state
    */
   const handleReset = () => {
-    setRunning(false)
-    setCurrentState(defaultState)
-  }
+    setRunning(false);
+    setCurrentState(defaultState);
+  };
 
   /**
      * Adds or removes a bar from the array
@@ -62,36 +62,35 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
      * @param {Boolean} add indicated wheter a bar is to be added or removed
      */
   const handleAdd = (add = true) => {
-    setRunning(false)
+    setRunning(false);
 
-    if (!add && arraySize <= 2) return
-    setArraySize(add ? arraySize + 1 : arraySize - 1)
-    handleNewBarArray(arrayManager.addBar(add, currentState[1]))
-  }
+    if (!add && arraySize <= 2) return;
+    setArraySize(add ? arraySize + 1 : arraySize - 1);
+    handleNewBarArray(arrayManager.addBar(add, currentState[1]));
+  };
 
   /**
      * Makes the sorting algorithm take one step
      */
   const handleStep = () => {
-
     if (!currentState[0].sorted) {
-      setCurrentState(sortingAlgorithm.sort(currentState))
+      setCurrentState(sortingAlgorithm.sort(currentState));
     }
-  }
+  };
 
   /**
      * Sets the current state of the sorting algorithm as the initial state
      */
   const handleSetList = () => {
-    setDefaultState(sortingAlgorithm.defaultState(currentState[1]))
-  }
+    setDefaultState(sortingAlgorithm.defaultState(currentState[1]));
+  };
 
   /**
      * Switches the auto-run feature
      */
   const handleRun = () => {
-    setRunning(!running)
-  }
+    setRunning(!running);
+  };
 
   // == Auto-run feature ========================================================================================== //
 
@@ -99,18 +98,16 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
      * Auto-run
      */
   if (running) {
-
     if (!currentState[0].sorted) {
-
       // try to combine both the status and curent bars states
       setTimeout(
-        () => {
-          setCurrentState(sortingAlgorithm.sort(currentState))
-        },
-        10
-      )
+          () => {
+            setCurrentState(sortingAlgorithm.sort(currentState));
+          },
+          10,
+      );
     } else {
-      setRunning(false)
+      setRunning(false);
     }
   }
 
@@ -197,7 +194,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
       </div>
 
     </div>
-  )
-}
+  );
+};
 
-export default ArraySorter
+export default ArraySorter;
