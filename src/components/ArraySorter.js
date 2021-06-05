@@ -8,7 +8,7 @@ import BottomBar from './BottomBar';
 import Header from './Header';
 
 /* Services */
-import arrayManager from '../services/arrayManager';
+import arrayManager from '../util/arrayManager';
 
 /* Styles */
 import '../styles/components/ArraySorter.css';

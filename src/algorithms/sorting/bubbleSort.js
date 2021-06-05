@@ -1,5 +1,5 @@
 import React from 'react';
-import arrayManager from '../../services/arrayManager';
+import arrayManager from '../../util/arrayManager';
 
 /**
  * Uses the state provided to take one step in the execution of the sorting algorithm returning

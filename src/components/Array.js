@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import Bar from './Bar';
 import '../styles/components/Array.css';
-import arrayManager from '../services/arrayManager';
+import arrayManager from '../util/arrayManager';
 
 /**
  * React component representing an array of Bar components

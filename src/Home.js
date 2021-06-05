@@ -2,7 +2,7 @@ import React from 'react';
 import RedirectButton from './components/RedirectButton';
 import BottomBar from './components/BottomBar';
 import Array from './components/Array';
-import arrayManager from './services/arrayManager';
+import arrayManager from './util/arrayManager';
 import './styles/Home.css';
 
 /**

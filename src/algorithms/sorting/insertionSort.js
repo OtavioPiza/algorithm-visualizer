@@ -1,5 +1,5 @@
 import React from 'react';
-import arrayManager from '../../services/arrayManager';
+import arrayManager from '../../util/arrayManager';
 
 /**
  * Returns the state of the algorithm
