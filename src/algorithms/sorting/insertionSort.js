@@ -226,10 +226,12 @@ return array
   </div>
 );
 
-export default {
+const SortingAlgorithm = {
   sort,
   defaultState,
   name,
   implementation,
   about,
 };
+
+export default SortingAlgorithm

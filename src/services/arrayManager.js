@@ -7,11 +7,11 @@
  * @return ({size: number})[size]
  */
 const addBar = (add = true, bars) => {
-  return (
-    add ?
-      bars.concat({size: Math.floor(100 * Math.random())}) :
-      bars.slice(0, bars.length - 1)
-  );
+    return (
+        add ?
+            bars.concat({size: Math.floor(100 * Math.random())}) :
+            bars.slice(0, bars.length - 1)
+    );
 };
 
 /**
@@ -20,21 +20,21 @@ const addBar = (add = true, bars) => {
  * @return ({size: number})[size]
  */
 const getDefaultList = () => [
-  {
-    size: 40,
-  },
-  {
-    size: 20,
-  },
-  {
-    size: 80,
-  },
-  {
-    size: 60,
-  },
-  {
-    size: 100,
-  },
+    {
+        size: 40,
+    },
+    {
+        size: 20,
+    },
+    {
+        size: 80,
+    },
+    {
+        size: 60,
+    },
+    {
+        size: 100,
+    },
 ];
 
 /**
@@ -46,16 +46,16 @@ const getDefaultList = () => [
  * @return ({size: number})[size]
  */
 const getList = (size) => {
-  const list = [];
+    const list = [];
 
-  for (let i = 0; i < size; i++) {
-    list.push({
-      size: 100 * (i + 1) / (size + 1),
-      selected: false,
-      analyzed: false,
-    });
-  }
-  return list;
+    for (let i = 0; i < size; i++) {
+        list.push({
+            size: 100 * (i + 1) / (size + 1),
+            selected: false,
+            analyzed: false,
+        });
+    }
+    return list;
 };
 
 /**
@@ -66,17 +66,17 @@ const getList = (size) => {
  * @return ({size: number})[size]
  */
 const getAlmostSortedList = (size) => {
-  const barList = getList(size);
+    const barList = getList(size);
 
-  for (let i = 0; i < Math.ceil(size / 9); i++) {
-    const temporaryIndexOne = Math.floor(Math.random() * size);
-    const temporaryIndexTwo = Math.floor((Math.ceil(Math.random() * (size / 4)) + temporaryIndexOne) % size);
-    const temporaryValue = barList[temporaryIndexOne];
+    for (let i = 0; i < Math.ceil(size / 9); i++) {
+        const temporaryIndexOne = Math.floor(Math.random() * size);
+        const temporaryIndexTwo = Math.floor((Math.ceil(Math.random() * (size / 4)) + temporaryIndexOne) % size);
+        const temporaryValue = barList[temporaryIndexOne];
 
-    barList[temporaryIndexOne] = barList[temporaryIndexTwo];
-    barList[temporaryIndexTwo] = temporaryValue;
-  }
-  return barList;
+        barList[temporaryIndexOne] = barList[temporaryIndexTwo];
+        barList[temporaryIndexTwo] = temporaryValue;
+    }
+    return barList;
 };
 
 /**
@@ -87,19 +87,21 @@ const getAlmostSortedList = (size) => {
  * @return ({size: number})[size]
  */
 const getRandomList = (size) => {
-  const barList = getList(size);
+    const barList = getList(size);
 
-  let currentIndex = barList.length; let temporaryValue; let randomIndex;
+    let currentIndex = barList.length;
+    let temporaryValue;
+    let randomIndex;
 
-  while (0 !== currentIndex) {
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
 
-    temporaryValue = barList[currentIndex];
-    barList[currentIndex] = barList[randomIndex];
-    barList[randomIndex] = temporaryValue;
-  }
-  return barList;
+        temporaryValue = barList[currentIndex];
+        barList[currentIndex] = barList[randomIndex];
+        barList[randomIndex] = temporaryValue;
+    }
+    return barList;
 };
 
 /**
@@ -111,32 +113,32 @@ const getRandomList = (size) => {
  * @return ({size: number})[size]
  */
 const selectBar = (index, bars) => {
-  /* the bar was already selected */
-  if (bars[index].selected) {
-    return bars.map((bar) => ({...bar, selected: false}));
-  }
-
-  /* the bar was not selected yet */
-  else {
-    /* searches for another selected bar */
-    let secondBarIndex = -1;
-    for (let i = 0; i < bars.length; i++) {
-      if (bars[i].selected) {
-        secondBarIndex = i;
-        break;
-      }
+    /* the bar was already selected */
+    if (bars[index].selected) {
+        return bars.map((bar) => ({...bar, selected: false}));
     }
 
-    /* if another bar is already selected it is switched with the one with the provided index */
-    if (secondBarIndex !== -1) {
-      return switchBars(bars, index, secondBarIndex);
-    }
-
-    /* else the bar with the specified index is marked as selected */
+    /* the bar was not selected yet */
     else {
-      return bars.map((bar, i) => i === index ? {...bar, selected: true} : bar);
+        /* searches for another selected bar */
+        let secondBarIndex = -1;
+        for (let i = 0; i < bars.length; i++) {
+            if (bars[i].selected) {
+                secondBarIndex = i;
+                break;
+            }
+        }
+
+        /* if another bar is already selected it is switched with the one with the provided index */
+        if (secondBarIndex !== -1) {
+            return switchBars(bars, index, secondBarIndex);
+        }
+
+        /* else the bar with the specified index is marked as selected */
+        else {
+            return bars.map((bar, i) => i === index ? {...bar, selected: true} : bar);
+        }
     }
-  }
 };
 
 /**
@@ -147,25 +149,25 @@ const selectBar = (index, bars) => {
  * @return boolean: whether the array is sorted
  */
 const isSorted = (bars) => {
-  let sorted = 1;
-
-  for (let i = 1; i < bars.length; i++) {
-    if (bars[i].size < bars[i - 1].size) {
-      sorted = 0;
-      break;
-    }
-  }
-  if (sorted !== 1) {
-    sorted = -1;
+    let sorted = 1;
 
     for (let i = 1; i < bars.length; i++) {
-      if (bars[i].size > bars[i - 1].size) {
-        sorted = 0;
-        break;
-      }
+        if (bars[i].size < bars[i - 1].size) {
+            sorted = 0;
+            break;
+        }
     }
-  }
-  return sorted;
+    if (sorted !== 1) {
+        sorted = -1;
+
+        for (let i = 1; i < bars.length; i++) {
+            if (bars[i].size > bars[i - 1].size) {
+                sorted = 0;
+                break;
+            }
+        }
+    }
+    return sorted;
 };
 
 /**
@@ -178,11 +180,20 @@ const isSorted = (bars) => {
  * @return [{size: number}]
  */
 const switchBars = (bars, firstBarIndex, secondBarIndex) => {
-  const firstBar = bars[firstBarIndex];
-  const secondBar = bars[secondBarIndex];
+    const firstBar = bars[firstBarIndex];
+    const secondBar = bars[secondBarIndex];
 
-  return bars.map((bar, index) => index === secondBarIndex ? firstBar : index === firstBarIndex ? secondBar : bar);
+    return bars.map((bar, index) => index === secondBarIndex ? firstBar : index === firstBarIndex ? secondBar : bar);
 };
 
+const arrayManager = {
+    addBar,
+    getAlmostSortedList,
+    getRandomList,
+    selectBar,
+    getDefaultList,
+    isSorted,
+    switchBars
+}
 
-export default {addBar, getAlmostSortedList, getRandomList, selectBar, getDefaultList, isSorted, switchBars};
+export default arrayManager;
