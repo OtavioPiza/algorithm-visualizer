@@ -1,51 +1,68 @@
-/**
- * Returns a new array of bar objects with either a new bar appended to the old one or the left-most bar removed
- *
- * @param {boolean} add indicated whether a bar is to be added or removed
- * @param bars
- *
- * @return ({size: number})[size]
- */
-const addBar = (add = true, bars) => {
-    return (
-        add ?
-            bars.concat({size: Math.floor(100 * Math.random())}) :
-            bars.slice(0, bars.length - 1)
-    );
-};
+/* Constants */
 
 /**
- * Returns an array of bar objects which simulate the logo of the application
+ * Default bar object list
  *
- * @return ({size: number})[size]
+ * @type {[{size: number, selected: boolean, analyzed: boolean}]}
  */
-const getDefaultList = () => [
+const defaultList = [
     {
         size: 40,
+        selected: false,
+        analyzed: false
     },
     {
         size: 20,
+        selected: false,
+        analyzed: false
     },
     {
         size: 80,
+        selected: false,
+        analyzed: false
     },
     {
         size: 60,
+        selected: false,
+        analyzed: false
     },
     {
         size: 100,
+        selected: false,
+        analyzed: false
     },
 ];
+
+/* Functions */
+
+/**
+ * Returns a new array of bar objects with either a new bar appended to the old one or the left-most bar removed
+ *
+ * @param add {boolean} whether a bar should be added (True) or removed (False)
+ * @param bars {[{size: number, selected: boolean, analyzed: boolean}]} list of bar objects
+ *
+ * @returns {[{size: number, selected: boolean, analyzed: boolean}]} new list of bar objects
+ */
+const addBar = (add = true, bars) => (
+    add
+        ? bars.concat(
+            {
+                size: Math.floor(100 * Math.random()),
+                selected: false,
+                analyzed: false
+            }
+        )
+        : bars.slice(0, bars.length - 1)
+);
 
 /**
  * Returns a sorted array of bar objects with the provided number of elements where the bars' size are proportionally
  * divided
  *
- * @param size
- *
- * @return ({size: number})[size]
+ * @param size {number}
+ * @returns {[{size: number, selected: boolean, analyzed: boolean}]}
  */
-const getList = (size) => {
+const getList = (size = 0) => {
     const list = [];
 
     for (let i = 0; i < size; i++) {
@@ -191,7 +208,7 @@ const arrayManager = {
     getAlmostSortedList,
     getRandomList,
     selectBar,
-    getDefaultList,
+    defaultList: defaultList,
     isSorted,
     switchBars
 }
