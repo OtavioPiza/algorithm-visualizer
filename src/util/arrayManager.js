@@ -59,10 +59,10 @@ const addBar = (add = true, bars) => (
  * Returns a sorted array of bar objects with the provided number of elements where the bars' size are proportionally
  * divided
  *
- * @param size {number}
- * @returns {[{size: number, selected: boolean, analyzed: boolean}]}
+ * @param size {number} size of the list
+ * @returns {[{size: number, selected: boolean, analyzed: boolean}]} list with bar objects sorted by size
  */
-const getList = (size = 0) => {
+const getSortedList = (size = 0) => {
     const list = [];
 
     for (let i = 0; i < size; i++) {
@@ -78,20 +78,19 @@ const getList = (size = 0) => {
 /**
  * Returns an array of bar objects with the provided number of elements where at least one bar is not sorted
  *
- * @param size
- *
- * @return ({size: number})[size]
+ * @param size {number} size of the list
+ * @return {[{size: number, selected: boolean, analyzed: boolean}]} list with bar objects
  */
 const getAlmostSortedList = (size) => {
-    const barList = getList(size);
+    const barList = getSortedList(size);
 
     for (let i = 0; i < Math.ceil(size / 9); i++) {
         const temporaryIndexOne = Math.floor(Math.random() * size);
         const temporaryIndexTwo = Math.floor((Math.ceil(Math.random() * (size / 4)) + temporaryIndexOne) % size);
-        const temporaryValue = barList[temporaryIndexOne];
+        const temp = barList[temporaryIndexOne];
 
         barList[temporaryIndexOne] = barList[temporaryIndexTwo];
-        barList[temporaryIndexTwo] = temporaryValue;
+        barList[temporaryIndexTwo] = temp;
     }
     return barList;
 };
@@ -104,7 +103,7 @@ const getAlmostSortedList = (size) => {
  * @return ({size: number})[size]
  */
 const getRandomList = (size) => {
-    const barList = getList(size);
+    const barList = getSortedList(size);
 
     let currentIndex = barList.length;
     let temporaryValue;
