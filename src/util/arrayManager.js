@@ -188,10 +188,8 @@ const switchBars = (bars, firstBarIndex, secondBarIndex) => {
     const secondBar = bars[secondBarIndex];
 
     return bars.map((bar, index) =>
-        index === secondBarIndex
-            ? {...firstBar, selected: false}
-            : index === firstBarIndex
-            ? {...secondBar, selected: false}
+        index === secondBarIndex ? {...firstBar, selected: false}
+            : index === firstBarIndex ? {...secondBar, selected: false}
             : bar);
 };
 
