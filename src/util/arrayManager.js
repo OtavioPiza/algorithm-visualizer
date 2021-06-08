@@ -40,7 +40,6 @@ const defaultList = [
  *
  * @param add {boolean} whether a bar should be added (True) or removed (False)
  * @param bars {[{size: number, selected: boolean, analyzed: boolean}]} list of bar objects
- *
  * @returns {[{size: number, selected: boolean, analyzed: boolean}]} new list of bar objects
  */
 const addBar = (add = true, bars) => (
@@ -60,7 +59,7 @@ const addBar = (add = true, bars) => (
  * divided
  *
  * @param size {number} size of the list
- * @returns {[{size: number, selected: boolean, analyzed: boolean}]} list with bar objects sorted by size
+ * @returns {[{size: number, selected: boolean, analyzed: boolean}]} list of bar objects
  */
 const getSortedList = (size = 0) => {
     const list = [];
@@ -76,10 +75,10 @@ const getSortedList = (size = 0) => {
 };
 
 /**
- * Returns an array of bar objects with the provided number of elements where at least one bar is not sorted
+ * Returns a list of almost sorted bar objects
  *
  * @param size {number} size of the list
- * @return {[{size: number, selected: boolean, analyzed: boolean}]} list with bar objects
+ * @return {[{size: number, selected: boolean, analyzed: boolean}]} list of bar objects
  */
 const getAlmostSortedList = (size) => {
     const barList = getSortedList(size);
@@ -96,11 +95,10 @@ const getAlmostSortedList = (size) => {
 };
 
 /**
- * Returns an array of bar objects where all the elements are randomly positioned
+ * Returns a list of randomly positioned bar objects
  *
- * @param size
- *
- * @return ({size: number})[size]
+ * @param size {number} size of the list
+ * @return {[{size: number, selected: boolean, analyzed: boolean}]} list of bar objects
  */
 const getRandomList = (size) => {
     const barList = getSortedList(size);
