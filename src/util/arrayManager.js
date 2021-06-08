@@ -146,42 +146,12 @@ const selectBar = (index, bars) => {
 };
 
 /**
- * Returns if an array of bar objects is sorted or not
- *
- * @param bars: array of bar objects
- *
- * @return boolean: whether the array is sorted
- */
-const isSorted = (bars) => {
-    let sorted = 1;
-
-    for (let i = 1; i < bars.length; i++) {
-        if (bars[i].size < bars[i - 1].size) {
-            sorted = 0;
-            break;
-        }
-    }
-    if (sorted !== 1) {
-        sorted = -1;
-
-        for (let i = 1; i < bars.length; i++) {
-            if (bars[i].size > bars[i - 1].size) {
-                sorted = 0;
-                break;
-            }
-        }
-    }
-    return sorted;
-};
-
-/**
  * Returns a new array of bar objects with the two specified bars switched
  *
- * @param bars: array of bar objects
- * @param firstBarIndex: index of the first bar to be switched
- * @param secondBarIndex: index of the second bar to be switched
- *
- * @return [{size: number}]
+ * @param bars {[{size: number, selected: boolean, analyzed: boolean}]} list of bar objects
+ * @param firstBarIndex {number} index of the first bar to be switched
+ * @param secondBarIndex {number} index of the second bar to be switched
+ * @return {[{size: number, selected: boolean, analyzed: boolean}]} new list of bar objects
  */
 const switchBars = (bars, firstBarIndex, secondBarIndex) => {
     const firstBar = bars[firstBarIndex];
@@ -193,12 +163,28 @@ const switchBars = (bars, firstBarIndex, secondBarIndex) => {
             : bar);
 };
 
+/**
+ * Returns if a list of bar objects is sorted or not
+ *
+ * @param bars {[{size: number, selected: boolean, analyzed: boolean}]} array of bar objects
+ * @return {boolean} whether the list of bar objects is sorted
+ */
+const isSorted = (bars) => {
+
+    for (let i = 1; i < bars.length; i++) {
+        if (bars[i].size < bars[i - 1].size) {
+            return false
+        }
+    }
+    return true;
+};
+
 const arrayManager = {
+    defaultList,
     addBar,
     getAlmostSortedList,
     getRandomList,
     selectBar,
-    defaultList: defaultList,
     isSorted,
     switchBars
 }
