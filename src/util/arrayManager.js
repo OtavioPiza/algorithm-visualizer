@@ -45,11 +45,11 @@ const defaultList = [
 const addBar = (add = true, bars) => (
     add
         ? bars.concat(
-            {
-                size: Math.floor(100 * Math.random()),
-                selected: false,
-                analyzed: false
-            }
+        {
+            size: Math.floor(100 * Math.random()),
+            selected: false,
+            analyzed: false
+        }
         )
         : bars.slice(0, bars.length - 1)
 );
@@ -121,38 +121,28 @@ const getRandomList = (size) => {
 /**
  * Selects a bar from the array and, if two bars are selected, switches them
  *
- * @param index: index of the bar to be selected
- * @param bars: array of bar objects
- *
- * @return ({size: number})[size]
+ * @param index {number} index of the bar to be selected
+ * @param bars {[{size: number, selected: boolean, analyzed: boolean}]} list of bar objects
+ * @return {[{size: number, selected: boolean, analyzed: boolean}]} new list of bar objects
  */
 const selectBar = (index, bars) => {
+
     /* the bar was already selected */
     if (bars[index].selected) {
         return bars.map((bar) => ({...bar, selected: false}));
     }
 
     /* the bar was not selected yet */
-    else {
-        /* searches for another selected bar */
-        let secondBarIndex = -1;
-        for (let i = 0; i < bars.length; i++) {
-            if (bars[i].selected) {
-                secondBarIndex = i;
-                break;
-            }
-        }
 
-        /* if another bar is already selected it is switched with the one with the provided index */
-        if (secondBarIndex !== -1) {
-            return switchBars(bars, index, secondBarIndex);
-        }
-
-        /* else the bar with the specified index is marked as selected */
-        else {
-            return bars.map((bar, i) => i === index ? {...bar, selected: true} : bar);
+    /* searches for another selected bar */
+    for (let i = 0; i < bars.length; i++) {
+        if (bars[i].selected) {
+            return switchBars(bars, index, i);
         }
     }
+
+    /* else the bar with the specified index is marked as selected */
+    return bars.map((bar, i) => i === index ? {...bar, selected: true} : bar);
 };
 
 /**
@@ -197,7 +187,12 @@ const switchBars = (bars, firstBarIndex, secondBarIndex) => {
     const firstBar = bars[firstBarIndex];
     const secondBar = bars[secondBarIndex];
 
-    return bars.map((bar, index) => index === secondBarIndex ? firstBar : index === firstBarIndex ? secondBar : bar);
+    return bars.map((bar, index) =>
+        index === secondBarIndex
+            ? {...firstBar, selected: false}
+            : index === firstBarIndex
+            ? {...secondBar, selected: false}
+            : bar);
 };
 
 const arrayManager = {
