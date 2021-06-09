@@ -13,7 +13,7 @@ const Home = () => {
     <div className='Container'>
       <div className='Home'>
         <div className='logo-container'>
-          <Array barList={arrayManager.getDefaultList()} />
+          <Array barList={arrayManager.defaultList} />
         </div>
         <BottomBar />
         <div className='text-container'>
