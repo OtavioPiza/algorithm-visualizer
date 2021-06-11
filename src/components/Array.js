@@ -9,7 +9,6 @@ import arrayManager from '../util/arrayManager';
  * - does NOT support integration with any algorithm algorithms
  *
  * @param {Bar[], Boolean} param    : array of bars and if they should be simplified or not
- *
  * @returns {JSX.Element} : an array containing a Bar component for each bar on the provided list
  */
 const Array = ({barList, simplified}) => {
