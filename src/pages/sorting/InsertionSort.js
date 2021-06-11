@@ -6,6 +6,8 @@ import insertionSort from '../../algorithms/sorting/insertionSort';
 
 /**
  * React component representing a BubbleSort page of the application
+ *
+ * @returns {JSX.Element} BubbleSort page
  */
 const BubbleSort = () => {
   return (

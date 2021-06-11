@@ -6,11 +6,13 @@ import '../../styles/BubbleSort.css';
 
 /**
  * React component representing a BubbleSort page of the application
+ *
+ * @return {JSX.Element} bubble sort page
  */
 const BubbleSort = () => {
-  return (
-    <ArraySorter barList={arrayManager.getRandomList(10)} sortingAlgorithm={bubbleSort} />
-  );
+    return (
+        <ArraySorter barList={arrayManager.getRandomList(10)} sortingAlgorithm={bubbleSort}/>
+    );
 };
 
 export default BubbleSort;
