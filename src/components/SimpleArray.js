@@ -11,7 +11,7 @@ import arrayManager from '../util/arrayManager';
  * @param {Bar[], Boolean} param    : array of bars and if they should be simplified or not
  * @returns {JSX.Element} : an array containing a Bar component for each bar on the provided list
  */
-const Array = ({barList, simplified}) => {
+const SimpleArray = ({barList, simplified}) => {
   /* Holds an array of bars */
   const [bars, setBars] = useState(barList);
 
@@ -42,4 +42,4 @@ const Array = ({barList, simplified}) => {
   );
 };
 
-export default Array;
+export default SimpleArray;
