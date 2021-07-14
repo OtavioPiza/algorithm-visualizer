@@ -40,7 +40,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.3",
-    "serve": "^12.0.0"
+    "gh-pages": "^3.2.3"
   }
 }
