@@ -1,7 +1,7 @@
 import React from 'react';
 import RedirectButton from './components/RedirectButton';
 import BottomBar from './components/BottomBar';
-import Array from './components/Array';
+import SimpleArray from './components/SimpleArray';
 import arrayManager from './util/arrayManager';
 import './styles/Home.css';
 
@@ -13,7 +13,7 @@ const Home = () => {
     <div className='Container'>
       <div className='Home'>
         <div className='logo-container'>
-          <Array barList={arrayManager.defaultList} />
+          <SimpleArray barList={arrayManager.defaultList} />
         </div>
         <BottomBar />
         <div className='text-container'>
