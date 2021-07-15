@@ -34,7 +34,7 @@ const SimpleArray = ({ barList, simplified }) => {
   return (
     <div className='Array'>
       {bars.map((bar, index) => (
-        <Bar key={index} id={index} size={bar.size} status={bar.status} simplified={simplified}
+        <Bar key={index} id={index} size={bar.size} status={sorted ? 3 : bar.status} simplified={simplified}
           eventHandler={selectBar} />
       ))}
     </div>
