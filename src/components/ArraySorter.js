@@ -1,5 +1,5 @@
 /* Libraries */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 /* Components */
 import Bar from './Bar';
@@ -18,7 +18,7 @@ import '../styles/components/ArraySorter.css';
  *
  * @param {sortingAlgorithm, Bar[]} param sorting algorithm and array of bars
  */
-const ArraySorter = ({sortingAlgorithm, barList = arrayManager.getRandomList(10)}) => {
+const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10) }) => {
   const [running, setRunning] = useState(false);
   const [arraySize, setArraySize] = useState(barList.length);
   const [defaultState, setDefaultState] = useState(sortingAlgorithm.defaultState(barList));
@@ -101,10 +101,10 @@ const ArraySorter = ({sortingAlgorithm, barList = arrayManager.getRandomList(10)
     if (!currentState[0].sorted) {
       // try to combine both the status and curent bars states
       setTimeout(
-          () => {
-            setCurrentState(sortingAlgorithm.sort(currentState));
-          },
-          10,
+        () => {
+          setCurrentState(sortingAlgorithm.sort(currentState));
+        },
+        10,
       );
     } else {
       setRunning(false);
@@ -168,16 +168,16 @@ const ArraySorter = ({sortingAlgorithm, barList = arrayManager.getRandomList(10)
 
         <div className='Complexity'>
           <h1>
-                        Algorithm Complexity
+            Algorithm Complexity
           </h1>
 
           <p>
 
-                        Worse case complexity: {currentState[0].worseComplexity}
+            Worse case complexity: {currentState[0].worseComplexity}
             <br />
-                        Best case complexity: {currentState[0].bestComplexity}
+            Best case complexity: {currentState[0].bestComplexity}
             <br />
-                        Current case complexity: {currentState[0].complexity}
+            Current case complexity: {currentState[0].complexity}
 
           </p>
 
