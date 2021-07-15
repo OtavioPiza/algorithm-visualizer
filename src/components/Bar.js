@@ -21,8 +21,8 @@ import lockedBar from '../styles/components/icons/bar-light.svg';
  */
 const Bar = ({className, id, size, status, simplified, eventHandler}) => {
   /**
-     * Selects a background for the bar depending on its state
-     */
+   * Selects a background for the bar depending on its state
+   */
   const background =
         status === 1 ? `url(${selectedBar})` :
            status === 2 ? `url(${analyzedBar})` :
@@ -31,8 +31,8 @@ const Bar = ({className, id, size, status, simplified, eventHandler}) => {
                 `url(${bar})`;
 
   /**
-     * Determines the style of the bar depending on its state
-     */
+   * Determines the style of the bar depending on its state
+   */
   const style = {
     margin: `${simplified ? '0' : '1%'}`,
     padding: '0',
