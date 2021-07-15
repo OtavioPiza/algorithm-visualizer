@@ -19,15 +19,15 @@ import lockedBar from '../styles/components/icons/bar-light.svg';
  * } param0
  * @returns a button that represents a bar in an array
  */
-const Bar = ({className, id, size, analyzed, selected, sorted, simplified, eventHandler, locked=false}) => {
+const Bar = ({className, id, size, status, simplified, eventHandler}) => {
   /**
      * Selects a background for the bar depending on its state
      */
   const background =
-        selected ? `url(${selectedBar})` :
-          analyzed ? `url(${analyzedBar})` :
-            sorted ? `url(${sortedBar})` :
-              locked ? `url(${lockedBar})` :
+        status === 1 ? `url(${selectedBar})` :
+           status === 2 ? `url(${analyzedBar})` :
+            status === 3 ? `url(${sortedBar})` :
+              status === 4 ? `url(${lockedBar})` :
                 `url(${bar})`;
 
   /**
