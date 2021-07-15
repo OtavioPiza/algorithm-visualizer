@@ -21,10 +21,10 @@ const SimpleArray = ({ barList, simplified }) => {
   // == User Interactivity ======================================================================================== //
 
   /**
-     * Selects a Bar in the provided index
-     *
-     * @param {Number} id index of the bar
-     */
+   * Selects a Bar in the provided index
+   *
+   * @param {Number} id index of the bar
+   */
   const selectBar = (id) => {
     setBars(arrayManager.selectBar(id, bars));
   };
