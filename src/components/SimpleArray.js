@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Bar from './Bar';
 import '../styles/components/Array.css';
 import arrayManager from '../util/arrayManager';
@@ -11,7 +11,7 @@ import arrayManager from '../util/arrayManager';
  * @param {Bar[], Boolean} param    : array of bars and if they should be simplified or not
  * @returns {JSX.Element} : an array containing a Bar component for each bar on the provided list
  */
-const SimpleArray = ({barList, simplified}) => {
+const SimpleArray = ({ barList, simplified }) => {
   /* Holds an array of bars */
   const [bars, setBars] = useState(barList);
 
@@ -34,9 +34,8 @@ const SimpleArray = ({barList, simplified}) => {
   return (
     <div className='Array'>
       {bars.map((bar, index) => (
-        <Bar key={index} id={index} size={bar.size} analyzed={bar.analyzed}
-          selected={bar.selected} eventHandler={selectBar} sorted={sorted}
-          simplified={simplified} />
+        <Bar key={index} id={index} size={bar.size} status={bar.status} simplified={simplified}
+          eventHandler={selectBar} />
       ))}
     </div>
   );

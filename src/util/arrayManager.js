@@ -8,28 +8,23 @@
 const defaultList = [
     {
         size: 40,
-        selected: false,
-        analyzed: false
+        status: 0
     },
     {
         size: 20,
-        selected: false,
-        analyzed: false
+        status: 0
     },
     {
         size: 80,
-        selected: false,
-        analyzed: false
+        status: 0
     },
     {
         size: 60,
-        selected: false,
-        analyzed: false
+        status: 0
     },
     {
         size: 100,
-        selected: false,
-        analyzed: false
+        status: 0
     },
 ];
 
@@ -47,8 +42,7 @@ const addBar = (add = true, bars) => (
         ? bars.concat(
         {
             size: Math.floor(100 * Math.random()),
-            selected: false,
-            analyzed: false
+            status: 0
         }
         )
         : bars.slice(0, bars.length - 1)
