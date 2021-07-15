@@ -8,27 +8,27 @@ import lockedBar from '../styles/components/icons/bar-light.svg';
 
 /**
  * React component representing a bar from an arrays
- *
  * @param {
  *  className:      overwrites the default className
  *  id:             provides the id of the bar (use position in array)
- *  size:           sets the size of the bar
- *  selected:       informs wheter the bar is selected by the unsorted
- *  sorted:         informs wheter the bar is on a sorted (1) unsorted (0) or reversed (-1) array
+ *  size:           size of the bar
+ *  status:         status of the bar
+ *  simplified:     whether the desing should be simplified 
  *  eventHandler:   provides a handler for an onClick event
  * } param0
  * @returns a button that represents a bar in an array
  */
-const Bar = ({className, id, size, status, simplified, eventHandler}) => {
+const Bar = ({ className, id, size, status, simplified, eventHandler }) => {
+
   /**
    * Selects a background for the bar depending on its state
    */
   const background =
-        status === 1 ? `url(${selectedBar})` :
-           status === 2 ? `url(${analyzedBar})` :
-            status === 3 ? `url(${sortedBar})` :
-              status === 4 ? `url(${lockedBar})` :
-                `url(${bar})`;
+    status === 1 ? `url(${selectedBar})` :
+      status === 2 ? `url(${analyzedBar})` :
+        status === 3 ? `url(${sortedBar})` :
+          status === 4 ? `url(${lockedBar})` :
+            `url(${bar})`;
 
   /**
    * Determines the style of the bar depending on its state
@@ -49,8 +49,8 @@ const Bar = ({className, id, size, status, simplified, eventHandler}) => {
   // == HTML ====================================================================================================== //
 
   return (
-    <button className={ className === undefined ? 'Bar' : className } id={ id }
-      style={ style } onClick={ () => eventHandler(id) }>
+    <button className={className === undefined ? 'Bar' : className} id={id}
+      style={style} onClick={() => eventHandler(id)}>
     </button>
   );
 };
