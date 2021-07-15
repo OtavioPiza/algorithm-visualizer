@@ -1,4 +1,0 @@
-.Bar:hover {
-    /* Ensures the bars are always responsive on hover */
-    background-image: url('./icons/bar-selected-blue.svg') !important;
-}

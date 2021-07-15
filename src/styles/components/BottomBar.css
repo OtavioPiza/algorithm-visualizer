@@ -1,6 +1,0 @@
-footer {
-    background-color: var(--text-light-gray);
-
-    width: 100%;
-    height: min(10px, 1vh);
-}
