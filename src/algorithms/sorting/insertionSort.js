@@ -33,7 +33,7 @@ const defaultState = (barArray, sorted = false, complexity = 0) => {
       bestComplexity,
       complexity,
     },
-    barArray.map((bar) => ({...bar, analyzed: false, sorted: sorted})),
+    barArray.map((bar) => ({ ...bar, analyzed: false, sorted: sorted })),
   ];
 };
 
@@ -64,8 +64,8 @@ const sort = (state) => {
       'Because the first bar is greater than the second, they are switched and the algorithm starts analysing the bars to its left';
     const newBars = bars.map((bar, index) => (
       index === maxAnalyzedBarsIndex[0] || index === maxAnalyzedBarsIndex[1] ?
-        {...bar, sorted: false, analyzed: true} :
-        {...bar, sorted: false, analyzed: false}
+        { ...bar, sorted: false, analyzed: true } :
+        { ...bar, sorted: false, analyzed: false }
     ));
 
     return [
@@ -97,8 +97,8 @@ const sort = (state) => {
       'Because the first bar is greater than the second, they are switched and the algorithm continues to the left';
     const newBars = bars.map((bar, index) => (
       index === analyzedBarsIndex[0] || index === analyzedBarsIndex[1] ?
-        {...bar, sorted: false, analyzed: true} :
-        {...bar, sorted: false, analyzed: false}
+        { ...bar, sorted: false, analyzed: true } :
+        { ...bar, sorted: false, analyzed: false }
     ));
 
     return [
@@ -159,7 +159,7 @@ const about = () => (
   <div className="about">
 
     <h3>
-            About Insertion Sort
+      About Insertion Sort
     </h3>
 
     <p>
@@ -170,7 +170,7 @@ const about = () => (
       left of the last analyzed item.
       `}
 
-      <br/> <br/>
+      <br /> <br />
 
       {`
       Similar to Bubble Sort, we can enhance Insertion Sort's performance by not checking all the cards to the left of 
@@ -202,7 +202,7 @@ const implementation = () => (
   <div className="implementation">
 
     <h3>
-            Python Implementation
+      Python Implementation
     </h3>
 
     <pre>
