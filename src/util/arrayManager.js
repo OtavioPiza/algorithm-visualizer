@@ -61,8 +61,7 @@ const getSortedList = (size = 0) => {
     for (let i = 0; i < size; i++) {
         list.push({
             size: 100 * (i + 1) / (size + 1),
-            selected: false,
-            analyzed: false,
+            status: 0
         });
     }
     return list;
@@ -123,20 +122,20 @@ const selectBar = (index, bars) => {
 
     /* the bar was already selected */
     if (bars[index].selected) {
-        return bars.map((bar) => ({...bar, selected: false}));
+        return bars.map((bar) => ({...bar, status: 0}));
     }
 
     /* the bar was not selected yet */
 
     /* searches for another selected bar */
     for (let i = 0; i < bars.length; i++) {
-        if (bars[i].selected) {
+        if (bars[i].status === 1) {
             return switchBars(bars, index, i);
         }
     }
 
     /* else the bar with the specified index is marked as selected */
-    return bars.map((bar, i) => i === index ? {...bar, selected: true} : bar);
+    return bars.map((bar, i) => i === index ? {...bar, status: 1} : bar);
 };
 
 /**
@@ -152,8 +151,8 @@ const switchBars = (bars, firstBarIndex, secondBarIndex) => {
     const secondBar = bars[secondBarIndex];
 
     return bars.map((bar, index) =>
-        index === secondBarIndex ? {...firstBar, selected: false}
-            : index === firstBarIndex ? {...secondBar, selected: false}
+        index === secondBarIndex ? {...firstBar, status: 0}
+            : index === firstBarIndex ? {...secondBar, status: 0}
             : bar);
 };
 
