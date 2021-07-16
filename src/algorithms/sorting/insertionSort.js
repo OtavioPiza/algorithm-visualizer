@@ -64,8 +64,8 @@ const sort = (state) => {
       'Because the first bar is greater than the second, they are switched and the algorithm starts analysing the bars to its left';
     const newBars = bars.map((bar, index) => (
       index === maxAnalyzedBarsIndex[0] || index === maxAnalyzedBarsIndex[1] ?
-        { ...bar, sorted: false, analyzed: true } :
-        { ...bar, sorted: false, analyzed: false }
+        { ...bar, status: 2 } :
+        { ...bar, status: 0 }
     ));
 
     return [
