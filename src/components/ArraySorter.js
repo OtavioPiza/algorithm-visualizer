@@ -127,7 +127,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
         <div className='Array'>
           {currentState[1].map((bar, index) => (
-            <Bar key={index} id={index} size={bar.size} status={bar.status === 1 ? 3 : bar.status}
+            <Bar key={index} id={index} size={bar.size} status={bar.status === 1 ? 1 : bar.status}
               simplified={arraySize > 15} eventHandler={handleSelectBar} />
           ))}
         </div>
