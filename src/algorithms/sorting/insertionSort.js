@@ -33,7 +33,7 @@ const defaultState = (barArray, sorted = false, complexity = 0) => {
       bestComplexity,
       complexity,
     },
-    barArray.map((bar) => ({ ...bar, status: sorted ? 4 : 0 })),
+    barArray.map((bar) => ({ ...bar, status: sorted ? 4 : 0  })),
   ];
 };
 
