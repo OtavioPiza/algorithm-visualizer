@@ -97,8 +97,8 @@ const sort = (state) => {
       'Because the first bar is greater than the second, they are switched and the algorithm continues to the left';
     const newBars = bars.map((bar, index) => (
       index === analyzedBarsIndex[0] || index === analyzedBarsIndex[1] ?
-        { ...bar, sorted: false, analyzed: true } :
-        { ...bar, sorted: false, analyzed: false }
+        { ...bar, status: 2 } :
+        { ...bar, status: 0 }
     ));
 
     return [
