@@ -10,7 +10,7 @@ import arrayManager from '../../util/arrayManager';
  * @param {Number} complexity    : current complexity of the algorithm
  */
 const defaultState = (bars, sorted = false, complexity = 0) => {
-    const algorithmStatus = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
+    const algorithmalgorithmState = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
     const analyzedBarsIndex = [-1, 0];
     const upper_bound = bars.length - 1;
     const lower_bound = 0;
@@ -21,7 +21,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
 
     return [
         {
-            algorithmStatus,
+            algorithmalgorithmState,
             analyzedBarsIndex,
             upper_bound,
             lower_bound,
@@ -32,7 +32,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
             bestComplexity,
             complexity,
         },
-        bars.map((bar) => ({...bar, analyzed: false, sorted: sorted})),
+        bars.map((bar) => ({...bar, algorithmState: sorted ? 4 : 0 })),
     ];
 };
 
@@ -43,24 +43,24 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
  * @return {newState}     : new state of the algorithm
  */
 const sort = (state) => {
-    const status = state[0];
+    const algorithmState = state[0];
     const bars = state[1];
 
     /**
      * Returns the next two bars that will be analyzed by te algorithm
      */
     const getNextBars = () => (
-        status.analyzedBarsIndex[1] > status.upper_bound ?
+        algorithmState.analyzedBarsIndex[1] > algorithmState.upper_bound ?
             [0, 1] :
-            status.analyzedBarsIndex.map((bar) => bar + 1)
+            algorithmState.analyzedBarsIndex.map((bar) => bar + 1)
     );
 
     /**
      * Determines if the array is sorted
      */
     const getIsSorted = (greater) => (
-        (status.upper_bound === 0) ||
-        (status.analyzedBarsIndex[1] === status.upper_bound - 1 && !status.switched && !greater)
+        (algorithmState.upper_bound === 0) ||
+        (algorithmState.analyzedBarsIndex[1] === algorithmState.upper_bound - 1 && !algorithmState.switched && !greater)
     );
 
     /**
@@ -74,11 +74,11 @@ const sort = (state) => {
         ));
 
         return getIsSorted(greater) ?
-            defaultState(newBars, true, status.complexity + 1) :
+            defaultState(newBars, true, algorithmState.complexity + 1) :
             [
                 {
-                    ...status,
-                    algorithmStatus:
+                    ...algorithmState,
+                    algorithmalgorithmState:
                         greater ?
                             'Because the first bar is greater than the second they are switched' :
                             'Because the first bar is not greater than the second they are left unchanged',
@@ -87,33 +87,33 @@ const sort = (state) => {
                     step: greater ? 1 : 0,
                     switched: analyzedBarsIndex[0] === 0 ?
                         false :
-                        status.switched,
-                    upper_bound: analyzedBarsIndex[1] === status.upper_bound ?
-                        status.upper_bound - 1 :
-                        status.upper_bound,
-                    complexity: status.complexity + 1,
+                        algorithmState.switched,
+                    upper_bound: analyzedBarsIndex[1] === algorithmState.upper_bound ?
+                        algorithmState.upper_bound - 1 :
+                        algorithmState.upper_bound,
+                    complexity: algorithmState.complexity + 1,
                 },
                 newBars,
             ];
     };
 
     /**
-     * Changes the two bars and updates the status
+     * Changes the two bars and updates the algorithmState
      */
     const changeBars = () => [
         {
-            ...status,
-            algorithmStatus: 'Switched the two bars',
+            ...algorithmState,
+            algorithmalgorithmState: 'Switched the two bars',
             step: 0,
             switched: true,
         },
-        arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1]),
+        arrayManager.switchBars(bars, algorithmState.analyzedBarsIndex[0], algorithmState.analyzedBarsIndex[1]),
     ];
 
     /**
      * Returns the next step of the sorting algorithm based on the state provided in the parameters
      */
-    return status.step === 0 ?
+    return algorithmState.step === 0 ?
         compareBars() :
         changeBars();
 };
