@@ -40,10 +40,10 @@ const defaultList = [
 const addBar = (add = true, bars) => (
     add
         ? bars.concat(
-        {
-            size: Math.floor(100 * Math.random()),
-            status: 0
-        }
+            {
+                size: Math.floor(100 * Math.random()),
+                status: 0
+            }
         )
         : bars.slice(0, bars.length - 1)
 );
@@ -122,7 +122,7 @@ const selectBar = (index, bars) => {
 
     /* the bar was already selected */
     if (bars[index].selected) {
-        return bars.map((bar) => ({...bar, status: 0}));
+        return bars.map((bar) => ({ ...bar, status: 0 }));
     }
 
     /* the bar was not selected yet */
@@ -130,12 +130,12 @@ const selectBar = (index, bars) => {
     /* searches for another selected bar */
     for (let i = 0; i < bars.length; i++) {
         if (bars[i].status === 1) {
-            return switchBars(bars, index, i).map((bar) => ({...bar, status: bar.status == 1 ? 0 : bar.status}))
+            return switchBars(bars, index, i).map((bar) => ({ ...bar, status: bar.status == 1 ? 0 : bar.status }))
         }
     }
 
     /* else the bar with the specified index is marked as selected */
-    return bars.map((bar, i) => i === index ? {...bar, status: 1} : bar);
+    return bars.map((bar, i) => i === index ? { ...bar, status: 1 } : bar);
 };
 
 /**
@@ -151,9 +151,9 @@ const switchBars = (bars, firstBarIndex, secondBarIndex) => {
     const secondBar = bars[secondBarIndex];
 
     return bars.map((bar, index) =>
-        index === secondBarIndex ? {...firstBar}
-            : index === firstBarIndex ? {...secondBar}
-            : bar);
+        index === secondBarIndex ? { ...firstBar }
+            : index === firstBarIndex ? { ...secondBar }
+                : bar);
 };
 
 /**
