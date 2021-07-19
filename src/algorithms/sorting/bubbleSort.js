@@ -27,7 +27,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
     const upperBound = bars.length - 1;
     const switched = false;
     const step = 0;
-    const worseComplexity = (bars.length * (bars.length - 1)) / 2 + 1;
+    const worstComplexity = (bars.length * (bars.length - 1)) / 2 + 1;
     const bestComplexity = bars.length - 1;
 
     return [
@@ -38,7 +38,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
             sorted,                 // wheter the list it sorted
             switched,               // wheter a switch was made
             step,                   // step of the algorithms
-            worseComplexity,        // worse case complexity
+            worstComplexity,        // worse case complexity
             bestComplexity,         // best case complexity
             complexity,             // current complexity
         },

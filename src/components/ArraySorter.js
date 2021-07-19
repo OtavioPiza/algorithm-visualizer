@@ -171,7 +171,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
 
           <p>
 
-            Worse case complexity: {currentState[0].worseComplexity}
+            Worse case complexity: {currentState[0].worstComplexity}
             <br />
             Best case complexity: {currentState[0].bestComplexity}
             <br />
