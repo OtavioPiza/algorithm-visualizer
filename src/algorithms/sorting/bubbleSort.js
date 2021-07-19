@@ -1,6 +1,14 @@
 import React from 'react';
 import arrayManager from '../../util/arrayManager';
 
+/**
+ * Locks bars in the list that are already outside of the algorihtm's scope
+ * 
+ * @param {Bar[]} bars list of bars
+ * @param {Number} upperBound maximum index allowed 
+ * 
+ * @returns {Bar[]} list of bars with bars outside of the algorithm's scope locked
+ */
 const getLockedBars = (bars, upperBound) => (
     bars.map((bar, index) => index > upperBound ? { ...bar, status: 4 } : bar)
 )
@@ -34,7 +42,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
             bestComplexity,
             complexity,
         },
-        getLockedBars(bars.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })), upperBound),
+        bars.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })),
     ];
 };
 
