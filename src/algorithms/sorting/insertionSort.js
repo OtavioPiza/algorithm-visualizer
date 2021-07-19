@@ -13,7 +13,6 @@ const defaultState = (barArray, sorted = false, complexity = 0) => {
   const _analyzedBarsIndex = [-1, 0];
   const _maxAnalyzedBarsIndex = [-1, 0];
   const _lowerBound = 0;
-  const switched = false;
   const _step = 0;
   const worseComplexity = (barArray.length * (barArray.length - 1)) / 2;
   const bestComplexity = barArray.length - 1;
