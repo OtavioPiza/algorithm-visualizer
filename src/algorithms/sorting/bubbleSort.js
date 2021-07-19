@@ -10,7 +10,7 @@ import arrayManager from '../../util/arrayManager';
  * @param {Number} complexity    : current complexity of the algorithm
  */
 const defaultState = (bars, sorted = false, complexity = 0) => {
-    const algorithmalgorithmState = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
+    const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
     const analyzedBarsIndex = [-1, 0];
     const upper_bound = bars.length - 1;
     const lower_bound = 0;
@@ -21,7 +21,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
 
     return [
         {
-            algorithmalgorithmState,
+            message,
             analyzedBarsIndex,
             upper_bound,
             lower_bound,
@@ -78,7 +78,7 @@ const sort = (state) => {
             [
                 {
                     ...algorithmState,
-                    algorithmalgorithmState:
+                    message:
                         greater ?
                             'Because the first bar is greater than the second they are switched' :
                             'Because the first bar is not greater than the second they are left unchanged',
@@ -103,7 +103,7 @@ const sort = (state) => {
     const changeBars = () => [
         {
             ...algorithmState,
-            algorithmalgorithmState: 'Switched the two bars',
+            message: 'Switched the two bars',
             step: 0,
             switched: true,
         },
