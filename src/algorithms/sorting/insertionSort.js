@@ -9,36 +9,39 @@ import arrayManager from '../../util/arrayManager';
  * @param {Number} complexity    : current complexity of the algorithm
  */
 const defaultState = (barArray, sorted = false, complexity = 0) => {
-  const algorithmStatus = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
-  const analyzedBarsIndex = [-1, 0];
-  const maxAnalyzedBarsIndex = [-1, 0];
-  const upperbound = barArray.length - 1;
-  const lowerbound = 0;
+  const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
+  const _analyzedBarsIndex = [-1, 0];
+  const _maxAnalyzedBarsIndex = [-1, 0];
+  const _lowerBound = 0;
   const switched = false;
-  const step = 0;
+  const _step = 0;
   const worseComplexity = (barArray.length * (barArray.length - 1)) / 2;
   const bestComplexity = barArray.length - 1;
 
   return [
     {
-      algorithmStatus,
-      analyzedBarsIndex,
-      maxAnalyzedBarsIndex,
-      upperbound,
-      lowerbound,
-      sorted,
-      switched,
-      step,
+      // public use
+
+      message,
       worseComplexity,
       bestComplexity,
       complexity,
+      sorted,
+
+      // internal use
+
+      _analyzedBarsIndex,
+      _maxAnalyzedBarsIndex,
+      _lowerBound,
+      _step,
+
     },
     barArray.map((bar) => ({ ...bar, status: sorted ? 4 : 0  })),
   ];
 };
 
 /**
- * Takes one step in the sorting algorithm
+ * Takes one _step in the sorting algorithm
  *
  * @param {State} state : state of the algorithm
  *
@@ -52,18 +55,18 @@ const sort = (state) => {
      * Returns the next two bars that will be analyzed by te algorithm
      */
   const compareNextBars = () => {
-    const maxAnalyzedBarsIndex = status.maxAnalyzedBarsIndex.map((index) => index + 1);
+    const _maxAnalyzedBarsIndex = status._maxAnalyzedBarsIndex.map((index) => index + 1);
 
-    if (!bars[maxAnalyzedBarsIndex[1]]) {
+    if (!bars[_maxAnalyzedBarsIndex[1]]) {
       return defaultState(bars, true, status.complexity);
     }
 
-    const greater = bars[maxAnalyzedBarsIndex[1]].size > bars[maxAnalyzedBarsIndex[0]].size;
-    const algorithmStatus = greater ?
+    const greater = bars[_maxAnalyzedBarsIndex[1]].size > bars[_maxAnalyzedBarsIndex[0]].size;
+    const message = greater ?
       'Because the second bar is greater than the second, they are left unchanged and the algorithm continues' :
       'Because the first bar is greater than the second, they are switched and the algorithm starts analysing the bars to its left';
     const newBars = bars.map((bar, index) => (
-      index === maxAnalyzedBarsIndex[0] || index === maxAnalyzedBarsIndex[1] ?
+      index === _maxAnalyzedBarsIndex[0] || index === _maxAnalyzedBarsIndex[1] ?
         { ...bar, status: 2 } :
         { ...bar, status: 0 }
     ));
@@ -71,11 +74,11 @@ const sort = (state) => {
     return [
       {
         ...status,
-        algorithmStatus: algorithmStatus,
-        analyzedBarsIndex: maxAnalyzedBarsIndex,
-        maxAnalyzedBarsIndex: maxAnalyzedBarsIndex,
-        step: greater ? 0 : 1,
-        lowerbound: status.lowerbound + 1,
+        message: message,
+        _analyzedBarsIndex: _maxAnalyzedBarsIndex,
+        _maxAnalyzedBarsIndex: _maxAnalyzedBarsIndex,
+        _step: greater ? 0 : 1,
+        _lowerBound: status._lowerBound + 1,
         complexity: status.complexity + 1,
       },
       newBars,
@@ -86,17 +89,17 @@ const sort = (state) => {
    * Compares the previous bars
    */
   const comparePreviousBars = () => {
-    if (status.analyzedBarsIndex[0] === 0) {
+    if (status._analyzedBarsIndex[0] === 0) {
       return compareNextBars();
     }
 
-    const analyzedBarsIndex = status.analyzedBarsIndex.map((index) => index - 1);
-    const greater = bars[analyzedBarsIndex[1]].size > bars[analyzedBarsIndex[0]].size;
-    const algorithmStatus = greater ?
+    const _analyzedBarsIndex = status._analyzedBarsIndex.map((index) => index - 1);
+    const greater = bars[_analyzedBarsIndex[1]].size > bars[_analyzedBarsIndex[0]].size;
+    const message = greater ?
       'Because the second bar is greater than the second, they are left unchanged and the algorithm goes back to where it left off' :
       'Because the first bar is greater than the second, they are switched and the algorithm continues to the left';
     const newBars = bars.map((bar, index) => (
-      index === analyzedBarsIndex[0] || index === analyzedBarsIndex[1] ?
+      index === _analyzedBarsIndex[0] || index === _analyzedBarsIndex[1] ?
         { ...bar, status: 2 } :
         { ...bar, status: 0 }
     ));
@@ -104,9 +107,9 @@ const sort = (state) => {
     return [
       {
         ...status,
-        algorithmStatus,
-        analyzedBarsIndex,
-        step: greater ? 0 : 1,
+        message,
+        _analyzedBarsIndex,
+        _step: greater ? 0 : 1,
         complexity: status.complexity + 1,
       },
       newBars,
@@ -119,14 +122,14 @@ const sort = (state) => {
   const switchBars = () => [
     {
       ...status,
-      algorithmStatus: 'Switched the two bars',
-      step: 2,
+      message: 'Switched the two bars',
+      _step: 2,
     },
-    arrayManager.switchBars(bars, status.analyzedBarsIndex[0], status.analyzedBarsIndex[1]),
+    arrayManager.switchBars(bars, status._analyzedBarsIndex[0], status._analyzedBarsIndex[1]),
   ];
 
 
-  switch (status.step) {
+  switch (status._step) {
     case 0:
       return compareNextBars;
 
