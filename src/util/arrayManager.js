@@ -130,7 +130,7 @@ const selectBar = (index, bars) => {
     /* searches for another selected bar */
     for (let i = 0; i < bars.length; i++) {
         if (bars[i].status === 1) {
-            return switchBars(bars, index, i).map((bar) => ({...bar, status: 0}))
+            return switchBars(bars, index, i).map((bar) => ({...bar, status: bar.status == 1 ? 0 : bar.status}))
         }
     }
 
