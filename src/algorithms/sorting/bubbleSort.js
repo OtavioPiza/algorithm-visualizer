@@ -21,7 +21,7 @@ const getLockedBars = (bars, upperBound) => (
  * @param {Boolean} sorted       : if the array is sorted or not
  * @param {Number} complexity    : current complexity of the algorithm
  */
-const defaultState = (bars, sorted = false, complexity = 0) => {
+const defaultState = (bars, sorted = false, currentComplexity = 0) => {
     const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
     const analyzedBarsIndex = [-1, 0];
     const upperBound = bars.length - 1;
@@ -33,14 +33,14 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
     return [
         {  
             message,                // message displayed to the user
+            worstComplexity,        // worse case complexity
+            bestComplexity,         // best case complexity
+            currentComplexity,      // current complexity
             analyzedBarsIndex,      // list of bars that are analysed
             upperBound,             // upperBound of the algorithm's scope
             sorted,                 // wheter the list it sorted
             switched,               // wheter a switch was made
             step,                   // step of the algorithms
-            worstComplexity,        // worse case complexity
-            bestComplexity,         // best case complexity
-            complexity,             // current complexity
         },
         bars.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })),
     ];
@@ -84,7 +84,7 @@ const sort = (state) => {
         ));
 
         return getIsSorted(greater) ?
-            defaultState(newBars, true, algorithmState.complexity + 1) :
+            defaultState(newBars, true, algorithmState.currentComplexity + 1) :
             [
                 {
                     ...algorithmState,
@@ -101,7 +101,7 @@ const sort = (state) => {
                     upperBound: analyzedBarsIndex[1] === algorithmState.upperBound ?
                         algorithmState.upperBound - 1 :
                         algorithmState.upperBound,
-                    complexity: algorithmState.complexity + 1,
+                    currentComplexity: algorithmState.currentComplexity + 1,
                 },
                 getLockedBars(newBars, algorithmState.upperBound),
             ];
