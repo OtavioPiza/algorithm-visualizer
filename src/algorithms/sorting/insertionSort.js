@@ -8,24 +8,25 @@ import arrayManager from '../../util/arrayManager';
  * @param {Boolean} sorted            : if the array is sorted or not
  * @param {Number} complexity    : current complexity of the algorithm
  */
-const defaultState = (barArray, sorted = false, complexity = 0) => {
+const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
   const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
+  const worstComplexity = (barArray.length * (barArray.length - 1)) / 2;
+  const bestComplexity = barArray.length - 1;
+
   const _analyzedBarsIndex = [-1, 0];
   const _maxAnalyzedBarsIndex = [-1, 0];
   const _lowerBound = 0;
   const _step = 0;
-  const worseComplexity = (barArray.length * (barArray.length - 1)) / 2;
-  const bestComplexity = barArray.length - 1;
 
   return [
     {
       // public use
 
-      message,
-      worseComplexity,
-      bestComplexity,
-      complexity,
-      sorted,
+      message,                // message displayed to the user
+      worstComplexity,        // worse case complexity
+      bestComplexity,         // best case complexity
+      currentComplexity,      // current complexity
+      sorted,                 // wheter the list it sorted
 
       // internal use
 
