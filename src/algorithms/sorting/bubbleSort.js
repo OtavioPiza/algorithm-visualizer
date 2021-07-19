@@ -31,16 +31,16 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
     const bestComplexity = bars.length - 1;
 
     return [
-        {
-            message,
-            analyzedBarsIndex,
-            upperBound,
-            sorted,
-            switched,
-            step,
-            worseComplexity,
-            bestComplexity,
-            complexity,
+        {  
+            message,                // message displayed to the user
+            analyzedBarsIndex,      // list of bars that are analysed
+            upperBound,             // upperBound of the algorithm's scope
+            sorted,                 // wheter the list it sorted
+            switched,               // wheter a switch was made
+            step,                   // step of the algorithms
+            worseComplexity,        // worse case complexity
+            bestComplexity,         // best case complexity
+            complexity,             // current complexity
         },
         bars.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })),
     ];
