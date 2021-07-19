@@ -32,7 +32,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
             bestComplexity,
             complexity,
         },
-        bars.map((bar) => ({...bar, algorithmState: sorted ? 4 : 0 })),
+        bars.map((bar) => ({...bar, status: sorted ? 3 : 0 })),
     ];
 };
 
