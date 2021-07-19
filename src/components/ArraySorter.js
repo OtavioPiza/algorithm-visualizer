@@ -86,8 +86,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
   };
 
   /**
-     * Switches the auto-run feature
-     */
+   * Switches the auto-run feature
+   */
   const handleRun = () => {
     setRunning(!running);
   };
@@ -95,8 +95,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
   // == Auto-run feature ========================================================================================== //
 
   /**
-     * Auto-run
-     */
+   * Auto-run
+   */
   if (running) {
     if (!currentState[0].sorted) {
       // try to combine both the status and curent bars states
