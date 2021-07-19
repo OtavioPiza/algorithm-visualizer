@@ -36,7 +36,7 @@ const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
       _step,
 
     },
-    barArray.map((bar) => ({ ...bar, status: sorted ? 4 : 0  })),
+    barArray.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })),
   ];
 };
 
