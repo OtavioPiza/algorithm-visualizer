@@ -57,10 +57,10 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
   };
 
   /**
-     * Adds or removes a bar from the array
-     *
-     * @param {Boolean} add indicated wheter a bar is to be added or removed
-     */
+   * Adds or removes a bar from the array
+   *
+   * @param {Boolean} add indicated wheter a bar is to be added or removed
+   */
   const handleAdd = (add = true) => {
     setRunning(false);
 
@@ -70,8 +70,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
   };
 
   /**
-     * Makes the sorting algorithm take one step
-     */
+   * Makes the sorting algorithm take one step
+   */
   const handleStep = () => {
     if (!currentState[0].sorted) {
       setCurrentState(sortingAlgorithm.sort(currentState));
@@ -79,8 +79,8 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
   };
 
   /**
-     * Sets the current state of the sorting algorithm as the initial state
-     */
+   * Sets the current state of the sorting algorithm as the initial state
+   */
   const handleSetList = () => {
     setDefaultState(sortingAlgorithm.defaultState(currentState[1]));
   };
