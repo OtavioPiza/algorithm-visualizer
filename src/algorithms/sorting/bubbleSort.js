@@ -5,7 +5,7 @@ import arrayManager from '../../util/arrayManager';
  * Locks bars in the list that are already outside of the algorihtm's scope
  * 
  * @param {Bar[]} bars list of bars
- * @param {Number} upperBound maximum index allowed 
+ * @param {Number} _upperBound maximum index allowed 
  * 
  * @returns {Bar[]} list of bars with bars outside of the algorithm's scope locked
  */
@@ -23,21 +23,26 @@ const getLockedBars = (bars, upperBound) => (
  */
 const defaultState = (bars, sorted = false, currentComplexity = 0) => {
     const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
-    const analyzedBarsIndex = [-1, 0];
-    const upperBound = bars.length - 1;
+    const _analyzedBarsIndex = [-1, 0];
+    const _upperBound = bars.length - 1;
     const switched = false;
     const step = 0;
     const worstComplexity = (bars.length * (bars.length - 1)) / 2 + 1;
     const bestComplexity = bars.length - 1;
 
     return [
-        {  
+        {
+            // public use
+            
             message,                // message displayed to the user
             worstComplexity,        // worse case complexity
             bestComplexity,         // best case complexity
             currentComplexity,      // current complexity
-            analyzedBarsIndex,      // list of bars that are analysed
-            upperBound,             // upperBound of the algorithm's scope
+
+            // internal use
+
+            _analyzedBarsIndex,      // list of bars that are analysed
+            _upperBound,             // _upperBound of the algorithm's scope
             sorted,                 // wheter the list it sorted
             switched,               // wheter a switch was made
             step,                   // step of the algorithms
@@ -60,27 +65,27 @@ const sort = (state) => {
      * Returns the next two bars that will be analyzed by te algorithm
      */
     const getNextBars = () => (
-        algorithmState.analyzedBarsIndex[1] > algorithmState.upperBound ?
+        algorithmState._analyzedBarsIndex[1] > algorithmState._upperBound ?
             [0, 1] :
-            algorithmState.analyzedBarsIndex.map((bar) => bar + 1)
+            algorithmState._analyzedBarsIndex.map((bar) => bar + 1)
     );
 
     /**
      * Determines if the array is sorted
      */
     const getIsSorted = (greater) => (
-        (algorithmState.upperBound === 0) ||
-        (algorithmState.analyzedBarsIndex[1] === algorithmState.upperBound - 1 && !algorithmState.switched && !greater)
+        (algorithmState._upperBound === 0) ||
+        (algorithmState._analyzedBarsIndex[1] === algorithmState._upperBound - 1 && !algorithmState.switched && !greater)
     );
 
     /**
      * Compares two bars
      */
     const compareBars = () => {
-        const analyzedBarsIndex = getNextBars();
-        const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size;
+        const _analyzedBarsIndex = getNextBars();
+        const greater = bars[_analyzedBarsIndex[0]].size > bars[_analyzedBarsIndex[1]].size;
         const newBars = bars.map((bar, index) => (
-            { ...bar, status: analyzedBarsIndex.includes(index) ? 2 : 0 }
+            { ...bar, status: _analyzedBarsIndex.includes(index) ? 2 : 0 }
         ));
 
         return getIsSorted(greater) ?
@@ -92,18 +97,18 @@ const sort = (state) => {
                         greater ?
                             'Because the first bar is greater than the second they are switched' :
                             'Because the first bar is not greater than the second they are left unchanged',
-                    analyzedBarsIndex: analyzedBarsIndex,
+                    _analyzedBarsIndex: _analyzedBarsIndex,
                     greater: greater,
                     step: greater ? 1 : 0,
-                    switched: analyzedBarsIndex[0] === 0 ?
+                    switched: _analyzedBarsIndex[0] === 0 ?
                         false :
                         algorithmState.switched,
-                    upperBound: analyzedBarsIndex[1] === algorithmState.upperBound ?
-                        algorithmState.upperBound - 1 :
-                        algorithmState.upperBound,
+                    _upperBound: _analyzedBarsIndex[1] === algorithmState._upperBound ?
+                        algorithmState._upperBound - 1 :
+                        algorithmState._upperBound,
                     currentComplexity: algorithmState.currentComplexity + 1,
                 },
-                getLockedBars(newBars, algorithmState.upperBound),
+                getLockedBars(newBars, algorithmState._upperBound),
             ];
     };
 
@@ -117,7 +122,7 @@ const sort = (state) => {
             step: 0,
             switched: true,
         },
-        getLockedBars(arrayManager.switchBars(bars, algorithmState.analyzedBarsIndex[0], algorithmState.analyzedBarsIndex[1]), algorithmState.upperBound),
+        getLockedBars(arrayManager.switchBars(bars, algorithmState._analyzedBarsIndex[0], algorithmState._analyzedBarsIndex[1]), algorithmState._upperBound),
     ];
 
     /**
@@ -195,19 +200,19 @@ const implementation = () => (
             <code>
                 {`
 def bubble_sort(array):
-    upperBound = len(array)
+    _upperBound = len(array)
     switched = True
 
-    while switched and upperBound > 1:
+    while switched and _upperBound > 1:
         switched = False
 
-        for i in range(1, upperBound):
+        for i in range(1, _upperBound):
 
             if array[i - 1] > array[i]:
                 switched = True
                 array[i - 1], array[i] = array[i], array[i - 1]
 
-    upperBound -= 1
+    _upperBound -= 1
 
 return array
       `}
