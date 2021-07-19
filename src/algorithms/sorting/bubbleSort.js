@@ -70,7 +70,7 @@ const sort = (state) => {
         const analyzedBarsIndex = getNextBars();
         const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size;
         const newBars = bars.map((bar, index) => (
-            {...bar, sorted: false, analyzed: analyzedBarsIndex.includes(index)}
+            {...bar, status: analyzedBarsIndex.includes(index) ? 2 : 0}
         ));
 
         return getIsSorted(greater) ?
