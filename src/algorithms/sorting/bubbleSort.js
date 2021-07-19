@@ -18,11 +18,11 @@ const _getLockedBars = (bars, upperBound) => (
  * a new state after that
  *
  * @param {Bar[]} bars           : an array filled with Bar objects ({ size: int })
- * @param {Boolean} _sorted       : if the array is _sorted or not
+ * @param {Boolean} sorted       : if the array is sorted or not
  * @param {Number} complexity    : current complexity of the algorithm
  */
-const defaultState = (bars, _sorted = false, currentComplexity = 0) => {
-    const message = _sorted ? 'Finished sorting!' : 'Ready to start sorting!';
+const defaultState = (bars, sorted = false, currentComplexity = 0) => {
+    const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
     const _analyzedBarsIndex = [-1, 0];
     const _upperBound = bars.length - 1;
     const _switched = false;
@@ -38,16 +38,16 @@ const defaultState = (bars, _sorted = false, currentComplexity = 0) => {
             worstComplexity,        // worse case complexity
             bestComplexity,         // best case complexity
             currentComplexity,      // current complexity
+            sorted,                 // wheter the list it sorted
 
             // internal use
 
             _analyzedBarsIndex,      // list of bars that are analysed
             _upperBound,             // _upperBound of the algorithm's scope
-            _sorted,                 // wheter the list it _sorted
             _switched,               // wheter a switch was made
             _step,                   // step of the algorithms
         },
-        bars.map((bar) => ({ ...bar, status: _sorted ? 3 : 0 })),
+        bars.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })),
     ];
 };
 
@@ -71,7 +71,7 @@ const sort = (state) => {
     );
 
     /**
-     * Determines if the array is _sorted
+     * Determines if the array is sorted
      */
     const getIsSorted = (greater) => (
         (algorithmState._upperBound === 0) ||
@@ -163,7 +163,7 @@ const about = () => (
             <br />
             <br />
             {`
-      One of Bubble Sort's key strengths is its ability to detect that the list is _sorted 
+      One of Bubble Sort's key strengths is its ability to detect that the list is sorted 
       efficiently without external help by recording if it had to switch any elements. If none were
       _switched while iterating through the list, the algorithm knows that all the list's items are 
       in the correct location.
@@ -177,8 +177,8 @@ const about = () => (
         <ul>
             <li><strong>Blue: </strong>bar is selected by the user</li>
             <li><strong>Orange: </strong>bar is currently analyzed</li>
-            <li><strong>Gray: </strong>bar is considered _sorted by the algorithm</li>
-            <li><strong>Green: </strong>the list is _sorted</li>
+            <li><strong>Gray: </strong>bar is considered sorted by the algorithm</li>
+            <li><strong>Green: </strong>the list is sorted</li>
         </ul>
 
     </div>
