@@ -95,7 +95,7 @@ const sort = (state) => {
                     ...algorithmState,
                     message:
                         greater ?
-                            'Because the first bar is greater than the second they are _switched' :
+                            'Because the first bar is greater than the second they are switched' :
                             'Because the first bar is not greater than the second they are left unchanged',
                     _analyzedBarsIndex: _analyzedBarsIndex,
                     greater: greater,
@@ -118,7 +118,7 @@ const sort = (state) => {
     const changeBars = () => [
         {
             ...algorithmState,
-            message: '_switched the two bars',
+            message: 'Switched the two bars',
             _step: 0,
             _switched: true,
         },
