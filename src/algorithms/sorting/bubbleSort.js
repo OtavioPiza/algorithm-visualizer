@@ -23,12 +23,13 @@ const _getLockedBars = (bars, upperBound) => (
  */
 const defaultState = (bars, sorted = false, currentComplexity = 0) => {
     const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
+    const worstComplexity = (bars.length * (bars.length - 1)) / 2 + 1;
+    const bestComplexity = bars.length - 1;
+
     const _analyzedBarsIndex = [-1, 0];
     const _upperBound = bars.length - 1;
     const _switched = false;
     const _step = 0;
-    const worstComplexity = (bars.length * (bars.length - 1)) / 2 + 1;
-    const bestComplexity = bars.length - 1;
 
     return [
         {
