@@ -1,6 +1,10 @@
 import React from 'react';
 import arrayManager from '../../util/arrayManager';
 
+const getLockedBars = (bars, upperBound) => (
+    bars.map((bar, index) => index > upperBound ? { ...bar, status: 4 } : bar)
+)
+
 /**
  * Uses the state provided to take one step in the execution of the sorting algorithm returning
  * a new state after that
@@ -12,8 +16,7 @@ import arrayManager from '../../util/arrayManager';
 const defaultState = (bars, sorted = false, complexity = 0) => {
     const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
     const analyzedBarsIndex = [-1, 0];
-    const upper_bound = bars.length - 1;
-    const lower_bound = 0;
+    const upperBound = bars.length - 1;
     const switched = false;
     const step = 0;
     const worseComplexity = (bars.length * (bars.length - 1)) / 2 + 1;
@@ -23,8 +26,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
         {
             message,
             analyzedBarsIndex,
-            upper_bound,
-            lower_bound,
+            upperBound,
             sorted,
             switched,
             step,
@@ -32,7 +34,7 @@ const defaultState = (bars, sorted = false, complexity = 0) => {
             bestComplexity,
             complexity,
         },
-        bars.map((bar) => ({...bar, status: sorted ? 3 : 0 })),
+        getLockedBars(bars.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })), upperBound),
     ];
 };
 
@@ -50,7 +52,7 @@ const sort = (state) => {
      * Returns the next two bars that will be analyzed by te algorithm
      */
     const getNextBars = () => (
-        algorithmState.analyzedBarsIndex[1] > algorithmState.upper_bound ?
+        algorithmState.analyzedBarsIndex[1] > algorithmState.upperBound ?
             [0, 1] :
             algorithmState.analyzedBarsIndex.map((bar) => bar + 1)
     );
@@ -59,8 +61,8 @@ const sort = (state) => {
      * Determines if the array is sorted
      */
     const getIsSorted = (greater) => (
-        (algorithmState.upper_bound === 0) ||
-        (algorithmState.analyzedBarsIndex[1] === algorithmState.upper_bound - 1 && !algorithmState.switched && !greater)
+        (algorithmState.upperBound === 0) ||
+        (algorithmState.analyzedBarsIndex[1] === algorithmState.upperBound - 1 && !algorithmState.switched && !greater)
     );
 
     /**
@@ -70,7 +72,7 @@ const sort = (state) => {
         const analyzedBarsIndex = getNextBars();
         const greater = bars[analyzedBarsIndex[0]].size > bars[analyzedBarsIndex[1]].size;
         const newBars = bars.map((bar, index) => (
-            {...bar, status: analyzedBarsIndex.includes(index) ? 2 : 0}
+            { ...bar, status: analyzedBarsIndex.includes(index) ? 2 : 0 }
         ));
 
         return getIsSorted(greater) ?
@@ -88,12 +90,12 @@ const sort = (state) => {
                     switched: analyzedBarsIndex[0] === 0 ?
                         false :
                         algorithmState.switched,
-                    upper_bound: analyzedBarsIndex[1] === algorithmState.upper_bound ?
-                        algorithmState.upper_bound - 1 :
-                        algorithmState.upper_bound,
+                    upperBound: analyzedBarsIndex[1] === algorithmState.upperBound ?
+                        algorithmState.upperBound - 1 :
+                        algorithmState.upperBound,
                     complexity: algorithmState.complexity + 1,
                 },
-                newBars,
+                getLockedBars(newBars, algorithmState.upperBound),
             ];
     };
 
@@ -107,7 +109,7 @@ const sort = (state) => {
             step: 0,
             switched: true,
         },
-        arrayManager.switchBars(bars, algorithmState.analyzedBarsIndex[0], algorithmState.analyzedBarsIndex[1]),
+        getLockedBars(arrayManager.switchBars(bars, algorithmState.analyzedBarsIndex[0], algorithmState.analyzedBarsIndex[1]), algorithmState.upperBound),
     ];
 
     /**
@@ -145,8 +147,8 @@ const about = () => (
       algorithm is sure that the largest element is placed at the last index, which from that point 
       on is no longer analyzed.
       `}
-            <br/>
-            <br/>
+            <br />
+            <br />
             {`
       One of Bubble Sort's key strengths is its ability to detect that the list is sorted 
       efficiently without external help by recording if it had to switch any elements. If none were
@@ -182,30 +184,30 @@ const implementation = () => (
         </h3>
 
         <pre>
-      <code>
-        {`
+            <code>
+                {`
 def bubble_sort(array):
-    upper_bound = len(array)
+    upperBound = len(array)
     switched = True
 
-    while switched and upper_bound > 1:
+    while switched and upperBound > 1:
         switched = False
 
-        for i in range(1, upper_bound):
+        for i in range(1, upperBound):
 
             if array[i - 1] > array[i]:
                 switched = True
                 array[i - 1], array[i] = array[i], array[i - 1]
 
-    upper_bound -= 1
+    upperBound -= 1
 
 return array
       `}
-      </code>
-    </pre>
+            </code>
+        </pre>
     </div>
 );
 
-const SortingAlgorithm = {sort, defaultState, name, implementation, about};
+const SortingAlgorithm = { sort, defaultState, name, implementation, about };
 
 export default SortingAlgorithm;
