@@ -159,7 +159,7 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
         <BottomBar />
 
         <div className="Status">
-          <h1>{running ? 'Running!' : currentState[0].algorithmStatus}</h1>
+          <h1>{running ? 'Running!' : currentState[0].message}</h1>
         </div>
 
         <BottomBar />
