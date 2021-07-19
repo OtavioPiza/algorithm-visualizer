@@ -200,19 +200,19 @@ const implementation = () => (
             <code>
                 {`
 def bubble_sort(array):
-    _upperBound = len(array)
-    _switched = True
+    upperBound = len(array)
+    switched = True
 
-    while _switched and _upperBound > 1:
-        _switched = False
+    while switched and _upperBound > 1:
+        switched = False
 
         for i in range(1, _upperBound):
 
             if array[i - 1] > array[i]:
-                _switched = True
+                switched = True
                 array[i - 1], array[i] = array[i], array[i - 1]
 
-    _upperBound -= 1
+    upperBound -= 1
 
 return array
       `}
