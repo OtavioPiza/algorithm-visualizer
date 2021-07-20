@@ -4,7 +4,9 @@ import arrayManager from '../../util/arrayManager';
 /**
  * Locks bars in the list that are already outside of the algorihtm's scope
  * 
- * @param {[{size, index, status }]} bars list of bars
+ * @param {{
+ *  status: number;
+ * }[]} bars list of bars
  * @param {Number} _upperBound maximum index allowed 
  * 
  * @returns {[{size, index, status }]} list of bars with bars outside of the algorithm's scope locked
