@@ -9,9 +9,22 @@ import arrayManager from '../../util/arrayManager';
  * }[]} bars list of bars
  * @param {Number} lowerBound maximum index allowed 
  */
-const _getLockedBars = (bars, lowerBound) => (
+const _getLockedBarsBellow = (bars, lowerBound) => (
   bars.map((bar, index) => index < lowerBound ? { ...bar, status: bar.status === 2 ? 2 : 4 } : bar)
 )
+
+/**
+ * Locks bars in the list that are already outside of the algorihtm's scope
+ * 
+ * @param {{
+ *  status: number;
+ * }[]} bars list of bars
+ * @param {Number} lowerBound maximum index allowed 
+ */
+const _getLockedBarsAbove = (bars, upperBound) => (
+  bars.map((bar, index) => index > upperBound ? { ...bar, status: bar.status === 2 ? 2 : 4 } : bar)
+)
+
 
 /**
  * Returns the state of the algorithm
@@ -109,7 +122,7 @@ const sort = (state) => {
         _lowerBound: status._lowerBound + 1,
         complexity: status.complexity + 1,
       },
-      _getLockedBars(newBars, status._lowerBound)
+      _getLockedBarsBellow(newBars, status._lowerBound)
     ];
   };
 
@@ -140,7 +153,7 @@ const sort = (state) => {
         _step: greater ? 0 : 1,
         complexity: status.complexity + 1,
       },
-      _getLockedBars(newBars, status._lowerBound)
+      _getLockedBarsAbove(newBars, status._maxAnalyzedBarsIndex[0])
     ];
   };
 
@@ -153,7 +166,7 @@ const sort = (state) => {
       message: 'Switched the two bars',
       _step: 2,
     },
-    _getLockedBars(arrayManager.switchBars(bars, status._analyzedBarsIndex[0], status._analyzedBarsIndex[1]), status._lowerBound)
+    arrayManager.switchBars(bars, status._analyzedBarsIndex[0], status._analyzedBarsIndex[1])
   ];
 
 
