@@ -2,6 +2,18 @@ import React from 'react';
 import arrayManager from '../../util/arrayManager';
 
 /**
+ * Locks bars in the list that are already outside of the algorihtm's scope
+ * 
+ * @param {[{size, index, status }]} bars list of bars
+ * @param {Number} lowerBound maximum index allowed 
+ * 
+ * @returns {[{size, index, status }]} list of bars with bars outside of the algorithm's scope locked
+ */
+ const _getLockedBars = (bars, lowerBound) => (
+  bars.map((bar, index) => index < lowerBound ? { ...bar, status: 4 } : bar)
+)
+
+/**
  * Returns the state of the algorithm
  *
  * @param {Bar[]} barArray              : an array with the bars to be sorted
@@ -58,7 +70,7 @@ const sort = (state) => {
     const _maxAnalyzedBarsIndex = status._maxAnalyzedBarsIndex.map((index) => index + 1);
 
     if (!bars[_maxAnalyzedBarsIndex[1]]) {
-      return defaultState(bars, true, status.complexity);
+      return defaultState(_getLockedBars(bars, status._lowerBound), true, status.complexity);
     }
 
     const greater = bars[_maxAnalyzedBarsIndex[1]].size > bars[_maxAnalyzedBarsIndex[0]].size;
@@ -81,7 +93,7 @@ const sort = (state) => {
         _lowerBound: status._lowerBound + 1,
         complexity: status.complexity + 1,
       },
-      newBars,
+      _getLockedBars(newBars, status._lowerBound),
     ];
   };
 
@@ -125,7 +137,7 @@ const sort = (state) => {
       message: 'Switched the two bars',
       _step: 2,
     },
-    arrayManager.switchBars(bars, status._analyzedBarsIndex[0], status._analyzedBarsIndex[1]),
+    _getLockedBars(arrayManager.switchBars(bars, status._analyzedBarsIndex[0], status._analyzedBarsIndex[1]), status._lowerBound)
   ];
 
 
