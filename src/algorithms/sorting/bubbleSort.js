@@ -123,7 +123,7 @@ const sort = (state) => {
             _step: 0,
             _switched: true,
         },
-        _getLockedBars(arrayManager.switchBars(bars, algorithmState._analyzedBarsIndex[0], algorithmState._analyzedBarsIndex[1]), algorithmState._upperBound),
+        arrayManager.switchBars(bars, algorithmState._analyzedBarsIndex[0], algorithmState._analyzedBarsIndex[1])
     ];
 
     /**
