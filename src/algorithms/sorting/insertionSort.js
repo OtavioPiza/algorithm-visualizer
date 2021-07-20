@@ -7,9 +7,7 @@ import arrayManager from '../../util/arrayManager';
  * @param {{
  *  status: number;
  * }[]} bars list of bars
- * @param {Number} _upperBound maximum index allowed 
- * 
- * @returns {[{size, index, status }]} list of bars with bars outside of the algorithm's scope locked
+ * @param {Number} lowerBound maximum index allowed 
  */
 const _getLockedBars = (bars, lowerBound) => (
   bars.map((bar, index) => index < lowerBound ? { ...bar, status: bar.status === 2 ? 2 : 4 } : bar)
