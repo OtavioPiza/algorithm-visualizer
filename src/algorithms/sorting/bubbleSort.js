@@ -48,7 +48,7 @@ const defaultState = (bars, sorted = false, currentComplexity = 0) => {
             _switched,               // wheter a switch was made
             _step,                   // step of the algorithms
         },
-        bars.map((bar) => ({ ...bar, status: sorted ? 3 : 0 })),
+        bars.map((bar) => ({ ...bar, status: bar.status === 1 ? 1 : sorted ? 3 : 0 })),
     ];
 };
 

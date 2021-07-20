@@ -32,8 +32,13 @@ const ArraySorter = ({ sortingAlgorithm, barList = arrayManager.getRandomList(10
    * @param firstBarIndex
    */
   const handleSelectBar = (firstBarIndex) => {
-    setRunning(false);
-    setCurrentState(sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])));
+
+    if (running) {
+      setRunning(false);
+    }
+    else {
+      setCurrentState(sortingAlgorithm.defaultState(arrayManager.selectBar(firstBarIndex, currentState[1])));
+    }
   };
 
   // == Control Panel =============================================================================================== //
