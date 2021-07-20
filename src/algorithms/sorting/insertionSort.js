@@ -59,7 +59,21 @@ const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
 /**
  * Takes one _step in the sorting algorithm
  *
- * @param {State} state : state of the algorithm
+ * @param {[{
+ *  message: string;
+ *  worstComplexity: number;
+ *  bestComplexity: number;
+ *  currentComplexity: number;
+ *  sorted: boolean;
+ *  _analyzedBarsIndex: number[];
+ *  _maxAnalyzedBarsIndex: number[];
+ *  _lowerBound: number;
+ *  _step: number;
+ * }, {
+ *  size: number;
+ *  id: number;
+ *  status: number;
+ * }[]]} state : state of the algorithm
  *
  * @return {State}     : new state of the algorithm
  */
