@@ -20,7 +20,7 @@ const _getLockedBars = (bars, lowerBound) => (
  *  size: number;
  *  id: number;
  *  status: number;
- * }[]} barArray                   : a list of bar objects
+ * }[]} barArray                  : a list of bar objects
  * @param {Boolean} sorted        : if the list is sorted or not
  * @param {Number} complexity     : current complexity of the algorithm
  */
