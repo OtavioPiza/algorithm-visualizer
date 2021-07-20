@@ -99,7 +99,7 @@ const sort = (state) => {
     const _maxAnalyzedBarsIndex = status._maxAnalyzedBarsIndex.map((index) => index + 1);
 
     if (!bars[_maxAnalyzedBarsIndex[1]]) {
-      return defaultState(bars, true, status.complexity);
+      return defaultState(bars, true, status.currentComplexity);
     }
 
     const greater = bars[_maxAnalyzedBarsIndex[1]].size > bars[_maxAnalyzedBarsIndex[0]].size;
@@ -120,7 +120,7 @@ const sort = (state) => {
         _maxAnalyzedBarsIndex: _maxAnalyzedBarsIndex,
         _step: greater ? 0 : 1,
         _lowerBound: status._lowerBound + 1,
-        complexity: status.complexity + 1,
+        currentComplexity: status.currentComplexity + 1,
       },
       _getLockedBarsBellow(newBars, status._lowerBound)
     ];
@@ -151,7 +151,7 @@ const sort = (state) => {
         message,
         _analyzedBarsIndex,
         _step: greater ? 0 : 1,
-        complexity: status.complexity + 1,
+        currentComplexity: status.currentComplexity + 1,
       },
       _getLockedBarsAbove(newBars, status._maxAnalyzedBarsIndex[0])
     ];
