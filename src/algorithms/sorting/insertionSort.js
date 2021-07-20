@@ -16,14 +16,13 @@ const _getLockedBars = (bars, lowerBound) => (
 /**
  * Returns the state of the algorithm
  *
- * @param {[{
+ * @param {{
  *  size: number;
  *  id: number;
  *  status: number;
- * }]} barArray                   : a list of bar objects
- * 
- * @param {Boolean} sorted            : if the array is sorted or not
- * @param {Number} complexity    : current complexity of the algorithm
+ * }[]} barArray                   : a list of bar objects
+ * @param {Boolean} sorted        : if the list is sorted or not
+ * @param {Number} complexity     : current complexity of the algorithm
  */
 const defaultState = (barArray, sorted = false, currentComplexity = 0) => {
   const message = sorted ? 'Finished sorting!' : 'Ready to start sorting!';
