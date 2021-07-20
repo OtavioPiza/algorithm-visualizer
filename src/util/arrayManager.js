@@ -122,7 +122,6 @@ const selectBar = (index, bars) => {
 
     /* the bar was already selected */
     if (bars[index].selected) {
-        console.log('cancel');
         return bars.map((bar) => ({ ...bar, status: 0 }));
     }
 
@@ -130,7 +129,6 @@ const selectBar = (index, bars) => {
 
     /* searches for another selected bar */
     for (let i = 0; i < bars.length; i++) {
-        console.log('try');
 
         if (bars[i].status === 1) {
             return switchBars(bars, index, i).map((bar) => ({ ...bar, status: bar.status === 1 ? 0 : bar.status }))
